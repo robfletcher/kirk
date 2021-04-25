@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="https://strikt.io/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>About Strikt</title>
+
+
+<meta name="description" content="Strikt is an assertion library for Kotlin intended for use with a test runner such as JUnit or Spek.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/prismFixes.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://strikt.io","environment":"prod","version":"0.31.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://strikt.io">
+        <img src="https://strikt.io/assets/images/logo-white-28.png" alt="Strikt">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search Strikt docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://strikt.io">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/assertion-styles">Assertion Styles</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/collection-elements">Collection Element Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/expecting-exceptions">Expecting Exceptions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/flow-typing">Strongly Typed Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/traversing-subjects">Traversing Assertion Subjects</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/grouping-with-and">Grouping Assertions With and or with</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/custom-assertions">Custom Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/additional-modules">Additional Modules</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/core">Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/bom">Bill of Materials</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/arrow">Arrow Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/gradle">Gradle Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jvm">JVM Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jackson">Jackson Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/mockk">MockK Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/protobuf">Protobuf Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/spring">Spring Module</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/about">About Strikt</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/changelog">Changelog</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop">
+      
+        
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://strikt.io/about" aria-current="page">About Strikt</a></li>
+
+
+</ul>
+</nav>
+
+
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<h1 id="about-strikt"><a href="#about-strikt" id="about-strikt" class="anchor"></a>About Strikt</h1>
+<p>Strikt was written by <a href="https://github.com/robfletcher">Rob Fletcher</a> with contributions from:</p>
+<ul>
+<li><a href="https://github.com/sandjelkovic">Stefan Anđelković</a></li>
+<li><a href="https://github.com/abendt">Alphonse Bendt</a></li>
+<li><a href="https://github.com/qoomon">Bengt Brodersen</a></li>
+<li><a href="https://github.com/cjbrooks12">Casey Brooks</a></li>
+<li><a href="https://github.com/adrielcafe">Adriel Café</a></li>
+<li><a href="https://github.com/christian-draeger">Christian Dräger</a></li>
+<li><a href="https://github.com/segunfamisa">Segun Famisa</a></li>
+<li><a href="https://github.com/xhanin">Xavier Hanin</a></li>
+<li><a href="https://github.com/mkobit">Mike Kobit</a></li>
+<li><a href="https://github.com/ilaborie">Igor Labourie</a></li>
+<li><a href="https://github.com/lenguyenthanh">Thanh Le</a></li>
+<li><a href="https://github.com/tristanlins">Tristan Lins</a></li>
+<li><a href="https://github.com/eskatos">Paul Merlin</a></li>
+<li><a href="https://github.com/christophsturm">Christoph Sturm</a></li>
+<li><a href="https://github.com/DanielThomas">Danny Thomas</a></li>
+<li><a href="https://github.com/vbsteven">Steven Van Bael</a></li>
+<li><a href="https://github.com/sullis">Sean C. Sullivan</a></li>
+<li><a href="https://github.com/Waltorw">Ramazan Yapparov</a></li>
+</ul>
+<h2 id="license"><a href="#license" id="license" class="anchor"></a>License</h2>
+<p>Strikt is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License v2.0</a>.</p>
+<h2 id="contributing"><a href="#contributing" id="contributing" class="anchor"></a>Contributing</h2>
+<p>Suggestions and contributions are welcome.</p>
+<ul>
+<li><strong>Issues</strong>: You can discuss and raise issues on <a href="https://github.com/robfletcher/strikt/issues">GitHub</a>.</li>
+<li><strong>Slack</strong>: Join the <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J"><strong>#strikt</strong></a> channel on the Kotlin Slack.</li>
+<li><strong>Twitter</strong>: Follow <a href="https://twitter.com/stri_kt"><strong>@stri_kt</strong></a> on Twitter for updates and release notifications.</li>
+</ul>
+<p>When submitting a pull request, please add yourself to the contributors section in <a href="https://github.com/robfletcher/strikt/blob/master/site/src/orchid/resources/data.yml">this yaml file</a> so that you get proper credit in the project documentation.</p>
+<h2 id="acknowledgments"><a href="#acknowledgments" id="acknowledgments" class="anchor"></a>Acknowledgments</h2>
+<p>Strikt owes a lot to <a href="https://joel-costigliola.github.io/assertj/">AssertJ</a>.
+It's a really good library if you want to write tests in Java!</p>
+
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="https://github.com/robfletcher/strikt/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+          <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J" class="button is-danger">
+            <span class="icon"><i class="fab fa-lg fa-slack-hash"></i></span>
+            <span>Slack</span>
+          </a>
+        
+          <a href="https://twitter.com/stri_kt" class="button is-info">
+            <span class="icon"><i class="fab fa-lg fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://strikt.io/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://strikt.io/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 0.21.1"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer  src="https://strikt.io/StriktTheme/9f2a9a08/releases/v5.4.0/js/all.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-tabs.js"></script>
+<script  src="https://strikt.io/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://strikt.io/lunr/lunr.js"></script>
+<script  src="https://strikt.io/assets/js/orchidSearch.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "ownKey": "pages",
+  "childrenPages": {
+    "about": {
+      "ownKey": "about",
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://strikt.io",
+          "fileName": "about",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://strikt.io/about"
+        },
+        "description": "",
+        "title": "About Strikt",
+        "content": "<h1 id=\"about-strikt\"><a href=\"#about-strikt\" id=\"about-strikt\" class=\"anchor\"><\/a>About Strikt<\/h1>\n<p>Strikt was written by <a href=\"https://github.com/robfletcher\">Rob Fletcher<\/a> with contributions from:<\/p>\n<ul>\n<li><a href=\"https://github.com/sandjelkovic\">Stefan Anđelković<\/a><\/li>\n<li><a href=\"https://github.com/abendt\">Alphonse Bendt<\/a><\/li>\n<li><a href=\"https://github.com/qoomon\">Bengt Brodersen<\/a><\/li>\n<li><a href=\"https://github.com/cjbrooks12\">Casey Brooks<\/a><\/li>\n<li><a href=\"https://github.com/adrielcafe\">Adriel Café<\/a><\/li>\n<li><a href=\"https://github.com/christian-draeger\">Christian Dräger<\/a><\/li>\n<li><a href=\"https://github.com/segunfamisa\">Segun Famisa<\/a><\/li>\n<li><a href=\"https://github.com/xhanin\">Xavier Hanin<\/a><\/li>\n<li><a href=\"https://github.com/mkobit\">Mike Kobit<\/a><\/li>\n<li><a href=\"https://github.com/ilaborie\">Igor Labourie<\/a><\/li>\n<li><a href=\"https://github.com/lenguyenthanh\">Thanh Le<\/a><\/li>\n<li><a href=\"https://github.com/tristanlins\">Tristan Lins<\/a><\/li>\n<li><a href=\"https://github.com/eskatos\">Paul Merlin<\/a><\/li>\n<li><a href=\"https://github.com/christophsturm\">Christoph Sturm<\/a><\/li>\n<li><a href=\"https://github.com/DanielThomas\">Danny Thomas<\/a><\/li>\n<li><a href=\"https://github.com/vbsteven\">Steven Van Bael<\/a><\/li>\n<li><a href=\"https://github.com/sullis\">Sean C. Sullivan<\/a><\/li>\n<li><a href=\"https://github.com/Waltorw\">Ramazan Yapparov<\/a><\/li>\n<\/ul>\n<h2 id=\"license\"><a href=\"#license\" id=\"license\" class=\"anchor\"><\/a>License<\/h2>\n<p>Strikt is licensed under the <a href=\"https://www.apache.org/licenses/LICENSE-2.0.html\">Apache License v2.0<\/a>.<\/p>\n<h2 id=\"contributing\"><a href=\"#contributing\" id=\"contributing\" class=\"anchor\"><\/a>Contributing<\/h2>\n<p>Suggestions and contributions are welcome.<\/p>\n<ul>\n<li><strong>Issues<\/strong>: You can discuss and raise issues on <a href=\"https://github.com/robfletcher/strikt/issues\">GitHub<\/a>.<\/li>\n<li><strong>Slack<\/strong>: Join the <a href=\"https://kotlinlang.slack.com/messages/CAR7KJ96J\"><strong>#strikt<\/strong><\/a> channel on the Kotlin Slack.<\/li>\n<li><strong>Twitter<\/strong>: Follow <a href=\"https://twitter.com/stri_kt\"><strong>@stri_kt<\/strong><\/a> on Twitter for updates and release notifications.<\/li>\n<\/ul>\n<p>When submitting a pull request, please add yourself to the contributors section in <a href=\"https://github.com/robfletcher/strikt/blob/master/site/src/orchid/resources/data.yml\">this yaml file<\/a> so that you get proper credit in the project documentation.<\/p>\n<h2 id=\"acknowledgments\"><a href=\"#acknowledgments\" id=\"acknowledgments\" class=\"anchor\"><\/a>Acknowledgments<\/h2>\n<p>Strikt owes a lot to <a href=\"https://joel-costigliola.github.io/assertj/\">AssertJ<\/a>.\nIt's a really good library if you want to write tests in Java!<\/p>\n"
+      }]
+    },
+    "changelog": {
+      "ownKey": "changelog",
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://strikt.io",
+          "fileName": "changelog",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://strikt.io/changelog"
+        },
+        "description": "",
+        "title": "Changelog",
+        "content": ""
+      }]
+    }
+  }
+}

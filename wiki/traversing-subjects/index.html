@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="https://strikt.io/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Traversing Assertion Subjects</title>
+
+
+<meta name="description" content="Strikt is an assertion library for Kotlin intended for use with a test runner such as JUnit or Spek.">
+
+
+
+<link rel="prev" href="https://strikt.io/wiki/flow-typing">
+
+
+<link rel="next" href="https://strikt.io/wiki/grouping-with-and">
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/prismFixes.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://strikt.io","environment":"prod","version":"0.31.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://strikt.io">
+        <img src="https://strikt.io/assets/images/logo-white-28.png" alt="Strikt">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search Strikt docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://strikt.io">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/assertion-styles">Assertion Styles</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/collection-elements">Collection Element Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/expecting-exceptions">Expecting Exceptions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/flow-typing">Strongly Typed Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/traversing-subjects">Traversing Assertion Subjects</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/grouping-with-and">Grouping Assertions With and or with</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/custom-assertions">Custom Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/additional-modules">Additional Modules</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/core">Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/bom">Bill of Materials</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/arrow">Arrow Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/gradle">Gradle Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jvm">JVM Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jackson">Jackson Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/mockk">MockK Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/protobuf">Protobuf Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/spring">Spring Module</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/about">About Strikt</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/changelog">Changelog</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop">
+      
+        
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://strikt.io/wiki">Wiki</a></li>
+
+
+
+    <li class="is-active"><a href="https://strikt.io/wiki/traversing-subjects" aria-current="page">Traversing Assertion Subjects</a></li>
+
+
+</ul>
+</nav>
+
+
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<h1 id="traversing-assertion-subjects"><a href="#traversing-assertion-subjects" id="traversing-assertion-subjects" class="anchor"></a>Traversing Assertion Subjects</h1>
+<p>Although you can obviously write assertions for the properties of an object with code like this:</p>
+<pre><code class="language-kotlin">expectThat(map.size).isEqualTo(1)
+expectThat(list.first()).isEqualTo(&quot;fnord&quot;)
+expectThat(person.name).isEqualTo(&quot;Ziggy&quot;)
+
+</code></pre>
+<p>Sometimes it's useful to be able to transform an assertion on a subject to an assertion on a property of that subject, or the result of a method call.
+Particularly when using soft assertion blocks.</p>
+<p>Strikt allows for this using the <code>Assertion.Builder&lt;T&gt;.get</code> method.</p>
+<h2 id="using-get-with-property-or-method-references"><a href="#using-get-with-property-or-method-references" id="using-get-with-property-or-method-references" class="anchor"></a>Using <em>get</em> with property or method references</h2>
+<p>The first override of <code>get</code> takes a property or (zero argument) method reference as a parameter.
+The <code>get</code> method returns an <code>Assertion.Builder&lt;R&gt;</code> where the new subject (whose type is <code>R</code>) is the value returned by invoking that property or method on the current subject.</p>
+<p>This is useful for making assertions about the properties of an object, or the values returned by methods, particularly if you want to use a block-style assertion to validate multiple object properties.</p>
+<pre><code class="language-kotlin">val subject = Person(name = &quot;David&quot;, birthDate = LocalDate.of(1947, 1, 8))
+expectThat(subject) {
+  get(Person::name).isEqualTo(&quot;David&quot;)
+  get(Person::birthDate).get(LocalDate::getYear).isEqualTo(1947)
+}
+
+</code></pre>
+<h2 id="using-get-with-lambdas"><a href="#using-get-with-lambdas" id="using-get-with-lambdas" class="anchor"></a>Using <em>get</em> with lambdas</h2>
+<p>An alternate version of the <code>get</code> method takes a lambda whose receiver is the current subject.</p>
+<pre><code class="language-kotlin">val subject = Person(name = &quot;David&quot;, birthDate = LocalDate.of(1947, 1, 8))
+expectThat(subject) {
+  get { name }.isEqualTo(&quot;Ziggy&quot;)
+  get { birthDate.year }.isEqualTo(1971)
+}
+
+</code></pre>
+<p>Strikt will attempt to read the test source to find out the name of the variables.
+This example produces output that looks like this:</p>
+<pre><code class="language-kotlin">▼ Expect that Person(name=David, birthDate=1947-01-08):
+  ▼ name:
+    ✗ is equal to &quot;Ziggy&quot;
+            found &quot;David&quot;
+  ▼ birthDate.year:
+    ✗ is equal to 1971
+            found 1947
+
+</code></pre>
+<h3 id="performance-considerations"><a href="#performance-considerations" id="performance-considerations" class="anchor"></a>Performance considerations</h3>
+<p>Reading the test source can be costly performance-wise.
+If you are running large-scale parallel tests, property-based testing, or something similar, it probably makes sense to avoid this penalty.
+You can do so by:</p>
+<ul>
+<li>providing an explicit description parameter to <code>get</code> in addition to the lambda.</li>
+<li>using <code>get</code> with a property/method reference rather than a lambda.</li>
+</ul>
+<p>In either of those cases Strikt will <em>not</em> derive a description by attempting to read the source.</p>
+<h2 id="mapping-elements-of-collections"><a href="#mapping-elements-of-collections" id="mapping-elements-of-collections" class="anchor"></a>Mapping elements of collections</h2>
+<p>If the assertion subject is an <code>Iterable</code> Strikt provides a <code>map</code> function much like the one in the Kotlin standard library.
+It is effectively like using <code>get</code> on each element of the <code>Iterable</code> subject.</p>
+<pre><code class="language-kotlin">val subject: List&lt;Person&gt; = getPersonList()
+expectThat(subject)
+  .map(Person::name)
+  .containsExactly(&quot;David&quot;, &quot;Ziggy&quot;, &quot;Aladdin&quot;, &quot;Jareth&quot;)
+
+</code></pre>
+<p>In this case the <code>map</code> function is transforming the <code>Assertion.Buidler&lt;List&lt;Person&gt;&gt;</code> into an <code>Assertion.Builder&lt;List&lt;String&gt;&gt;</code> by applying the <code>name</code> property to each element.</p>
+<h2 id="re-usable-mapping-extensions"><a href="#re-usable-mapping-extensions" id="re-usable-mapping-extensions" class="anchor"></a>Re-usable mapping extensions</h2>
+<p>If you find yourself frequently using <code>get</code> for the same properties or methods, consider defining extension property or method to make things even easier.</p>
+<p>For example:</p>
+<pre><code class="language-kotlin">val Assertion.Builder&lt;Person&gt;.name: Assertion.Builder&lt;String&gt;
+  get() = get(Person::name)
+
+val Assertion.Builder&lt;Person&gt;.yearOfBirth: Assertion.Builder&lt;Int&gt;
+  get() = get(&quot;year of birth&quot;) { birthDate.year }
+
+</code></pre>
+<p>You can then write the earlier example as:</p>
+<pre><code class="language-kotlin">val subject = Person(name = &quot;David&quot;, birthDate = LocalDate.of(1947, 1, 8))
+expectThat(subject) {
+  name.isEqualTo(&quot;David&quot;)
+  yearOfBirth.isEqualTo(1947)
+}
+
+</code></pre>
+<h2 id="built-in-traversals"><a href="#built-in-traversals" id="built-in-traversals" class="anchor"></a>Built-in traversals</h2>
+<p>Strikt has a number of built in traversal properties and functions such as <code>Assertion.Builder&lt;List&lt;E&gt;&gt;.first()</code> which returns an <code>Assertion.Builder&lt;E&gt;</code> whose subject is the first element of the list.
+See the <a href="https://strikt.io/kotlindoc/core/strikt/assertions">API docs</a> for details.</p>
+
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+<nav class="pagination is-medium" role="navigation" aria-label="pagination">
+  <a class="pagination-previous button is-large is-link is-outlined"
+   href="https://strikt.io/wiki/flow-typing" >
+      <span class="icon">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+  </a>
+  <a class="pagination-next button is-large is-link is-outlined"
+   href="https://strikt.io/wiki/grouping-with-and" >
+      <span class="icon">
+        <i class="fas fa-arrow-right"></i>
+      </span>
+  </a>
+</nav>
+
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="https://github.com/robfletcher/strikt/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+          <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J" class="button is-danger">
+            <span class="icon"><i class="fab fa-lg fa-slack-hash"></i></span>
+            <span>Slack</span>
+          </a>
+        
+          <a href="https://twitter.com/stri_kt" class="button is-info">
+            <span class="icon"><i class="fab fa-lg fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://strikt.io/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://strikt.io/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 0.21.1"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer  src="https://strikt.io/StriktTheme/9f2a9a08/releases/v5.4.0/js/all.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-tabs.js"></script>
+<script  src="https://strikt.io/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://strikt.io/lunr/lunr.js"></script>
+<script  src="https://strikt.io/assets/js/orchidSearch.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

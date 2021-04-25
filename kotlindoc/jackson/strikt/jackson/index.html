@@ -1,0 +1,2198 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="https://strikt.io/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>strikt.jackson</title>
+
+
+<meta name="description" content="Strikt is an assertion library for Kotlin intended for use with a test runner such as JUnit or Spek.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/prismFixes.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSourceDoc.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://strikt.io","environment":"prod","version":"0.31.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://strikt.io">
+        <img src="https://strikt.io/assets/images/logo-white-28.png" alt="Strikt">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search Strikt docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://strikt.io">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/assertion-styles">Assertion Styles</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/collection-elements">Collection Element Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/expecting-exceptions">Expecting Exceptions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/flow-typing">Strongly Typed Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/traversing-subjects">Traversing Assertion Subjects</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/grouping-with-and">Grouping Assertions With and or with</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/custom-assertions">Custom Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/additional-modules">Additional Modules</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/core">Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/bom">Bill of Materials</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/arrow">Arrow Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/gradle">Gradle Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jvm">JVM Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jackson">Jackson Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/mockk">MockK Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/protobuf">Protobuf Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/spring">Spring Module</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/about">About Strikt</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/changelog">Changelog</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop">
+      
+        
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://strikt.io/modules/jackson">Jackson Module</a></li>
+
+
+
+    <li class="is-active"><a href="https://strikt.io/kotlindoc/jackson/strikt/jackson" aria-current="page">strikt.jackson</a></li>
+
+
+</ul>
+</nav>
+
+
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="strikt.jackson">
+
+
+  
+
+  
+    <div class="sourcedoc-section section-element" id="438f3e89fb986b99241a921a62c4eaa29b634824">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>package <a href="https://strikt.io/kotlindoc/jackson/strikt/jackson">strikt.jackson</a></code>
+      </p>
+
+      
+        
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="c61857f1a650ba5c7b160200b618ec6a98644b72">
+      
+      <h3 class="sourcedoc-section element-name">has</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.has(fieldName: String): Assertion.Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject node has a field named fieldName.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7e38a87376ed53d3322a6d18586789461441c3ca">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bfa7ba8a6c6073db4d642d61a79d7b37dadee1c6">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="9ca8bcdd01a16b0f4e71bec5753dba1c73bd0ba2">
+        <td class="sourcedoc-section section-signature">
+          <code>fieldName: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="65cf741cf41de563d134486bd8f2f42bc8c53867">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="9fea2fc7039e0ade2f7cfb570d435b42a35fc951">
+      
+      <h3 class="sourcedoc-section element-name">path</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.path(fieldName: String): Assertion.Builder<JsonNode>&lt;JsonNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps the subject node of the assertion builder to the node accessed by
+fieldName.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c4d1531969d84973eb0c22da982520625fe68dd5">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="0ad8bad853dd11d0832ee72790b56eefb5c64165">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="9ca8bcdd01a16b0f4e71bec5753dba1c73bd0ba2">
+        <td class="sourcedoc-section section-signature">
+          <code>fieldName: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="243d5a5aa792154ab4dc2f76c461887d589d8b0a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c11a68964a393de4975058bb0caabf35db890cb6">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<JsonNode>&lt;JsonNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion builder whose subject is the named field. If the path is
+invalid the subject of the returned assertion builder will be a
+<a href="#">com.fasterxml.jackson.databind.node.MissingNode</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="771ecab68c8839397706c997564726fd75386d98">
+      
+      <h3 class="sourcedoc-section element-name">at</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.at(pointer: String): Assertion.Builder<JsonNode>&lt;JsonNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps the subject node of the assertion builder to the node accessed by pointer.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ffbf56e666194ea7795d065fb2b2489278e66c3a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7d56b4b85938cf5994277eb26aa39b26ba66fe37">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="cde787b2cd2a02569622950234088f5764359eb8">
+        <td class="sourcedoc-section section-signature">
+          <code>pointer: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9992efb33997fc505aa4e05fef29a47bec1c7d06">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c11a68964a393de4975058bb0caabf35db890cb6">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<JsonNode>&lt;JsonNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion builder whose subject is the node at pointer. If pointer is invalid the
+subject of the returned assertion builder will be a
+<a href="#">com.fasterxml.jackson.databind.node.MissingNode</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="88dbc695fb9c2e9aed40fefeef1779efae9c51f0">
+      
+      <h3 class="sourcedoc-section element-name">at</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.at(pointer: JsonPointer): Assertion.Builder<JsonNode>&lt;JsonNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps the subject node of the assertion builder to the node accessed by pointer.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6556d07935a40e091c3074cb9eb1c4db6d1220ea">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9d017f20a7126184b78e73e46979777b22433d82">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6bf52f946a2f5221330f0b1028a49a7c5e91de6">
+        <td class="sourcedoc-section section-signature">
+          <code>pointer: JsonPointer</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4c58c83574f07c2facb8b39611d1a30bec9c9ba9">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c11a68964a393de4975058bb0caabf35db890cb6">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<JsonNode>&lt;JsonNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion builder whose subject is the node at pointer. If pointer is invalid the
+subject of the returned assertion builder will be a
+<a href="#">com.fasterxml.jackson.databind.node.MissingNode</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="103538d5a8ceb7ed45ecbe8b7f9128893bb90cc8">
+      
+      <h3 class="sourcedoc-section element-name">isObject</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.isObject(): Assertion.Builder<ObjectNode>&lt;ObjectNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject node is a JSON object.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8e0863bec64db52285e943f8b3b0f0574376ac2f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5d300dee433492ed2155ebcc70d3817374e0209c">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="6eff35d1a7015513cc092462958307cd0a79524e">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<ObjectNode>&lt;ObjectNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion builder over the same subject that is now known to be
+an <a href="#">ObjectNode</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c6e5c8be37f962918fa4e45b03eb1aafda6641f0">
+      
+      <h3 class="sourcedoc-section element-name">isArray</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.isArray(): Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject node is a JSON array.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ddd7fbc7df97a8437b8d4b41ba9153a5254634e3">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="16c8a973f34075ac064dfd432be0d88c2a7be0f5">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="35f6bd8a03e0bdbc5c6f0bc99818a645a2a0c70a">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion builder over the same subject that is now known to be
+an <a href="#">ArrayNode</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="bb956dc2941dd9e836d4ea4be333cc2a9ea0f02a">
+      
+      <h3 class="sourcedoc-section element-name">isTextual</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.isTextual(): Assertion.Builder<TextNode>&lt;TextNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject node is a JSON text node.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1cabbbd559f73004251c7aead369f97adfbe85f2">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="26073e62e083862cd92650cee3237da7b3afb7ef">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c443d0a39671bbc145bab51f7905f97fd728fab0">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<TextNode>&lt;TextNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion builder over the same subject that is now known to be
+a <a href="#">TextNode</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c89d093b64985a66177dbd710d363a9794f61b06">
+      
+      <h3 class="sourcedoc-section element-name">isNumber</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.isNumber(): Assertion.Builder<NumericNode>&lt;NumericNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject node is a JSON numeric node.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="888dc58e5c3de91fd1fae3570741f52777f60467">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="37ff63ce09ed7899d340b88885dff8fabfc6fac0">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="857ad82dafc6d621b5f850a0f0d4800e1134826c">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<NumericNode>&lt;NumericNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion builder over the same subject that is now known to be
+a <a href="#">NumericNode</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="394e7b8d5b42c113e5fb6f6f91fd20d575c8d18b">
+      
+      <h3 class="sourcedoc-section element-name">isBoolean</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.isBoolean(): Assertion.Builder<BooleanNode>&lt;BooleanNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject node is a JSON boolean node.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="75ad91fee949d08d9064d3738e5e57367570e415">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e611dbf3ac08842bfb7099a49452d3eb2365562e">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="90db9da1dbc7fdef47b4a6737fc527ba25e11b6d">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<BooleanNode>&lt;BooleanNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion builder over the same subject that is now known to be
+a <a href="#">BooleanNode</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="46710c5b037a8a44673db8b2008582c5c39e1b12">
+      
+      <h3 class="sourcedoc-section element-name">isMissing</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.isMissing(): Assertion.Builder<MissingNode>&lt;MissingNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject node is a JSON missing node.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f8289e6886aa485a4b952a936da9625c03befff2">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ae999abcec716d5971f0cf2c3a6a48039c0e9853">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="102ef7bd954cd60d48b16cc869d23ce0d1610681">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<MissingNode>&lt;MissingNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion builder over the same subject that is now known to be
+a <a href="#">MissingNode</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="423b4556407c1b05004cb9994f18c557c75ffcbb">
+      
+      <h3 class="sourcedoc-section element-name">textValue</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.textValue(): Assertion.Builder<String?>&lt;String?&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps the assertion to an assertion on the subject node's text value.</p><p>Be aware that if the node is not a text node this will map to an assertion on
+<code>null</code>.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="0ecb654fab0c1a49f0cfcfb4fe66b25767aed069">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b3cd08aebd9214e28c980af53990c197b7674a75">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="211513f795f16c68d5ebe620f8e894c59402e1a4">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<String?>&lt;String?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="d1b12d73a304c8574cfcad6dcb61b09082f17f9f">
+      
+      <h3 class="sourcedoc-section element-name">numberValue</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.numberValue(): Assertion.Builder<Number?>&lt;Number?&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps the assertion to an assertion on the subject node's number value.</p><p>Be aware that if the node is not a numeric node this will map to an assertion
+on <code>null</code>.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d97d40e39e6abe51c1c3ced550554fd33264c79f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7c0e3bc9a11b47573488e6ff441a677006b7ad2a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7cfeb075839d08d1f21ef3d1e91becb34236e743">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Number?>&lt;Number?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="da17cb4564585d5909d7982e49d7d712fd5de96e">
+      
+      <h3 class="sourcedoc-section element-name">booleanValue</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.booleanValue(): Assertion.Builder<Boolean>&lt;Boolean&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps the assertion to an assertion on the subject node's boolean value.</p><p>Be aware that if the node is not a boolean node this will map to an assertion
+on <code>false</code>.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5499977084001cc8d5312702ba5c421d112a987b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="04debc9b727e81bef5bcbf29afcfb0e4cae5f941">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="a29e25b98288965efcaf1732f67e76b99627f857">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Boolean>&lt;Boolean&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="67a50a33bb4b3e707a1a057526b9c17c43335b5c">
+      
+      <h3 class="sourcedoc-section element-name">findValuesAsText</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.findValuesAsText(fieldName: String): Assertion.Builder<List<String>>&lt;List&lt;String&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps the assertion to an assertion on the text values of fieldName in each
+child of the current node.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4ed065775b665a1a39929936e77cf087121dfb5f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f934c83005dc4f60c72695457e217b4f42edcad3">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="9ca8bcdd01a16b0f4e71bec5753dba1c73bd0ba2">
+        <td class="sourcedoc-section section-signature">
+          <code>fieldName: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="12c87a07e47ed677c17fc1f177194e1d095a7ac8">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4313610960d222e04377cc44c99751d2581c2907">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<List<String>>&lt;List&lt;String&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="60f5b6f60d009182ab5a86eb260244a2e7772fe5">
+      
+      <h3 class="sourcedoc-section element-name">hasNodeType</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T&gt; Assertion.Builder<T>&lt;T&gt;.hasNodeType(nodeType: JsonNodeType): Assertion.Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject node's <a href="#">JsonNode.getNodeType</a> method returns
+nodeType.</p><p>Convenient aliases for this assertion exist for common node types that also
+narrow the subject type of the resulting assertion builder.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4f91189cae1743fe135d5641eac92746549b57e2">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="038c36df560dfb7c33928de45fa47d800fc754ac">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ecc35671cdd7788572886c58399c5a8d2a3b07d1">
+        <td class="sourcedoc-section section-signature">
+          <code>nodeType: JsonNodeType</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="de68b1bb1c7efbd54b819436d74707db1a2cff0a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="a1b6c91bf76a6990b27f858f38953725088ca5cd">
+      
+      <h3 class="sourcedoc-section element-name">hasSize</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;.hasSize(expected: Int): Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that a JSON array's size is equal to expected.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d56282c69be50e3c585e7a6b7a2fc0f25f9dc576">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="35f6bd8a03e0bdbc5c6f0bc99818a645a2a0c70a">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="71935c5ad85872ea223bedf7291c150b0e1410d2">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="42a746d58620b115af7a3ec5d226ce105a97bbca">
+        <td class="sourcedoc-section section-signature">
+          <code>expected: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6ac1121dfa98ff42aa0d998568e0e47d7087bb75">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="35f6bd8a03e0bdbc5c6f0bc99818a645a2a0c70a">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="115a12b1477a7976b2d3def30de8cdfdf8097bba">
+      
+      <h3 class="sourcedoc-section element-name">size</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;.size(): Assertion.Builder<Int>&lt;Int&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps an assertion on a JSON array to an assertion on its size.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b5717e88e1376bfeebf0e160b8230408223ac0a3">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="35f6bd8a03e0bdbc5c6f0bc99818a645a2a0c70a">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5ebd0c5ac57df74296d08d073176f6f925588bf7">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="8b4e022889f2d9f4e6e2d80898927204769a030a">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Int>&lt;Int&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="74aa5651f473ab27baef738fd5fbcfbc7edcb3d7">
+      
+      <h3 class="sourcedoc-section element-name">textValues</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;.textValues(): Assertion.Builder<Iterable<String>>&lt;Iterable&lt;String&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps an assertion on a JSON array to an assertion on the text values of all nodes in the array.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e3a0d87498abbe0a524eb3e57895cdfcc2147945">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="35f6bd8a03e0bdbc5c6f0bc99818a645a2a0c70a">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<ArrayNode>&lt;ArrayNode&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="80c70c6ffa9868b5bd172b4d334b0c6e37fc6c8a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f7bf02b3ea8a016d98338832a368fb0e5440c87e">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Iterable<String>>&lt;Iterable&lt;String&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="https://github.com/robfletcher/strikt/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+          <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J" class="button is-danger">
+            <span class="icon"><i class="fab fa-lg fa-slack-hash"></i></span>
+            <span>Slack</span>
+          </a>
+        
+          <a href="https://twitter.com/stri_kt" class="button is-info">
+            <span class="icon"><i class="fab fa-lg fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://strikt.io/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://strikt.io/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 0.21.1"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer  src="https://strikt.io/StriktTheme/9f2a9a08/releases/v5.4.0/js/all.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-tabs.js"></script>
+<script  src="https://strikt.io/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://strikt.io/lunr/lunr.js"></script>
+<script  src="https://strikt.io/assets/js/orchidSearch.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

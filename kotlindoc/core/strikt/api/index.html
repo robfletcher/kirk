@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="https://strikt.io/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>strikt.api</title>
+
+
+<meta name="description" content="Strikt is an assertion library for Kotlin intended for use with a test runner such as JUnit or Spek.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/prismFixes.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSourceDoc.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://strikt.io","environment":"prod","version":"0.31.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://strikt.io">
+        <img src="https://strikt.io/assets/images/logo-white-28.png" alt="Strikt">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search Strikt docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://strikt.io">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/assertion-styles">Assertion Styles</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/collection-elements">Collection Element Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/expecting-exceptions">Expecting Exceptions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/flow-typing">Strongly Typed Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/traversing-subjects">Traversing Assertion Subjects</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/grouping-with-and">Grouping Assertions With and or with</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/custom-assertions">Custom Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/additional-modules">Additional Modules</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/core">Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/bom">Bill of Materials</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/arrow">Arrow Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/gradle">Gradle Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jvm">JVM Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jackson">Jackson Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/mockk">MockK Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/protobuf">Protobuf Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/spring">Spring Module</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/about">About Strikt</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/changelog">Changelog</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop">
+      
+        
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://strikt.io/modules/core">Core API</a></li>
+
+
+
+    <li class="is-active"><a href="https://strikt.io/kotlindoc/core/strikt/api" aria-current="page">strikt.api</a></li>
+
+
+</ul>
+</nav>
+
+
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="strikt.api">
+
+
+  
+
+  
+    <div class="sourcedoc-section section-element" id="1815a1a06695f30a2a0b1251e3a8ec355d10fbd7">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>package <a href="https://strikt.io/kotlindoc/core/strikt/api">strikt.api</a></code>
+      </p>
+
+      
+        
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="classes">
+
+
+  <p class="sourcedoc-section section-name"><strong>Classes</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5605ffcb4f410db835bcd9ba9f30405a54cb63b0">
+        <td class="sourcedoc-section section-signature">
+          <code>interface <a href="https://strikt.io/kotlindoc/core/strikt/api/assertion">Assertion</a>: Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Allows assertion implementations to determine a result.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="d2ab566511077a24c41a7bd1eaf2fea594acd5aa">
+        <td class="sourcedoc-section section-signature">
+          <code>interface <a href="https://strikt.io/kotlindoc/core/strikt/api/atomicassertion">AtomicAssertion</a>: <a href="https://strikt.io/kotlindoc/core/strikt/api/assertion">Assertion</a>, Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>An assertion of a single condition on a subject.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="e86251a1f581db9c7f367b5a972a712a17e0b0cc">
+        <td class="sourcedoc-section section-signature">
+          <code>interface <a href="https://strikt.io/kotlindoc/core/strikt/api/compoundassertion">CompoundAssertion</a>: <a href="https://strikt.io/kotlindoc/core/strikt/api/assertion">Assertion</a>, Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>An assertion composed of multiple conditions whose overall result is
+determined by some aggregation of those conditions' results.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="aa36bfd867cde161442ab1a3c41eb3a083391b87">
+        <td class="sourcedoc-section section-signature">
+          <code>interface <a href="https://strikt.io/kotlindoc/core/strikt/api/compoundassertions">CompoundAssertions</a>&lt;T&gt; : Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Returned by Assertion.Builder.compose allowing a bridge between evaluation
+of composed assertions and the determination of the overall result in the
+<code>block</code> parameter passed to then.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="97cfd3da6122a38cf0f720f08a2d353725905852">
+        <td class="sourcedoc-section section-signature">
+          <code>interface <a href="https://strikt.io/kotlindoc/core/strikt/api/describeablebuilder">DescribeableBuilder</a>&lt;T&gt; : <a href="https://strikt.io/kotlindoc/core/strikt/api/assertion/builder">Builder</a>&lt;T&gt;, Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Extension of <a href="https://strikt.io/kotlindoc/core/strikt/api/assertion/builder">Assertion.Builder</a> that enables the description of the
+assertion subject.</p><p>Since it doesn't make sense to do this anywhere except directly after the
+initial expectThat or Assertion.Builder.with call those methods return an
+instance of this interface, while assertions themselves just return
+<a href="https://strikt.io/kotlindoc/core/strikt/api/assertion/builder">Assertion.Builder</a>.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="162ac372880f874cf34167aee0c45b876458bf8c">
+        <td class="sourcedoc-section section-signature">
+          <code>interface <a href="https://strikt.io/kotlindoc/core/strikt/api/expectationbuilder">ExpectationBuilder</a>: Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Receiver for expect providing functions that define assertion subjects and
+create assertion chains or blocks.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="1395fee2ce625e44a225badb7cc3b4ce9cb6223a">
+      
+      <h3 class="sourcedoc-section element-name">expect</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun expect(block: suspend <a href="https://strikt.io/kotlindoc/core/strikt/api/expectationbuilder">ExpectationBuilder</a>.()-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Starts a block of assertions that will all be evaluated regardless of whether
+earlier ones fail.
+This is the entry-point for the assertion API.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ffd66ac0fb0cb8fca4eab73f63ba3b9ce73b52c9">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d9fca4e89fad54d11d0e08c545631d13e11b8d57">
+        <td class="sourcedoc-section section-signature">
+          <code>block: suspend <a href="https://strikt.io/kotlindoc/core/strikt/api/expectationbuilder">ExpectationBuilder</a>.()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="91e6af551a1143c4744b4fcc21eb001cfc94205d">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="36e547b2137990d2f79920968ce82edd29fd1ee4">
+      
+      <h3 class="sourcedoc-section element-name">expectThat</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; expectThat(subject: T): <a href="https://strikt.io/kotlindoc/core/strikt/api/describeablebuilder">DescribeableBuilder</a>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Start a chain of assertions over subject.
+This is the entry-point for the assertion API.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="997bdd9ba92e1ab51e8a8ff98e1ece19dd4ce1a1">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="481e34a4ac2b3210210f0251ac9deced4ea4a3a6">
+        <td class="sourcedoc-section section-signature">
+          <code>subject: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the subject of the chain of assertions.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b8b01bc10156e109c5105cb2ad49c0a544fbe356">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="a30f5ef0c8cc83c22df2032db441ba599698fb40">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://strikt.io/kotlindoc/core/strikt/api/describeablebuilder">DescribeableBuilder</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion for subject.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e2c37078ee19f6808c483069211f3f88b9e86990">
+      
+      <h3 class="sourcedoc-section element-name">expectThat</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; expectThat(subject: T, block: <a href="https://strikt.io/kotlindoc/core/strikt/api/assertion/builder">Builder</a>&lt;T&gt;.()-&gt;Unit)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Evaluate a block of assertions over subject.
+This is the entry-point for the assertion API.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="036825857fd9ec195b5a35e9f7bd191f6ef1dc60">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="481e34a4ac2b3210210f0251ac9deced4ea4a3a6">
+        <td class="sourcedoc-section section-signature">
+          <code>subject: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the subject of the block of assertions.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="8a485afe05721991b0573f7001892a7286aaa9bd">
+        <td class="sourcedoc-section section-signature">
+          <code>block: <a href="https://strikt.io/kotlindoc/core/strikt/api/assertion/builder">Builder</a>&lt;T&gt;.()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a closure that can perform multiple assertions that will all
+be evaluated regardless of whether preceding ones pass or fail.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ed8dbfaecc9b3bb4d33c9d931cb88f3c6cd94978">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion for subject.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e7bf924b90143a3edb0c57aca13e16afa9fffa37">
+      
+      <h3 class="sourcedoc-section element-name">expectThrows</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;E : Throwable&gt; expectThrows(noinline action: suspend ()-&gt;Any?): <a href="https://strikt.io/kotlindoc/core/strikt/api/assertion/builder">Builder</a>&lt;E&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that actionthrows an exception of type E when executed.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f57d40c4bbe91715d2a101cb78d155c88fb77908">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c6ab95f36f1ce72417e073bfecf34aa39e6430">
+        <td class="sourcedoc-section section-signature">
+          <code>noinline action: suspend ()-&gt;Any?</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="aedf0222a90a96278cf966783c688b515058be75">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3358c154c17cb4ef37cf8b9e0646733af091ea46">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://strikt.io/kotlindoc/core/strikt/api/assertion/builder">Builder</a>&lt;E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion over the thrown exception, allowing further assertions
+about messages, root causes, etc.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e4c07979a272a7a2c6c20dd7fff31718587d4539">
+      
+      <h3 class="sourcedoc-section element-name">expectCatching</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; expectCatching(action: suspend ()-&gt;T): <a href="https://strikt.io/kotlindoc/core/strikt/api/describeablebuilder">DescribeableBuilder</a>&lt;Result<T>&lt;T&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Start a chain of assertions over the result of action which may either be
+the value action returns or any exception it throws.
+This is the entry-point for the assertion API.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5e78cac36f323238879c9c6e30efcdc4a9087e09">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="dab920fd54e112a3337f281582b6212e89b35604">
+        <td class="sourcedoc-section section-signature">
+          <code>action: suspend ()-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a20973392f3db66084c9baae8890e0e132c20240">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b9de0d542d8df1f97ae3c20ad234250d05514b46">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://strikt.io/kotlindoc/core/strikt/api/describeablebuilder">DescribeableBuilder</a>&lt;Result<T>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>an assertion for the successful or failed result of action.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="https://github.com/robfletcher/strikt/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+          <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J" class="button is-danger">
+            <span class="icon"><i class="fab fa-lg fa-slack-hash"></i></span>
+            <span>Slack</span>
+          </a>
+        
+          <a href="https://twitter.com/stri_kt" class="button is-info">
+            <span class="icon"><i class="fab fa-lg fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://strikt.io/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://strikt.io/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 0.21.1"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer  src="https://strikt.io/StriktTheme/9f2a9a08/releases/v5.4.0/js/all.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-tabs.js"></script>
+<script  src="https://strikt.io/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://strikt.io/lunr/lunr.js"></script>
+<script  src="https://strikt.io/assets/js/orchidSearch.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

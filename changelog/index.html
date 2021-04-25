@@ -1,0 +1,1514 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="https://strikt.io/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Changelog</title>
+
+
+<meta name="description" content="Strikt is an assertion library for Kotlin intended for use with a test runner such as JUnit or Spek.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/prismFixes.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://strikt.io","environment":"prod","version":"0.31.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://strikt.io">
+        <img src="https://strikt.io/assets/images/logo-white-28.png" alt="Strikt">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search Strikt docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://strikt.io">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/assertion-styles">Assertion Styles</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/collection-elements">Collection Element Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/expecting-exceptions">Expecting Exceptions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/flow-typing">Strongly Typed Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/traversing-subjects">Traversing Assertion Subjects</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/grouping-with-and">Grouping Assertions With and or with</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/custom-assertions">Custom Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/additional-modules">Additional Modules</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/core">Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/bom">Bill of Materials</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/arrow">Arrow Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/gradle">Gradle Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jvm">JVM Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jackson">Jackson Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/mockk">MockK Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/protobuf">Protobuf Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/spring">Spring Module</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/about">About Strikt</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/changelog">Changelog</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop">
+      
+        
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://strikt.io/changelog" aria-current="page">Changelog</a></li>
+
+
+</ul>
+</nav>
+
+
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="component component-changelog component-order-0">
+                            <h1>Changelog</h1>
+<section id="changelog">
+  
+    <article class="content">
+      <h2 class="title is-4">0.31.0 Ashen Forests</h2>
+      <p class="subtitle is-6">
+        <time datetime="2021-04-22">Apr 22, 2021</time>
+      </p>
+      <ul>
+<li>Incomplete assertion chains now throw <code>IncompleteAssertion</code>.</li>
+<li>Suppresses class name in the <code>toString</code> of exceptions thrown by Strikt assertions.</li>
+<li>Updates <code>strikt-arrow</code> to support recent changes in the Arrow library.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.30.1 Ascending Ivory</h2>
+      <p class="subtitle is-6">
+        <time datetime="2021-04-11">Apr 11, 2021</time>
+      </p>
+      <ul>
+<li>Fixes an issue where pending assertion chains in a block took precedence over failures, causing false positives. See <a href="https://github.com/robfletcher/strikt/issues/243">#243</a></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.30.0 Sorrowful Glass</h2>
+      <p class="subtitle is-6">
+        <time datetime="2021-03-21">Mar 21, 2021</time>
+      </p>
+      <ul>
+<li>All transitive dependencies are now resolvable from Maven Central rather than needing JCenter.</li>
+<li>Adds <code>isContainedIn</code> assertion.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.29.0 Hateful Mantis</h2>
+      <p class="subtitle is-6">
+        <time datetime="2021-02-06">Feb 06, 2021</time>
+      </p>
+      <ul>
+<li>Moves several JVM-specific assertions to the new <code>strikt-jvm</code> module.</li>
+<li>Removes the <code>strikt-java-time</code> module (use <code>strikt-jvm</code> instead).</li>
+<li>Adds <code>isSorted</code> assertion for <code>Iterable&lt;Comparable&lt;*&gt;&gt;</code>.</li>
+<li>Broadens <code>isSorted(Comparator)</code> so that it applies to <code>Iterable&lt;*&gt;</code> rather than <code>Collection&lt;*&gt;</code>.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.28.2 Hidden Ruin</h2>
+      <p class="subtitle is-6">
+        <time datetime="2021-01-26">Jan 26, 2021</time>
+      </p>
+      <ul>
+<li>Removes support for Arrow's <code>Try</code> type that has been removed from <code>arrow-core</code>.</li>
+<li>Adds <code>anyIndexed</code>, <code>allIndexed</code>, and <code>noneIndexed</code> assertions for <code>Iterable&lt;*&gt;</code>.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.28.1 Distant Princess</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-12-01">Dec 01, 2020</time>
+      </p>
+      <ul>
+<li>Adds <code>count()</code> and <code>count(predicate)</code> mappings for <code>Iterable</code> subjects.</li>
+<li>Additional support for <code>File</code> subjects. See <a href="https://github.com/robfletcher/strikt/pull/230">#230</a>
+<ul>
+<li>mapping property <code>Assertion.Builder&lt;File&gt;.parentFile: Builder&lt;File&gt;</code></li>
+<li>mapping property <code>Assertion.Builder&lt;File&gt;.lastModified: Long</code></li>
+<li>mapping property <code>Assertion.Builder&lt;File&gt;.length: Long</code></li>
+<li>mapping property <code>Assertion.Builder&lt;File&gt;.childFiles: Builder&lt;List&lt;File&gt;&gt;</code></li>
+<li>mapping function <code>Assertion.Builder&lt;File&gt;.childFile(name): Builder&lt;File&gt;</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.exists()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.notExists()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isRegularFile()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isNotRegularFile()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isDirectory()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isNotDirectory()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isReadable()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isNotReadable()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isWritable()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isNotWritable()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isExecutable()</code></li>
+<li>assertion <code>Assertion.Builder&lt;File&gt;.isNotExecutable()</code></li>
+</ul>
+</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.28.0 Invincible Sadness</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-09-13">Sep 13, 2020</time>
+      </p>
+      <ul>
+<li>Fixes compilation using Android due to use of private interface methods. See <a href="https://github.com/robfletcher/strikt/issues/229">#229</a></li>
+<li>Assertion chains that use <code>not</code> will now report actual values if they fail. See <a href="https://github.com/robfletcher/strikt/issues/222">#222</a></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.27.0 Hungry Spear</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-08-18">Aug 18, 2020</time>
+      </p>
+      <p>Kotlin 1.4 compatibility</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.26.1 Quicksilver Silhouette</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-05-11">May 11, 2020</time>
+      </p>
+      <ul>
+<li><code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;withFirst</code></li>
+<li><code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;withFirst(predicate)</code></li>
+<li><code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;withLast</code></li>
+<li><code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;withElementAt</code></li>
+<li><code>Assertion.Builder&lt;Map&lt;K, V&gt;&gt;withValue</code></li>
+<li><code>Assertion.Builder&lt;CapturingSlot&lt;T&gt;&gt;withCaptured</code> in <em>strikt-mockk</em>.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.26.0 Ferocious Daughter</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-05-04">May 04, 2020</time>
+      </p>
+      <ul>
+<li><code>succeeded</code> and <code>failed</code> deprecated in favor of <code>isSuccess</code> and <code>isFailure</code>.</li>
+<li>added <code>Assertion.Builder&lt;Enum&lt;T&gt;&gt;.isOneOf</code> assertion.</li>
+<li><code>single</code> now displays the number of elements found if it fails. See <a href="https://github.com/robfletcher/strikt/issues/210">#210</a></li>
+<li>Improved description of <code>task</code> mapping. See <a href="https://github.com/robfletcher/strikt/issues/218">#218</a></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.25.0 Blighted Depths</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-03-27">Mar 27, 2020</time>
+      </p>
+      <ul>
+<li><code>strikt-mockk</code> module.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.24.0 Auspicious Misery</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-02-25">Feb 25, 2020</time>
+      </p>
+      <ul>
+<li>New methods:
+<ul>
+<li><code>Assertion.Builder&lt;Iterable&lt;T&gt;&gt;.elementAt</code></li>
+<li><code>Assertion.Builder&lt;Iterable&lt;T&gt;&gt;.one</code></li>
+<li><code>Assertion.Builder&lt;ArrayNode&gt;.findValuesAsText</code></li>
+<li><code>Assertion.Builder&lt;ArrayNode&gt;.textValues</code></li>
+</ul>
+</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.23.7 Celestial Depths</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-02-13">Feb 13, 2020</time>
+      </p>
+      <ul>
+<li>Fixes filepeek support on Windows</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.23.6 Weeping Spire</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-02-10">Feb 10, 2020</time>
+      </p>
+      <ul>
+<li>Fixes missing transitive dependency on <code>com.christophsturm:filepeek</code></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.23.5 Auspicious Misery</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-02-09">Feb 09, 2020</time>
+      </p>
+      <ul>
+<li>Fixes some errors in complex nested block scenarios. See <a href="https://github.com/robfletcher/strikt/issues/203">#203</a> and <a href="https://github.com/robfletcher/strikt/issues/204">#204</a></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.23.4 Grievous Form</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-01-06">Jan 06, 2020</time>
+      </p>
+      <ul>
+<li>Fixes BOM file from previous release</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.23.3 Savage Wing</h2>
+      <p class="subtitle is-6">
+        <time datetime="2020-01-01">Jan 01, 2020</time>
+      </p>
+      <ul>
+<li>Improved descriptions associated with Jackson extensions. See <a href="https://github.com/robfletcher/strikt/issues/195">#195</a></li>
+<li>Added <code>at</code> mapping for <code>JsonNode</code> assertions. See <a href="https://github.com/robfletcher/strikt/issues/152">#152</a></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.23.2 Mighty Empress</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-12-11">Dec 11, 2019</time>
+      </p>
+      <ul>
+<li>Fixes <code>IllegalArgumentException</code> on <code>compose</code> when prior assertions have failed because the subject is the wrong type. See <a href="https://github.com/robfletcher/strikt/issues/194">#194</a></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.23.1 Bounteous Moon</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-12-09">Dec 09, 2019</time>
+      </p>
+      <p>Re-release of v0.23.0 following broken release</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.23.0 Rancorous Horizon</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-12-09">Dec 09, 2019</time>
+      </p>
+      <ul>
+<li>Adds <code>with</code> function for performing blocks of assertions on a derived subject. See <a href="https://github.com/robfletcher/strikt/issues/117">#117</a></li>
+<li>Many assertion functions may now be used in infix style. See <a href="https://github.com/robfletcher/strikt/pull/187">#187</a></li>
+<li>Improves presentation of multi-line values in expectation output. See <a href="https://github.com/robfletcher/strikt/issues/158">#158</a></li>
+<li>The <code>expectThat</code> override that accepts a lambda is now <code>Unit</code> rather than returning <code>Assertion.Builder</code>. See <a href="https://github.com/robfletcher/strikt/issues/190">#190</a></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.22.3 Vermillion Warrior</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-11-23">Nov 23, 2019</time>
+      </p>
+      <ul>
+<li>Adds assertions for sequence of values being present in a list</li>
+<li>Fixes to documentation in Arrow module</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.22.2 Flawless Assassin</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-09-25">Sep 25, 2019</time>
+      </p>
+      <ul>
+<li>Fixes transitive dependency on opentest4j for consumers</li>
+<li>Updates Arrow dependency</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.22.1 Blessed Hammer</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-09-16">Sep 16, 2019</time>
+      </p>
+      <ul>
+<li>Fixes documentation link that broke previous release</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.22.0 Rancourous Dirge</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-09-15">Sep 15, 2019</time>
+      </p>
+      <ul>
+<li>New module for assertions on Arrow's <code>Either</code>, <code>Try</code> and <code>Option</code> types.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.21.2 Funereal Daughter</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-09-14">Sep 14, 2019</time>
+      </p>
+      <ul>
+<li>Fixes issues with <code>and</code> (see #176)</li>
+<li>Kotlin 1.3.50</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.21.1 Heavenly Bear</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-06-22">Jun 22, 2019</time>
+      </p>
+      <ul>
+<li>Bug-fix for type inference in <code>succeeded()</code>.</li>
+<li>Improved output for <code>failed()</code>.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.21.0 Funereal Raven</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-06-16">Jun 16, 2019</time>
+      </p>
+      <ul>
+<li>Updated exception handling assertions that use Kotlin's <code>runCatching</code> and <code>Result&lt;T&gt;</code>.</li>
+<li>Added override for <code>describedAs</code> that accepts a lambda.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.20.1 Elder Refuge</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-05-10">May 10, 2019</time>
+      </p>
+      <ul>
+<li>Changed <code>Assertion.Builder&lt;Iterable&lt;*&gt;&gt;.contains</code> to pass if the argument is an empty list/varargs.</li>
+<li>Fixed an out of bounds exception in <code>Assertion.Builder&lt;Iterable&lt;*&gt;&gt;.containsExactly</code></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.20.0 Pain Mother</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-04-15">Apr 15, 2019</time>
+      </p>
+      <p>Added <code>strikt.gradle</code> module with some support for testing Gradle's API.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.19.7 Glorious Catacomb</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-04-02">Apr 02, 2019</time>
+      </p>
+      <ul>
+<li>Adds assertions and mappings for <code>java.io.File</code> and <code>java.nio.file.Path</code></li>
+<li>Adds assertions for Spring's <code>ResponseEntity</code> class.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.19.6 Bitter Forest</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-30">Mar 30, 2019</time>
+      </p>
+      <p>Fixes issues with bom publication.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.19.5 Victorious Scholar</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-29">Mar 29, 2019</time>
+      </p>
+      <p>Packages a BOM for aligning strikt versions.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.19.4 Poison Spire</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-24">Mar 24, 2019</time>
+      </p>
+      <p>Suppresses internal stack frames from exceptions to make it easier to determine where the assertion was raised.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.19.3 Iron Ocean</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-22">Mar 22, 2019</time>
+      </p>
+      <ul>
+<li>Adds assertions and mappings for <code>Assertion.Builder&lt;ClosedRange&gt;</code>.</li>
+<li>Adds <code>endsWith(Char)</code> for <code>Assertion.Builder&lt;CharSequence&gt;</code>.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.19.2 Bounteous Steel</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-13">Mar 13, 2019</time>
+      </p>
+      <ul>
+<li>Adds <code>getValue</code> assertion/mapping for <code>Assertion.Builder&lt;Map&lt;*, *&gt;&gt;</code>.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.19.1 Mighty Rainbow</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-12">Mar 12, 2019</time>
+      </p>
+      <ul>
+<li>Adds overload of <code>not</code> that accepts a block.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.19.0 Poison Hammer</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-10">Mar 10, 2019</time>
+      </p>
+      <ul>
+<li>Ensures that chains inside of blocks still fail fast.</li>
+<li>Ensures <code>get</code> is runtime type safe. It's now a no-op when preceded by a failing type-narrowing assertion.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.18.2 Venomous Twilight</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-03">Mar 03, 2019</time>
+      </p>
+      <p>Added <code>atLeat</code>, <code>atMost</code> and <code>exactly</code> assertions for iterables.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.18.1 Ferocious Rose</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-03">Mar 03, 2019</time>
+      </p>
+      <p>Extends <code>strikt-jackson</code> module with further assertion and mapping functions:</p>
+<ul>
+<li><code>hasNodeType(JsonNodeType)</code></li>
+<li><code>isMissing()</code></li>
+<li><code>textValue()</code></li>
+<li><code>numberValue()</code></li>
+<li><code>booleanValue()</code></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.18.0 Silken Grasshopper</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-03-02">Mar 02, 2019</time>
+      </p>
+      <p>Adds <code>strikt-jackson</code> module.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.17.3 Unfettered Serpent</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-02-24">Feb 24, 2019</time>
+      </p>
+      <p>Adds <code>isPresent</code> and <code>isAbsent</code> assertions for <code>java.util.Optional</code> along with <code>toNullable</code> mapping function.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.17.2 Battleworn Understanding</h2>
+      <p class="subtitle is-6">
+        <time datetime="2019-01-25">Jan 25, 2019</time>
+      </p>
+      <p>Fixes <code>isSorted</code> when used in a block.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.17.1 Whispering Sword</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-11-30">Nov 30, 2018</time>
+      </p>
+      <p>Adds <code>filter</code>, <code>filterNot</code> and <code>filterIsInstance</code> functions for <code>Assertion.Builder&lt;Iterable&lt;*&gt;&gt;</code></p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.17.0 Forsaken Raven</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-11-03">Nov 03, 2018</time>
+      </p>
+      <ul>
+<li>Upgrades Strikt to depend on Kotlin 1.3.</li>
+<li><code>expectThrows</code> is un-deprecated.</li>
+<li>Expectations are now compatible with suspending lambdas.</li>
+<li><code>isBefore</code> and <code>isAfter</code> in <code>strikt-java-time</code> now support <code>ZonedDateTime</code>.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.16.3 Saffron Mammoth</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-10-26">Oct 26, 2018</time>
+      </p>
+      <ul>
+<li><code>Assertion.Builder&lt;Collection&lt;*&gt;.isSorted</code></li>
+<li><code>isEqualTo</code> now has special handling for arrays that compares content using <code>contentEquals</code>.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.16.2 Anonymous Ifrit</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-10-19">Oct 19, 2018</time>
+      </p>
+      <ul>
+<li>Backed out truncation of values in failure messages.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.16.1 Onyx Mammoth</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-10-19">Oct 19, 2018</time>
+      </p>
+      <ul>
+<li>Backed out truncation of values in failure messages.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.16.0 Sadness Blossom</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-10-11">Oct 11, 2018</time>
+      </p>
+      <ul>
+<li>Assertions for <code>java.time</code> types moved from <code>strikt-core</code> to new <code>strikt-java-time</code> module.</li>
+<li><code>Assertion.Builder&lt;Map&lt;*, *&gt;&gt;.isNotEmpty</code></li>
+<li><code>Assertion.Builder&lt;Array&lt;*&gt;&gt;.toList</code></li>
+<li><code>Assertion.Builder&lt;CharSequence&gt;.trim</code></li>
+<li><code>Assertion.Builder&lt;String&gt;.trim</code></li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.15.2 Alabaster Tyrant</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-10-08">Oct 08, 2018</time>
+      </p>
+      <ul>
+<li>Added <code>is(Not)(NullOr)(Empty|Blank)</code> assertions.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.15.1 Wasteland Monkey</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-10-05">Oct 05, 2018</time>
+      </p>
+      <ul>
+<li>Changes <code>get</code> to use a receiver rather than a parameter.</li>
+<li>Adds new <code>first(predicate)</code> and <code>flatMap</code> mapping extensions for iterable subjects.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.15.0 Garden Daimyo</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-10-02">Oct 02, 2018</time>
+      </p>
+      <ul>
+<li>Deprecates <code>chain</code> in favor of new <code>get</code> method.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.14.4 Void Maiden</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-09-29">Sep 29, 2018</time>
+      </p>
+      <ul>
+<li>Added Java 11 build &amp; hopefully fixed site publishing</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.14.3 Hungry Boulder</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-09-27">Sep 27, 2018</time>
+      </p>
+      <ul>
+<li>Added <code>isIn</code> assertion.</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.14.2 Black Waterfall</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-09-24">Sep 24, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.14.1 Bitter Tiger</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-09-22">Sep 22, 2018</time>
+      </p>
+      <p>Fixes broken dependency declaration in <code>strikt-protobuf</code>.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.14.0 Ruby Panther</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-09-22">Sep 22, 2018</time>
+      </p>
+      <p>Breaking change renaming <code>map</code> to <code>chain</code> in order to allow a map method that applies to <code>Assertion.Builder&lt;Iterable&lt;*&gt;&gt;</code>.</p>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.13.0 Blessed Starfall</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-09-16">Sep 16, 2018</time>
+      </p>
+      <ul>
+<li>Revisions to exception assertions.
+<ul>
+<li>Instead of <code>assertThrows(() -&gt; Unit)</code> use <code>assertThat(catching(() -&gt; Unit))</code></li>
+<li>throws' receiver is now <code>Assertion.Builder&lt;Throwable?&gt;</code> instead of <code>Assertion.Builder&lt;() -&gt; Unit&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.12.0 Adamant Rose</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-09-13">Sep 13, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.11.6 Moonsilver Serpent</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-09-06">Sep 06, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.11.5 Harmonious Eagle</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-08-25">Aug 25, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.11.4 Pain Empress</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-08-24">Aug 24, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.11.3 Unfettered Sky</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-08-23">Aug 23, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.11.2 Viper Understanding</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-08-18">Aug 18, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.11.1 Mantis Discipline</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-08-17">Aug 17, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.11.0 Ascending Snake</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-08-14">Aug 14, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.10.2 Forest Daimyo</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-08-12">Aug 12, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.10.1 Silhouette Evasion</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-08-11">Aug 11, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.10.0 Ashen Intuition</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-08-09">Aug 09, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.9.0 Glorious Bitterness</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-07-15">Jul 15, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.8.6 Fluttering Rat</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-07-15">Jul 15, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.8.5 Havoc Lotus</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-07-10">Jul 10, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.8.4 Vengeful Technique</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-06-28">Jun 28, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.8.3 Scorning Guardian</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-06-11">Jun 11, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.8.2 Ebon Claw</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-06-11">Jun 11, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.8.1 Marginal Spring</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-06-10">Jun 10, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.8.0 Ridiculous Diplomat</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-06-08">Jun 08, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.7.4 Stalwart Havoc</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-06-05">Jun 05, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.7.2 Noticeable Bell</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-31">May 31, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.7.1 Bright Raven</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-31">May 31, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.7.0 Vermillion Mantis</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-31">May 31, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.6.8 Battleworn Hyena</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-29">May 29, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.6.7 Black Rampart</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-29">May 29, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.6.6 Quicksilver Serpent</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-29">May 29, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.6.5 Whispering Horizon</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-29">May 29, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.6.4 Sorrowful Bow</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-25">May 25, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.6.3 Flaxen Tiger</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-25">May 25, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.6.2 Benificent Locust</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-25">May 25, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.6.1 Drunken Orchid</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-21">May 21, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.6.0 Metal Eagle</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-21">May 21, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.5.1 Tsunami Carp</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-19">May 19, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.5.0 Saffron Thunderhead</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-19">May 19, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.4.2 Virtuous Monsoon</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-16">May 16, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.4.1 Iron Mind</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-16">May 16, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.4.0 Starmetal Mist</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-15">May 15, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.3.0 Towering Moon</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-14">May 14, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.2.7 Elder Starfall</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-10">May 10, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.2.6 Sapphire Spear</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-10">May 10, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.2.5</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-10">May 10, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.2.4</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-09">May 09, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.2.3</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-09">May 09, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.2.2</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-05">May 05, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.2.1</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-04">May 04, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.2.0</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-04">May 04, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+    <article class="content">
+      <h2 class="title is-4">0.1.0</h2>
+      <p class="subtitle is-6">
+        <time datetime="2018-05-03">May 03, 2018</time>
+      </p>
+      
+    </article>
+    <hr>
+  
+</section>
+
+                        </div>
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="https://github.com/robfletcher/strikt/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+          <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J" class="button is-danger">
+            <span class="icon"><i class="fab fa-lg fa-slack-hash"></i></span>
+            <span>Slack</span>
+          </a>
+        
+          <a href="https://twitter.com/stri_kt" class="button is-info">
+            <span class="icon"><i class="fab fa-lg fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://strikt.io/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://strikt.io/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 0.21.1"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer  src="https://strikt.io/StriktTheme/9f2a9a08/releases/v5.4.0/js/all.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-tabs.js"></script>
+<script  src="https://strikt.io/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://strikt.io/lunr/lunr.js"></script>
+<script  src="https://strikt.io/assets/js/orchidSearch.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

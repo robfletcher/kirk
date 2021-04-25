@@ -1,0 +1,12 @@
+[{
+  "patch": true,
+  "components": {
+    "major": "0",
+    "minor": "1",
+    "patch": "0"
+  },
+  "major": true,
+  "minor": true,
+  "version": "0.1.0",
+  "url": ""
+}]

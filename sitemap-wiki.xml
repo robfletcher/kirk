@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://strikt.io/wiki</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://strikt.io/wiki/getting-started</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://strikt.io/wiki/assertion-styles</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://strikt.io/wiki/collection-elements</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://strikt.io/wiki/expecting-exceptions</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://strikt.io/wiki/flow-typing</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://strikt.io/wiki/traversing-subjects</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://strikt.io/wiki/grouping-with-and</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://strikt.io/wiki/custom-assertions</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://strikt.io/wiki/additional-modules</loc>
+        <lastmod>2021-04-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+</urlset>

@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="https://strikt.io/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Custom Assertions</title>
+
+
+<meta name="description" content="Strikt is an assertion library for Kotlin intended for use with a test runner such as JUnit or Spek.">
+
+
+
+<link rel="prev" href="https://strikt.io/wiki/grouping-with-and">
+
+
+<link rel="next" href="https://strikt.io/wiki/additional-modules">
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/prismFixes.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://strikt.io","environment":"prod","version":"0.31.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://strikt.io">
+        <img src="https://strikt.io/assets/images/logo-white-28.png" alt="Strikt">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search Strikt docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://strikt.io">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/assertion-styles">Assertion Styles</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/collection-elements">Collection Element Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/expecting-exceptions">Expecting Exceptions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/flow-typing">Strongly Typed Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/traversing-subjects">Traversing Assertion Subjects</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/grouping-with-and">Grouping Assertions With and or with</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/custom-assertions">Custom Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/additional-modules">Additional Modules</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/core">Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/bom">Bill of Materials</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/arrow">Arrow Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/gradle">Gradle Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jvm">JVM Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jackson">Jackson Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/mockk">MockK Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/protobuf">Protobuf Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/spring">Spring Module</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/about">About Strikt</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/changelog">Changelog</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop">
+      
+        
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://strikt.io/wiki">Wiki</a></li>
+
+
+
+    <li class="is-active"><a href="https://strikt.io/wiki/custom-assertions" aria-current="page">Custom Assertions</a></li>
+
+
+</ul>
+</nav>
+
+
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<h1 id="custom-assertions"><a href="#custom-assertions" id="custom-assertions" class="anchor"></a>Custom Assertions</h1>
+<p>One of the aims of Strikt is that implementing your own assertions is <em>really, really</em> easy.
+Assertion functions are <a href="https://kotlinlang.org/docs/reference/extensions.html">extension functions</a> on the interface <code>Assertion.Builder&lt;T&gt;</code> where <code>T</code> is the type of the assertion subject.</p>
+<h3 id="tip-avoiding-clashing-method-signatures"><a href="#tip-avoiding-clashing-method-signatures" id="tip-avoiding-clashing-method-signatures" class="anchor"></a>Tip: Avoiding clashing method signatures</h3>
+<p>Because of Java's generic type erasure, it's possible that the name of your custom assertion function may clash with an existing one for a different subject type.</p>
+<p>To avoid this you can add the <code>@JvmName</code> annotation to your assertion function to disambiguate the methods.
+See <a href="https://kotlinlang.org/docs/reference/java-to-kotlin-interop.html#handling-signature-clashes-with-jvmname">Handling signature clashes with <em>@JvmName</em></a> in the Kotlin documentation.</p>
+<p>For example, if you were defining an <code>isEmpty</code> assertion for Gson's <code>JsonArray</code> type, you would need to disambiguate it from the <code>isEmpty</code> assertion Strikt provides for collections.</p>
+<pre><code class="language-kotlin">@JvmName(&quot;isEmpty_JsonArray&quot;)
+fun Assertion.Builder&lt;JsonArray&gt;.isEmpty(): Assertion.Builder&lt;JsonArray&gt; =
+  // ...
+</code></pre>
+<h2 id="atomic-assertions"><a href="#atomic-assertions" id="atomic-assertions" class="anchor"></a>Atomic assertions</h2>
+<p>&quot;Atomic&quot; assertions produce a single message on failure.
+They call <code>assert</code> passing a lambda with the assertion logic that calls <code>pass()</code> or <code>fail()</code>.</p>
+<p>The standard assertions <code>isNull</code>, <code>isEqualTo</code>, <code>isA&lt;T&gt;</code> and many others are simple assertions implemented just like this.</p>
+<p>Let's imagine we're implementing an assertion function for <code>java.time.LocalDate</code> that tests if the represented date is a leap day.</p>
+<pre><code class="language-kotlin">fun Assertion.Builder&lt;LocalDate&gt;.isStTibsDay(): Assertion.Builder&lt;LocalDate&gt; =
+  assert(&quot;is St. Tib's Day&quot;) {
+    when (MonthDay.from(it)) {
+      MonthDay.of(2, 29) -&gt; pass()
+      else -&gt; fail()
+    }
+  }
+
+</code></pre>
+<p>Breaking this down:</p>
+<ol>
+<li>We declare the assertion function applies only to <code>Assertion.Builder&lt;LocalDate&gt;</code>.</li>
+<li>Note that the function also returns <code>Assertion.Builder&lt;LocalDate&gt;</code> so we can include this assertion as part of a chain.</li>
+<li>We call <code>assert</code> passing a description of the assertion and a lambda with the assertion logic.</li>
+<li>If <code>it</code> (the test subject) is the value we want we call <code>pass()</code> otherwise we call <code>fail()</code></li>
+</ol>
+<p>If this assertion fails it will produce a message like:</p>
+<pre><code class="language-text">▼ Expect that 2018-05-01:
+  ✗ is St. Tib's Day
+
+</code></pre>
+<h3 id="note"><a href="#note" id="note" class="anchor"></a>Note</h3>
+<p>The method <code>assert</code> accepts a description for the assertion being made and a lambda function <code>Assertion&lt;T&gt;.(T) -&gt; Unit</code>.
+The parameter passed to the lambda is the assertion subject.
+The <code>Assertion&lt;T&gt;</code> receiver provides the lambda the <code>pass()</code> and <code>fail()</code> methods for reporting the assertion result.</p>
+<h2 id="describing-the-actual-value"><a href="#describing-the-actual-value" id="describing-the-actual-value" class="anchor"></a>Describing the &quot;actual&quot; value</h2>
+<p>For assertions that perform a comparison between actual and expected values it is usually helpful to describe the value that was incorrect.
+That way any assertion failure message will be more helpful.</p>
+<p>In order to do this, Strikt provides an overridden version of <code>fail()</code> that accepts a message string and the actual value found.
+The message string should contain a format placeholder for the value.</p>
+<pre><code class="language-kotlin">fun Assertion.Builder&lt;LocalDate&gt;.isStTibsDay(): Assertion.Builder&lt;LocalDate&gt; =
+  assert(&quot;is St. Tib's Day&quot;) {
+    when (MonthDay.from(it)) {
+      MonthDay.of(2, 29) -&gt; pass()
+      else -&gt; fail(
+        description = &quot;in fact it is %s&quot;,
+        actual = it
+      )
+    }
+  }
+
+</code></pre>
+<p>Now if the assertion fails there is a little more detail.</p>
+<pre><code class="language-text">▼ Expect that 2018-05-01:
+  ✗ is St. Tib's Day
+    in fact it is 2018-05-01
+
+</code></pre>
+<p>In this case that's not terribly helpful but when dealing with properties, method return values, or the like it can save a lot of effort in identifying the precise cause of an error.
+When comparing large string values it also means IDEs such as IntelliJ IDEA will present a detailed diff dialog in the event of a test failure.</p>
+<h2 id="simple-atomic-assertions-with-boolean-expressions"><a href="#simple-atomic-assertions-with-boolean-expressions" id="simple-atomic-assertions-with-boolean-expressions" class="anchor"></a>Simple atomic assertions with boolean expressions</h2>
+<p>For the simplest assertion functions, instead of using <code>assert</code> and calling <code>pass</code> or <code>fail</code>, you can use <code>assertThat</code> with a lambda whose parameter is the assertion subject that returns a boolean.</p>
+<p>We can re-implement the example above like this:</p>
+<pre><code class="language-kotlin">fun Assertion.Builder&lt;LocalDate&gt;.isStTibsDay(): Assertion.Builder&lt;LocalDate&gt; =
+  assertThat(&quot;is St. Tib's Day&quot;) {
+    MonthDay.from(it) == MonthDay.of(2, 29)
+  }
+
+</code></pre>
+<p>You should not use this form when you want to provide a meaningful description of the actual value but for simple assertions it's slightly less verbose.</p>
+<h2 id="composed-assertions"><a href="#composed-assertions" id="composed-assertions" class="anchor"></a>Composed assertions</h2>
+<p>For more complex assertion implementations you can &quot;nest&quot; sub-assertions inside your overall assertion.
+Composed assertions' results are reported under the overall result which is useful for providing detailed diagnostic information in case of a failure.</p>
+<p>Composed assertions are useful for things like:</p>
+<ul>
+<li>applying assertions to multiple properties of an object, for example for a field-by-field comparison.</li>
+<li>applying assertions to all elements of a collection or entries in a map, reporting on individual elements.</li>
+</ul>
+<p>Imagine we're creating an assertion function that tests fails if any element of a collection is <code>null</code>.</p>
+<pre><code class="language-kotlin">fun &lt;T : Iterable&lt;E?&gt;, E&gt; Assertion.Builder&lt;T&gt;.containsNoNullElements(): Assertion.Builder&lt;T&gt; =
+  compose(&quot;does not contain any null elements&quot;) { subject -&gt;
+    subject.forEach { element -&gt;
+      get(&quot;%s&quot;) { element }.isNotNull()
+    }
+  } then {
+    if (allPassed) pass() else fail()
+  }
+
+</code></pre>
+<p>Breaking this down:</p>
+<ol>
+<li>We declare the overall assertion function applies to an <code>Iterable</code> of a nullable element type <code>E</code>.</li>
+<li>We use the <code>compose</code> method instead of <code>assert</code>.</li>
+<li>Inside the <code>compose</code> block we make assertions about each element of the iterable subject.</li>
+<li>Inside the <code>then</code> block we pass or fail the overall assertion depending on whether the nested assertions all passed.</li>
+</ol>
+<p>The receiver of the block passed to <code>result</code> has the properties <code>allFailed</code>, <code>anyFailed</code>, <code>allPassed</code> and <code>anyPassed</code> along with <code>pass()</code> and <code>fail()</code> functions used in simple assertions.</p>
+<p>If the assertion failed we'll see something like this:</p>
+<pre><code class="language-text">▼ Expect that [&quot;catflap&quot;, null, &quot;rubberplant&quot;, &quot;marzipan&quot;]:
+  ✗ does not contain any null elements
+    ▼ &quot;catflap&quot;:
+      ✓ is not null
+    ▼ null:
+      ✗ is not null
+    ▼ &quot;rubberplant&quot;:
+      ✓ is not null
+    ▼ &quot;marzipan&quot;:
+      ✓ is not null
+
+</code></pre>
+<p>As well as the overall assertion failure message we get a detailed breakdown allowing us to easily find exactly where the problem is.</p>
+<p>Several assertion functions in Strikt's standard assertions library use nested assertions.
+For example, <code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;.all</code> applies assertions to each element of an <code>Iterable</code> then passes the overall assertion if (and only if) all those nested assertions passed (<code>allPassed</code>).
+On the other hand <code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;.any</code> applies assertions to the elements of an <code>Iterable</code> but will pass the overall assertion if at least one of those nested assertions passed (<code>anyPassed</code>).
+The <code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;.none</code> assertion passes only if <code>allFailed</code> is true for its nested assertions!</p>
+
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+<nav class="pagination is-medium" role="navigation" aria-label="pagination">
+  <a class="pagination-previous button is-large is-link is-outlined"
+   href="https://strikt.io/wiki/grouping-with-and" >
+      <span class="icon">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+  </a>
+  <a class="pagination-next button is-large is-link is-outlined"
+   href="https://strikt.io/wiki/additional-modules" >
+      <span class="icon">
+        <i class="fas fa-arrow-right"></i>
+      </span>
+  </a>
+</nav>
+
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="https://github.com/robfletcher/strikt/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+          <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J" class="button is-danger">
+            <span class="icon"><i class="fab fa-lg fa-slack-hash"></i></span>
+            <span>Slack</span>
+          </a>
+        
+          <a href="https://twitter.com/stri_kt" class="button is-info">
+            <span class="icon"><i class="fab fa-lg fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://strikt.io/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://strikt.io/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 0.21.1"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer  src="https://strikt.io/StriktTheme/9f2a9a08/releases/v5.4.0/js/all.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-tabs.js"></script>
+<script  src="https://strikt.io/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://strikt.io/lunr/lunr.js"></script>
+<script  src="https://strikt.io/assets/js/orchidSearch.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

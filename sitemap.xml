@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>https://strikt.io/sitemap-assets.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-external.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-changelog.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-forms.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-home.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-kotlindoc.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-pages.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-snippets.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-wiki.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-sitemap.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://strikt.io/sitemap-indices.xml</loc>
+        <lastmod>2021-04-25</lastmod>
+    </sitemap>
+</sitemapindex>

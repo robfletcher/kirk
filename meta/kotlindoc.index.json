@@ -1,0 +1,586 @@
+{
+  "ownKey": "kotlindoc",
+  "childrenPages": {
+    "kotlindoc": {
+      "ownKey": "kotlindoc",
+      "childrenPages": {
+        "gradle": {
+          "ownKey": "gradle",
+          "childrenPages": {"strikt": {
+            "ownKey": "strikt",
+            "childrenPages": {"gradle": {
+              "ownKey": "gradle",
+              "childrenPages": {"testkit": {
+                "ownKey": "testkit",
+                "ownPages": [{
+                  "reference": {
+                    "path": "kotlindoc/gradle",
+                    "baseUrl": "https://strikt.io",
+                    "fileName": "strikt/gradle/testkit",
+                    "extension": "html",
+                    "usePrettyUrl": true,
+                    "link": "https://strikt.io/kotlindoc/gradle/strikt/gradle/testkit"
+                  },
+                  "description": "",
+                  "title": "strikt.gradle.testkit",
+                  "content": "<p>tasks<\/p>\n<p>Maps this assertion to an assertion on all tasks that were part of the build.<\/p>\noutput\n<p>Maps this assertion to an assertion on the output.<\/p>\noutcome\n<p>Maps this assertion to the task outcome.<\/p>\npath\n<p>Maps this assertion to the task path.<\/p>\ntask\n<p>Maps this assertion to the task at the provided  taskPath .<\/p>\ntaskPaths\n<p>Maps this assertion to the task paths of the build with the provided  outcome .<\/p>\ntasks\n<p>Maps this assertion to the tasks of the build with the provided  outcome .<\/p>\nhasOutcome\n<p>Asserts that the outcome is equal to  outcome .<\/p>\nisSuccess\n<p>Asserts that the outcome is <a href=\"#\">TaskOutcome.SUCCESS<\/a>.<\/p>\nisFailed\n<p>Asserts that the outcome is <a href=\"#\">TaskOutcome.FAILED<\/a>.<\/p>\nisUpToDate\n<p>Asserts that the outcome is <a href=\"#\">TaskOutcome.UP_TO_DATE<\/a>.<\/p>\nisSkipped\n<p>Asserts that the outcome is <a href=\"#\">TaskOutcome.SKIPPED<\/a>.<\/p>\nisFromCache\n<p>Asserts that the outcome is <a href=\"#\">TaskOutcome.FROM_CACHE<\/a>.<\/p>\nisNoSource\n<p>Asserts that the outcome is <a href=\"#\">TaskOutcome.NO_SOURCE<\/a>.<\/p>\n"
+                }]
+              }}
+            }}
+          }}
+        },
+        "jvm": {
+          "ownKey": "jvm",
+          "childrenPages": {"strikt": {
+            "ownKey": "strikt",
+            "childrenPages": {"java": {
+              "ownKey": "java",
+              "childrenPages": {"time": {
+                "ownKey": "time",
+                "ownPages": [{
+                  "reference": {
+                    "path": "kotlindoc/jvm",
+                    "baseUrl": "https://strikt.io",
+                    "fileName": "strikt/java/time",
+                    "extension": "html",
+                    "usePrettyUrl": true,
+                    "link": "https://strikt.io/kotlindoc/jvm/strikt/java/time"
+                  },
+                  "description": "",
+                  "title": "strikt.java.time",
+                  "content": "<p>isBefore<\/p>\n<p>Asserts that the subject is before  expected .<\/p>\nisAfter\n<p>Asserts that the subject is after  expected .<\/p>\nget\n<p>Maps an assertion on the subject to an assertion on the value of the\nspecified temporal field.<\/p>\ngetLong\n<p>Maps an assertion on the subject to an assertion on the value of the\nspecified temporal field.<\/p>\n"
+                }]
+              }},
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc/jvm",
+                  "baseUrl": "https://strikt.io",
+                  "fileName": "strikt/java",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://strikt.io/kotlindoc/jvm/strikt/java"
+                },
+                "description": "",
+                "title": "strikt.java",
+                "content": "<p>strikt.java.time<\/p>\n<p>name<\/p>\n<p>Maps this assertion to an assertion on the name of the file of the subject.<\/p>\nparent\n<p>Maps this assertion to an assertion on the parent file or <code>null<\/code> if the subject does not have a parent.<\/p>\nparentFile\n<p>Maps this assertion to an assertion on the parent file or <code>null<\/code> if the subject does not have a parent.<\/p>\nextension\n<p>Maps this assertion to an assertion on the file extension (not including the dot) or empty string if it not have one.<\/p>\nnameWithoutExtension\n<p>Maps this assertion to an assertion on the file name without the extension.<\/p>\nlastModified\n<p>Maps this assertion to an assertion on the <a href=\"https://docs.oracle.com/javase/6/docs/api/java/io/File.html#lastModified()\">last modified<\/a> of the subject.<\/p>\nlength\n<p>Maps this assertion to an assertion on the <a href=\"https://docs.oracle.com/javase/6/docs/api/java/io/File.html#length()\">file size<\/a> of the subject.<\/p>\nchildFiles\n<p>Maps this assertion to an assertion on the <a href=\"https://docs.oracle.com/javase/6/docs/api/java/io/File.html#listFiles()\">child files<\/a> of the subject.<\/p><p>Note: In contrast to <a href=\"https://docs.oracle.com/javase/6/docs/api/java/io/File.html#listFiles()\">File.listFiles<\/a>, an empty list is returned for non-directory files.<\/p>\nfileName\n<p>Maps this assertion to an assertion on the path representing the name of the subject.<\/p>\nsize\n<p>Maps this assertion to an assertion over the byte size of the subject path.<\/p>\npropertiesAreEqualTo\n<p>Asserts that all properties of the subject match those of  other  according\nto either <a href=\"#\">contentEquals<\/a> in the case of array properties or <a href=\"#\">isEqualTo<\/a> in\nother cases.<\/p><p>Properties are identified using Java beans conventions.<\/p>\ntoPath\n<p>Maps this assertion to an assertion on a path object representing this subject.<\/p>\nlines\n<p>Maps this assertion to an assertion on the lines of the subject decoded using the provided  charset .<\/p>\ntext\n<p>Maps this assertion to an assertion on the complete text of the subject decoded using the provided  charset .<\/p>\nchildFile\n<p>Maps this assertion to an assertion on a specific child  name  of the subject.<\/p>\nexists\n<p>Asserts that the file exists.<\/p>\nexists\n<p>Asserts that the subject exists, handling symbolic links according to the provided  options <\/p>\nnotExists\n<p>Asserts that the file not exists.<\/p>\nisRegularFile\n<p>Asserts that the file is a regular file.<\/p>\nisRegularFile\n<p>Asserts that the subject is a regular file, handling symbolic links according to the provided  options .<\/p>\nisNotRegularFile\n<p>Asserts that the file is not a regular file.<\/p>\nisDirectory\n<p>Asserts that the file is a directory.<\/p>\nisDirectory\n<p>Asserts that the subject is a directory, handling symbolic links according to the provided  options .<\/p>\nisNotDirectory\n<p>Asserts that the file is not a directory.<\/p>\nisReadable\n<p>Asserts that the file is readable.<\/p>\nisNotReadable\n<p>Asserts that the file is not readable.<\/p>\nisWritable\n<p>Asserts that the file is writable.<\/p>\nisNotWritable\n<p>Asserts that the file is not writable.<\/p>\nisExecutable\n<p>Asserts that the file is executable.<\/p>\nisNotExecutable\n<p>Asserts that the file is not executable.<\/p>\nisPresent\n<p>Asserts that an <code>Optional<\/code> contains a value (is not empty) and returns an\nassertion builder whose subject is the value.<\/p>\nisAbsent\n<p>Asserts that an <code>Optional<\/code> does not contain a value.<\/p>\ntoNullable\n<p>Maps an assertion on a Java <code>Optional<\/code> to a Kotlin nullable type.<\/p>\nendsWith\n<p>Asserts that the subject end with the provided path.<\/p>\nendsWith\n<p>Asserts that the subject end with the provided path string.<\/p>\nisAbsolute\n<p>Asserts that the subject is an absolute path.<\/p>\nresolve\n<p>Maps this assertion to an assertion of this subject resolved with the provided path.<\/p>\nresolve\n<p>Maps this assertion to an assertion of this subject resolved with the provided path.<\/p>\nstartsWith\n<p>Asserts that the subject starts with the provided path.<\/p>\nstartsWith\n<p>Asserts that the subject starts with the provided path.<\/p>\ntoFile\n<p>Maps this assertion to an assertion on the file object representing this subject.<\/p>\nisSymbolicLink\n<p>Asserts that the subject is a symbolic link.<\/p>\nallBytes\n<p>Maps this assertion to an assertion over all bytes of this subject path .<\/p>\nallLines\n<p>Maps this assertion to an assertion over all lines of this subject path decoded using the provided  charset .<\/p>\n"
+              }]
+            }}
+          }}
+        },
+        "spring": {
+          "ownKey": "spring",
+          "childrenPages": {"strikt": {
+            "ownKey": "strikt",
+            "childrenPages": {"spring": {
+              "ownKey": "spring",
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc/spring",
+                  "baseUrl": "https://strikt.io",
+                  "fileName": "strikt/spring",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://strikt.io/kotlindoc/spring/strikt/spring"
+                },
+                "description": "",
+                "title": "strikt.spring",
+                "content": "<p>contentType<\/p>\n<p>Maps this assertion to an assertion on the content type of the servlet\nresponse. If the subject has no <code>Content-Type<\/code> header the subject of the\nmapped assertion is <code>null<\/code>.<\/p>\nisCompatibleWith\n<p>Asserts that the subject is compatible with  expected .<\/p><p>For example, a subject of <code>application/json;charset=UTF-8<\/code> is <i>compatiblewith<\/i> the media type <code>application/json<\/code>, but not with the media type\n<code>application/x-yaml<\/code>.<\/p>\nstatusCodeIs1xxInformational\n<p>Asserts that the status code is a 1xx Information response.<\/p>\nstatusCodeIs2xxSuccess\n<p>Asserts that the status code is a 2xx Success response.<\/p>\nstatusCodeIs3xxRedirection\n<p>Asserts that the status code is a 3xx Redirect response.<\/p>\nstatusCodeIs4xxClientError\n<p>Asserts that the status code is a 4xx Client Error response.<\/p>\nstatusCodeIs5xxServerError\n<p>Asserts that the status code is a 5xx Server Error response.<\/p>\nstatusCodeIs\n<p>Asserts that the status code is equal to  expected .<\/p>\nstatusCodeIs\n<p>Asserts that the status code is equal to  expected .<\/p>\ncontentTypeIsCompatibleWith\n<p>Asserts that the content type of the subject is compatible with  expected .<\/p>\n"
+              }]
+            }}
+          }}
+        },
+        "core": {
+          "ownKey": "core",
+          "childrenPages": {"strikt": {
+            "ownKey": "strikt",
+            "childrenPages": {
+              "internal": {
+                "ownKey": "internal",
+                "childrenPages": {
+                  "opentest4j": {
+                    "ownKey": "opentest4j",
+                    "childrenPages": {
+                      "incompleteassertion": {
+                        "ownKey": "incompleteassertion",
+                        "ownPages": [{
+                          "reference": {
+                            "path": "kotlindoc/core",
+                            "baseUrl": "https://strikt.io",
+                            "fileName": "strikt/internal/opentest4j/incompleteassertion",
+                            "extension": "html",
+                            "usePrettyUrl": true,
+                            "link": "https://strikt.io/kotlindoc/core/strikt/internal/opentest4j/incompleteassertion"
+                          },
+                          "description": "",
+                          "title": "IncompleteAssertion",
+                          "content": "<p>Thrown to indicate that an assertion chain does not end with an assertion (in other words the\nstate of the assertion group is strikt.api.Status.Pending). This usually means that either:<\/p><ol><li>a mapping function was called but not ultimate followed by an assertion, or<\/li><li>a block is empty.<\/li><\/ol><init>\n<p>Thrown to indicate that an assertion chain does not end with an assertion (in other words the\nstate of the assertion group is strikt.api.Status.Pending). This usually means that either:<\/p><ol><li>a mapping function was called but not ultimate followed by an assertion, or<\/li><li>a block is empty.<\/li><\/ol>\ntoString\n\n"
+                        }]
+                      },
+                      "assertionfailed": {
+                        "ownKey": "assertionfailed",
+                        "ownPages": [{
+                          "reference": {
+                            "path": "kotlindoc/core",
+                            "baseUrl": "https://strikt.io",
+                            "fileName": "strikt/internal/opentest4j/assertionfailed",
+                            "extension": "html",
+                            "usePrettyUrl": true,
+                            "link": "https://strikt.io/kotlindoc/core/strikt/internal/opentest4j/assertionfailed"
+                          },
+                          "description": "",
+                          "title": "AssertionFailed",
+                          "content": "<p><init><\/p>\n<p><init><\/p>\n<p>toString<\/p>\n"
+                        }]
+                      },
+                      "mappingfailed": {
+                        "ownKey": "mappingfailed",
+                        "ownPages": [{
+                          "reference": {
+                            "path": "kotlindoc/core",
+                            "baseUrl": "https://strikt.io",
+                            "fileName": "strikt/internal/opentest4j/mappingfailed",
+                            "extension": "html",
+                            "usePrettyUrl": true,
+                            "link": "https://strikt.io/kotlindoc/core/strikt/internal/opentest4j/mappingfailed"
+                          },
+                          "description": "",
+                          "title": "MappingFailed",
+                          "content": "<p>Thrown to indicate that a mapping function such as\n strikt.api.Assertion.Builder.get  or  strikt.api.Assertion.Builder.with \nfailed due to an exception thrown by the mapping function.<\/p><init>\n<p>Thrown to indicate that a mapping function such as\n strikt.api.Assertion.Builder.get  or  strikt.api.Assertion.Builder.with \nfailed due to an exception thrown by the mapping function.<\/p>\ntoString\n\n"
+                        }]
+                      }
+                    },
+                    "ownPages": [{
+                      "reference": {
+                        "path": "kotlindoc/core",
+                        "baseUrl": "https://strikt.io",
+                        "fileName": "strikt/internal/opentest4j",
+                        "extension": "html",
+                        "usePrettyUrl": true,
+                        "link": "https://strikt.io/kotlindoc/core/strikt/internal/opentest4j"
+                      },
+                      "description": "",
+                      "title": "strikt.internal.opentest4j",
+                      "content": "<p>AssertionFailed<\/p>\n<p>IncompleteAssertion<\/p>\n<p>Thrown to indicate that an assertion chain does not end with an assertion (in other words the\nstate of the assertion group is strikt.api.Status.Pending). This usually means that either:<\/p><ol><li>a mapping function was called but not ultimate followed by an assertion, or<\/li><li>a block is empty.<\/li><\/ol>\nMappingFailed\n<p>Thrown to indicate that a mapping function such as\n strikt.api.Assertion.Builder.get  or  strikt.api.Assertion.Builder.with \nfailed due to an exception thrown by the mapping function.<\/p>\n"
+                    }]
+                  },
+                  "reporting": {
+                    "ownKey": "reporting",
+                    "ownPages": [{
+                      "reference": {
+                        "path": "kotlindoc/core",
+                        "baseUrl": "https://strikt.io",
+                        "fileName": "strikt/internal/reporting",
+                        "extension": "html",
+                        "usePrettyUrl": true,
+                        "link": "https://strikt.io/kotlindoc/core/strikt/internal/reporting"
+                      },
+                      "description": "",
+                      "title": "strikt.internal.reporting",
+                      "content": ""
+                    }]
+                  }
+                },
+                "ownPages": [{
+                  "reference": {
+                    "path": "kotlindoc/core",
+                    "baseUrl": "https://strikt.io",
+                    "fileName": "strikt/internal",
+                    "extension": "html",
+                    "usePrettyUrl": true,
+                    "link": "https://strikt.io/kotlindoc/core/strikt/internal"
+                  },
+                  "description": "",
+                  "title": "strikt.internal",
+                  "content": "<p>strikt.internal.opentest4j<\/p>\n<p>strikt.internal.reporting<\/p>\n"
+                }]
+              },
+              "assertions": {
+                "ownKey": "assertions",
+                "ownPages": [{
+                  "reference": {
+                    "path": "kotlindoc/core",
+                    "baseUrl": "https://strikt.io",
+                    "fileName": "strikt/assertions",
+                    "extension": "html",
+                    "usePrettyUrl": true,
+                    "link": "https://strikt.io/kotlindoc/core/strikt/assertions"
+                  },
+                  "description": "",
+                  "title": "strikt.assertions",
+                  "content": "<p>length<\/p>\n<p>Maps an assertion on a CharSequence to an assertion on its length.<\/p>\nstart\n<p>Maps an assertion on the ClosedRange to an assertion on its ClosedRange.start.<\/p>\nendInclusive\n<p>Maps an assertion on the ClosedRange to an assertion on its ClosedRange.endInclusive.<\/p>\nsize\n<p>Maps an assertion on a collection to an assertion on its size.<\/p>\nname\n<p>Maps an assertion on an enum to an assertion on its name.<\/p>\nordinal\n<p>Maps an assertion on an enum to an assertion on its ordinal.<\/p>\nmessage\n<p>Maps an assertion on a Throwable to an assertion on its\nThrowable.message.\nThis mapping also asserts that the message is not <code>null<\/code>.<\/p>\ncause\n<p>Maps an assertion on a Throwable to an assertion on its Throwable.cause.<\/p>\nfirst\n<p>Maps an assertion on a <a href=\"#\">Pair<\/a> to an assertion on its <a href=\"#\">Pair.first<\/a> property.<\/p>\nfirst\n<p>Maps an assertion on a <a href=\"#\">Triple<\/a> to an assertion on its <a href=\"#\">Triple.first<\/a> property.<\/p>\nsecond\n<p>Maps an assertion on a <a href=\"#\">Pair<\/a> to an assertion on its <a href=\"#\">Pair.second<\/a> property.<\/p>\nsecond\n<p>Maps an assertion on a <a href=\"#\">Triple<\/a> to an assertion on its <a href=\"#\">Triple.second<\/a> property.<\/p>\nthird\n<p>Maps an assertion on a <a href=\"#\">Triple<\/a> to an assertion on its <a href=\"#\">Triple.third<\/a> property.<\/p>\nisNull\n<p>Asserts that the subject is <code>null<\/code>.<\/p>\nisNotNull\n<p>Asserts that the subject is not <code>null<\/code>.<\/p>\nisA\n<p>Asserts that the subject is an instance of  T .<\/p>\nisEqualTo\n<p>Asserts that the subject is equal to  expected  according to the standard\nKotlin <code>==<\/code> operator.<\/p>\nisEqualTo\n<p>Asserts that the subject is within  tolerance  of  expected .<\/p>\nisEqualTo\n<p>Asserts that the subject is within  tolerance  of  expected .<\/p>\nisNotEqualTo\n<p>Asserts that the subject is not equal to  expected  according to the standard\nKotlin <code>==<\/code> operator.<\/p>\nisSameInstanceAs\n<p>Asserts that the subject is the same instance as  expected  according to the standard\nKotlin <code>===<\/code> operator.<\/p>\nisNotSameInstanceAs\n<p>Asserts that the subject is not the same instance as  expected  according to the standard\nKotlin <code>===<\/code> operator.<\/p>\nisContainedIn\n<p>Asserts that the subject is contained in  expected  according to the standard Kotlin <code>in<\/code>\noperator.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">Array.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">BooleanArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">ByteArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">ShortArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">IntArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">LongArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">FloatArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">DoubleArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">CharArray.contentEquals<\/a>.<\/p>\nisEmpty\n<p>Asserts that the subject's content is empty.<\/p>\nisEmpty\n<p>Asserts that the subject's content is empty.<\/p>\nisEmpty\n<p>Asserts that the subject's content is empty.<\/p>\nisEmpty\n<p>Asserts that the subject's content is empty.<\/p>\nisEmpty\n<p>Asserts that the subject's content is empty.<\/p>\nisEmpty\n<p>Asserts that the subject's content is empty.<\/p>\nisEmpty\n<p>Asserts that the subject's content is empty.<\/p>\nisEmpty\n<p>Asserts that the subject's content is empty.<\/p>\nisEmpty\n<p>Asserts that the subject's content is empty.<\/p>\nisEmpty\n<p>Asserts that the subject is the empty string.<\/p>\ntoList\n<p>Maps an array to a list to make it possible to use the iterable matchers<\/p>\nisTrue\n<p>Asserts that the subject is not null and is the boolean value <code>true<\/code>.<\/p>\nisFalse\n<p>Asserts that the subject is not null and is the boolean value <code>false<\/code>.<\/p>\nhasLength\n<p>Asserts that the subject has a CharSequence.length of exactly  expected .<\/p>\nisLowerCase\n<p>Asserts that the subject is composed of all lower-case characters.<\/p>\nisUpperCase\n<p>Asserts that the subject is composed of all upper-case characters.<\/p>\nstartsWith\n<p>Asserts that the subject starts with the  expected  character.<\/p>\nstartsWith\n<p>Asserts that the subject starts with the  expected  string.<\/p>\nendsWith\n<p>Asserts that the subject ends with the  expected  character.<\/p>\nendsWith\n<p>Asserts that the subject ends with the  expected  string.<\/p>\nmatches\n<p>Asserts that the subject is a full match for the  expected  regular\nexpression.<\/p>\nmatchesIgnoringCase\n<p>Asserts that the subject is a full match for the  expected  regular\nexpression regardless of case.<\/p>\ncontains\n<p>Asserts that the subject contains a match for the  expected  regular\nexpression.<\/p>\ncontains\n<p>Asserts that the subject contains the  expected  substring.<\/p>\ncontains\n<p>Asserts that the subject range contains the provided  element .<\/p>\ncontains\n<p>Asserts that all  elements  are present in the subject.\nThe elements may exist in any order any number of times and the subject may\ncontain further elements that were not specified.\nIf either the subject or  elements  are empty the assertion always fails.<\/p>\ncontains\n<p>Asserts that all  elements  are present in the subject.\nThe elements may exist in any order any number of times and the subject may\ncontain further elements that were not specified.\nIf either the subject or  elements  are empty the assertion always fails.<\/p>\ncontainsIgnoringCase\n<p>Asserts that the subject contains a match for the  expected  regular\nexpression regardless of case.<\/p>\ncontainsIgnoringCase\n<p>Asserts that the subject contains the  expected  substring regardless of\ncase.<\/p>\nisNullOrEmpty\n<p>Asserts that the subject is <code>null<\/code> or the empty string.<\/p>\nisNullOrBlank\n<p>Asserts that the subject is <code>null<\/code>, empty, or contains only whitespace\ncharacters.<\/p>\nisBlank\n<p>Asserts that the subject is empty, or contains only whitespace characters.<\/p>\nisNotEmpty\n<p>Asserts that the subject is not the empty string (contains at least one\ncharacter).<\/p>\nisNotBlank\n<p>Asserts that the subject is not blank (contains at least one non-whitespace\ncharacter).<\/p>\ntrim\n<p>Trims the subject <code>CharSequence<\/code>.<\/p>\ntrim\n<p>Trims the subject string.<\/p>\nhasSize\n<p>Asserts that the subject has a Collection.size of exactly  expected .<\/p>\nisGreaterThan\n<p>Asserts that the subject compares greater than  expected  according to\nKotlin's standard <code>><\/code> operator.<\/p>\nisLessThan\n<p>Asserts that the subject compares less than  expected  according to Kotlin's\nstandard <code><<\/code> operator.<\/p>\nisGreaterThanOrEqualTo\n<p>Asserts that the subject compares greater than or equal to  expected \naccording to Kotlin's standard <code>>=<\/code> operator.<\/p>\nisLessThanOrEqualTo\n<p>Asserts that the subject compares less than or equal to  expected  according\nto Kotlin's standard <code><=<\/code> operator.<\/p>\nisIn\n<p>Asserts that the subject is in the  expected  range.<\/p>\nisOneOf\n<p>Asserts that the subject is one of  values .<\/p>\ncount\n<p>Maps this assertion to an assertion over the count of elements in the subject.<\/p>\ncount\n<p>Maps this assertion to an assertion over the count of elements matching  predicate .<\/p>\nmap\n<p>Applies <a href=\"#\">Iterable.map<\/a> with  function  to the subject and returns an\nassertion builder wrapping the result.<\/p>\nfirst\n<p>Maps this assertion to an assertion over the first element in the subject\niterable.<\/p>\nfirst\n<p>Maps this assertion to an assertion over the first element in the subject\niterable that matches  predicate .<\/p>\nwithFirst\n<p>Runs a group of assertions on the first element in the subject iterable.<\/p>\nwithFirst\n<p>Runs a group of assertions on the first element in the subject iterable that\nmatches  predicate .<\/p>\nelementAt\n<p>Maps this assertion to an assertion over the indexed element in the subject\niterable.<\/p>\nwithElementAt\n<p>Runs a group of assertions on the element at  index  in the subject iterable.<\/p>\nsingle\n<p>Maps this assertion to an assertion over the single element in the subject\niterable.<\/p>\nlast\n<p>Maps this assertion to an assertion over the last element in the subject\niterable.<\/p>\nwithLast\n<p>Runs a group of assertions on the last element in the subject iterable.<\/p>\nflatMap\n<p>Maps this assertion to an assertion over a flattened list of the results of\n transform  for each element in the subject iterable.<\/p>\nfilter\n<p>Maps this assertion to an assertion over a list of all elements of the subject that match <code>predicate<\/code>.<\/p>\nfilterNot\n<p>Maps this assertion to an assertion over a list of all elements of the subject that do not match <code>predicate<\/code>.<\/p>\nfilterIsInstance\n<p>Maps this assertion to an assertion over a list of all elements of the subject that are instances of <code>R<\/code>.<\/p>\nall\n<p>Asserts that all elements of the subject pass the assertions in  predicate .<\/p>\nallIndexed\n<p>Asserts that all elements of the subject pass the assertions in  predicate .<\/p>\nany\n<p>Asserts that <i>at least one<\/i> element of the subject pass the assertions in\n predicate .<\/p>\nanyIndexed\n<p>Asserts that <i>at least one<\/i> element of the subject pass the assertions in\n predicate .<\/p>\nnone\n<p>Asserts that <i>no<\/i> elements of the subject pass the assertions in  predicate .<\/p>\nnoneIndexed\n<p>Asserts that <i>no<\/i> elements of the subject pass the assertions in  predicate .<\/p>\none\n<p>Asserts that <i>exactly one<\/i> element of the subject passes the assertions in  predicate .<\/p>\natLeast\n<p>Asserts that at least  count  elements of the subject pass the assertions in\n predicate .<\/p>\natMost\n<p>Asserts that at most  count  elements of the subject pass the assertions in\n predicate .<\/p>\nexactly\n<p>Asserts that exactly  count  elements of the subject pass the assertions in\n predicate .<\/p>\ndoesNotContain\n<p>Asserts that none of  elements  are present in the subject.<\/p><p>If  elements  is empty the assertion always fails.\nIf the subject is empty the assertion always passe.<\/p>\ndoesNotContain\n<p>Asserts that none of  elements  are present in the subject.<\/p><p>If  elements  is empty the assertion always fails.\nIf the subject is empty the assertion always passe.<\/p>\ncontainsExactly\n<p>Asserts that all  elements  <i>and no others<\/i> are present in the subject in the\nspecified order.<\/p><p>If the subject has no guaranteed iteration order (for example a Set) this\nassertion is probably not appropriate and you should use\n containsExactlyInAnyOrder  instead.<\/p>\ncontainsExactly\n<p>Asserts that all  elements  <i>and no others<\/i> are present in the subject in the\nspecified order.<\/p><p>If the subject has no guaranteed iteration order (for example a Set) this\nassertion is probably not appropriate and you should use\n containsExactlyInAnyOrder  instead.<\/p>\ncontainsExactlyInAnyOrder\n<p>Asserts that all  elements  <i>and no others<\/i> are present in the subject.\nOrder is not evaluated, so an assertion on a List will pass so long as it\ncontains all the same elements with the same cardinality as  elements \nregardless of what order they appear in.<\/p>\ncontainsExactlyInAnyOrder\n<p>Asserts that all  elements  <i>and no others<\/i> are present in the subject.\nOrder is not evaluated, so an assertion on a List will pass so long as it\ncontains all the same elements with the same cardinality as  elements \nregardless of what order they appear in.<\/p>\nisSorted\n<p>Asserts that the subject iterable is sorted according to the Comparator. Empty iterables are\nconsidered sorted.<\/p>\nisSorted\n<p>Asserts that the subject iterable is sorted according to the natural order of its elements. Empty\niterables are considered sorted.<\/p>\nget\n<p>Maps this assertion to an assertion on the element at index  i  in the\nsubject list.<\/p>\nget\n<p>Maps this assertion to an assertion on the elements at the sub-list\nrepresented by  range  in the subject list.<\/p>\nget\n<p>Maps this assertion to an assertion on the value indexed by  key  in the\nsubject list.<\/p>\ncontainsSequence\n<p>Asserts that all  elements  are present in the subject in exactly the same order<\/p>\ncontainsSequence\n<p>Asserts that all  elements  are present in the subject in exactly the same order<\/p>\ngetValue\n<p>Asserts that  key  exists in the subject map and then maps this assertion to\nan assertion on the associated value.<\/p>\nwithValue\n<p>Runs a group of assertions on the value in the subject map tht corresponds to  key .<\/p>\ncontainsKey\n<p>Asserts that the subject map contains an entry indexed by  key . Depending on\nthe map implementation the value associated with  key  may be <code>null<\/code>. This\nassertion just tests for the existence of the key.<\/p>\ncontainsKeys\n<p>Asserts that the subject map contains entries for all  keys .<\/p>\nhasEntry\n<p>Asserts that the subject map contains an entry indexed by  key  with a value\nequal to  value .<\/p>\nisFailure\n<p>Asserts that the result of an action did throw an exception and maps to\nan assertion on the exception. The assertion fails if the subject's\n<a href=\"#\">Result.isFailure<\/a> returns <code>false<\/code>.<\/p>\nisSuccess\n<p>Asserts that the result of an action did not throw any exception and maps to\nan assertion on the result value. The assertion fails if the subject's\n<a href=\"#\">Result.isSuccess<\/a> returns <code>false<\/code>.<\/p>\nsucceeded\n<p>Asserts that the subject is a successful result and maps this assertion to\nan assertion over the result value.<\/p>\nfailed\n<p>Asserts that the subject is a failed result and maps this assertion to an\nassertion over the exception that was thrown<\/p>\nfailedWith\n<p>Asserts that the subject is a isFailure result that threw an exception\nassignable to  E  and maps this assertion to an assertion over that\nexception.<\/p>\ndoesNotThrow\n<p>Deprecated form of  isSuccess <code>()<\/code>.<\/p>\nisEqualToIgnoringCase\n<p>Asserts that the subject is equal to the expected value regardless of case.<\/p>\n"
+                }]
+              },
+              "api": {
+                "ownKey": "api",
+                "childrenPages": {
+                  "compoundassertions": {
+                    "ownKey": "compoundassertions",
+                    "ownPages": [{
+                      "reference": {
+                        "path": "kotlindoc/core",
+                        "baseUrl": "https://strikt.io",
+                        "fileName": "strikt/api/compoundassertions",
+                        "extension": "html",
+                        "usePrettyUrl": true,
+                        "link": "https://strikt.io/kotlindoc/core/strikt/api/compoundassertions"
+                      },
+                      "description": "",
+                      "title": "CompoundAssertions",
+                      "content": "<p>Returned by  Assertion.Builder.compose  allowing a bridge between evaluation\nof composed assertions and the determination of the overall result in the\n<code>block<\/code> parameter passed to  then .<\/p>then\n<p>Determine the overall status of a compound assertion based on the results\nof its child assertions.<\/p>\n"
+                    }]
+                  },
+                  "atomicassertion": {
+                    "ownKey": "atomicassertion",
+                    "ownPages": [{
+                      "reference": {
+                        "path": "kotlindoc/core",
+                        "baseUrl": "https://strikt.io",
+                        "fileName": "strikt/api/atomicassertion",
+                        "extension": "html",
+                        "usePrettyUrl": true,
+                        "link": "https://strikt.io/kotlindoc/core/strikt/api/atomicassertion"
+                      },
+                      "description": "",
+                      "title": "AtomicAssertion",
+                      "content": "<p>An assertion of a single condition on a subject.<\/p>pass\n<p>Mark this result as passed due to a comparison between two values.<\/p>\nfail\n<p>Mark this result as failed due to a comparison between two values.<\/p>\n"
+                    }]
+                  },
+                  "compoundassertion": {
+                    "ownKey": "compoundassertion",
+                    "ownPages": [{
+                      "reference": {
+                        "path": "kotlindoc/core",
+                        "baseUrl": "https://strikt.io",
+                        "fileName": "strikt/api/compoundassertion",
+                        "extension": "html",
+                        "usePrettyUrl": true,
+                        "link": "https://strikt.io/kotlindoc/core/strikt/api/compoundassertion"
+                      },
+                      "description": "",
+                      "title": "CompoundAssertion",
+                      "content": "<p>An assertion composed of multiple conditions whose overall result is\ndetermined by some aggregation of those conditions' results.<\/p>anyFailed\n<p><code>true<\/code> if at least one composed assertion failed,\notherwise <code>false<\/code>.<\/p>\nallFailed\n<p><code>true<\/code> if all composed assertions failed, otherwise\n<code>false<\/code>.<\/p>\nanyPassed\n<p><code>true<\/code> if at least one composed assertion passed,\notherwise <code>false<\/code>.<\/p>\nallPassed\n<p><code>true<\/code> if all composed assertions passed, otherwise\n<code>false<\/code>.<\/p>\npassedCount\n<p>the number of composed assertions that passed.<\/p>\nfailedCount\n<p>the number of composed assertions that failed.<\/p>\n"
+                    }]
+                  },
+                  "describeablebuilder": {
+                    "ownKey": "describeablebuilder",
+                    "ownPages": [{
+                      "reference": {
+                        "path": "kotlindoc/core",
+                        "baseUrl": "https://strikt.io",
+                        "fileName": "strikt/api/describeablebuilder",
+                        "extension": "html",
+                        "usePrettyUrl": true,
+                        "link": "https://strikt.io/kotlindoc/core/strikt/api/describeablebuilder"
+                      },
+                      "description": "",
+                      "title": "DescribeableBuilder",
+                      "content": "<p>Extension of  Assertion.Builder  that enables the description of the\nassertion subject.<\/p><p>Since it doesn't make sense to do this anywhere except directly after the\ninitial  expectThat  or  Assertion.Builder.with  call those methods return an\ninstance of this interface, while assertions themselves just return\n Assertion.Builder .<\/p>describedAs\n<p>Adds a description to the assertion.<\/p>\ndescribedAs\n<p>Adds a description to the assertion.<\/p>\nisNull\n<p>Asserts that the subject is <code>null<\/code>.<\/p>\nisNotNull\n<p>Asserts that the subject is not <code>null<\/code>.<\/p>\nisA\n<p>Asserts that the subject is an instance of  T .<\/p>\nisEqualTo\n<p>Asserts that the subject is equal to  expected  according to the standard\nKotlin <code>==<\/code> operator.<\/p>\nisEqualTo\n<p>Asserts that the subject is within  tolerance  of  expected .<\/p>\nisEqualTo\n<p>Asserts that the subject is within  tolerance  of  expected .<\/p>\nisNotEqualTo\n<p>Asserts that the subject is not equal to  expected  according to the standard\nKotlin <code>==<\/code> operator.<\/p>\nisSameInstanceAs\n<p>Asserts that the subject is the same instance as  expected  according to the standard\nKotlin <code>===<\/code> operator.<\/p>\nisNotSameInstanceAs\n<p>Asserts that the subject is not the same instance as  expected  according to the standard\nKotlin <code>===<\/code> operator.<\/p>\nisContainedIn\n<p>Asserts that the subject is contained in  expected  according to the standard Kotlin <code>in<\/code>\noperator.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">Array.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">BooleanArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">ByteArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">ShortArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">IntArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">LongArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">FloatArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">DoubleArray.contentEquals<\/a>.<\/p>\ncontentEquals\n<p>Asserts that the subject's content is equal to that of  other  according to\n<a href=\"#\">CharArray.contentEquals<\/a>.<\/p>\ntoList\n<p>Maps an array to a list to make it possible to use the iterable matchers<\/p>\nisTrue\n<p>Asserts that the subject is not null and is the boolean value <code>true<\/code>.<\/p>\nisFalse\n<p>Asserts that the subject is not null and is the boolean value <code>false<\/code>.<\/p>\nhasLength\n<p>Asserts that the subject has a CharSequence.length of exactly  expected .<\/p>\nisLowerCase\n<p>Asserts that the subject is composed of all lower-case characters.<\/p>\nisUpperCase\n<p>Asserts that the subject is composed of all upper-case characters.<\/p>\nstartsWith\n<p>Asserts that the subject starts with the  expected  character.<\/p>\nstartsWith\n<p>Asserts that the subject starts with the  expected  string.<\/p>\nendsWith\n<p>Asserts that the subject ends with the  expected  character.<\/p>\nendsWith\n<p>Asserts that the subject ends with the  expected  string.<\/p>\nmatches\n<p>Asserts that the subject is a full match for the  expected  regular\nexpression.<\/p>\nmatchesIgnoringCase\n<p>Asserts that the subject is a full match for the  expected  regular\nexpression regardless of case.<\/p>\ncontains\n<p>Asserts that the subject contains a match for the  expected  regular\nexpression.<\/p>\ncontains\n<p>Asserts that the subject contains the  expected  substring.<\/p>\ncontains\n<p>Asserts that the subject range contains the provided  element .<\/p>\ncontains\n<p>Asserts that all  elements  are present in the subject.\nThe elements may exist in any order any number of times and the subject may\ncontain further elements that were not specified.\nIf either the subject or  elements  are empty the assertion always fails.<\/p>\ncontains\n<p>Asserts that all  elements  are present in the subject.\nThe elements may exist in any order any number of times and the subject may\ncontain further elements that were not specified.\nIf either the subject or  elements  are empty the assertion always fails.<\/p>\ncontainsIgnoringCase\n<p>Asserts that the subject contains a match for the  expected  regular\nexpression regardless of case.<\/p>\ncontainsIgnoringCase\n<p>Asserts that the subject contains the  expected  substring regardless of\ncase.<\/p>\nisNullOrEmpty\n<p>Asserts that the subject is <code>null<\/code> or the empty string.<\/p>\nisNullOrBlank\n<p>Asserts that the subject is <code>null<\/code>, empty, or contains only whitespace\ncharacters.<\/p>\nisBlank\n<p>Asserts that the subject is empty, or contains only whitespace characters.<\/p>\nisNotBlank\n<p>Asserts that the subject is not blank (contains at least one non-whitespace\ncharacter).<\/p>\nisOneOf\n<p>Asserts that the subject is one of  values .<\/p>\ncount\n<p>Maps this assertion to an assertion over the count of elements in the subject.<\/p>\ncount\n<p>Maps this assertion to an assertion over the count of elements matching  predicate .<\/p>\nmap\n<p>Applies <a href=\"#\">Iterable.map<\/a> with  function  to the subject and returns an\nassertion builder wrapping the result.<\/p>\nfirst\n<p>Maps this assertion to an assertion over the first element in the subject\niterable.<\/p>\nfirst\n<p>Maps this assertion to an assertion over the first element in the subject\niterable that matches  predicate .<\/p>\nwithFirst\n<p>Runs a group of assertions on the first element in the subject iterable.<\/p>\nwithFirst\n<p>Runs a group of assertions on the first element in the subject iterable that\nmatches  predicate .<\/p>\nelementAt\n<p>Maps this assertion to an assertion over the indexed element in the subject\niterable.<\/p>\nwithElementAt\n<p>Runs a group of assertions on the element at  index  in the subject iterable.<\/p>\nsingle\n<p>Maps this assertion to an assertion over the single element in the subject\niterable.<\/p>\nlast\n<p>Maps this assertion to an assertion over the last element in the subject\niterable.<\/p>\nwithLast\n<p>Runs a group of assertions on the last element in the subject iterable.<\/p>\nflatMap\n<p>Maps this assertion to an assertion over a flattened list of the results of\n transform  for each element in the subject iterable.<\/p>\nfilter\n<p>Maps this assertion to an assertion over a list of all elements of the subject that match <code>predicate<\/code>.<\/p>\nfilterNot\n<p>Maps this assertion to an assertion over a list of all elements of the subject that do not match <code>predicate<\/code>.<\/p>\nfilterIsInstance\n<p>Maps this assertion to an assertion over a list of all elements of the subject that are instances of <code>R<\/code>.<\/p>\nall\n<p>Asserts that all elements of the subject pass the assertions in  predicate .<\/p>\nallIndexed\n<p>Asserts that all elements of the subject pass the assertions in  predicate .<\/p>\nany\n<p>Asserts that <i>at least one<\/i> element of the subject pass the assertions in\n predicate .<\/p>\nanyIndexed\n<p>Asserts that <i>at least one<\/i> element of the subject pass the assertions in\n predicate .<\/p>\nnone\n<p>Asserts that <i>no<\/i> elements of the subject pass the assertions in  predicate .<\/p>\nnoneIndexed\n<p>Asserts that <i>no<\/i> elements of the subject pass the assertions in  predicate .<\/p>\none\n<p>Asserts that <i>exactly one<\/i> element of the subject passes the assertions in  predicate .<\/p>\natLeast\n<p>Asserts that at least  count  elements of the subject pass the assertions in\n predicate .<\/p>\natMost\n<p>Asserts that at most  count  elements of the subject pass the assertions in\n predicate .<\/p>\nexactly\n<p>Asserts that exactly  count  elements of the subject pass the assertions in\n predicate .<\/p>\ndoesNotContain\n<p>Asserts that none of  elements  are present in the subject.<\/p><p>If  elements  is empty the assertion always fails.\nIf the subject is empty the assertion always passe.<\/p>\ndoesNotContain\n<p>Asserts that none of  elements  are present in the subject.<\/p><p>If  elements  is empty the assertion always fails.\nIf the subject is empty the assertion always passe.<\/p>\ncontainsExactly\n<p>Asserts that all  elements  <i>and no others<\/i> are present in the subject in the\nspecified order.<\/p><p>If the subject has no guaranteed iteration order (for example a Set) this\nassertion is probably not appropriate and you should use\n containsExactlyInAnyOrder  instead.<\/p>\ncontainsExactly\n<p>Asserts that all  elements  <i>and no others<\/i> are present in the subject in the\nspecified order.<\/p><p>If the subject has no guaranteed iteration order (for example a Set) this\nassertion is probably not appropriate and you should use\n containsExactlyInAnyOrder  instead.<\/p>\ncontainsExactlyInAnyOrder\n<p>Asserts that all  elements  <i>and no others<\/i> are present in the subject.\nOrder is not evaluated, so an assertion on a List will pass so long as it\ncontains all the same elements with the same cardinality as  elements \nregardless of what order they appear in.<\/p>\ncontainsExactlyInAnyOrder\n<p>Asserts that all  elements  <i>and no others<\/i> are present in the subject.\nOrder is not evaluated, so an assertion on a List will pass so long as it\ncontains all the same elements with the same cardinality as  elements \nregardless of what order they appear in.<\/p>\nisSorted\n<p>Asserts that the subject iterable is sorted according to the Comparator. Empty iterables are\nconsidered sorted.<\/p>\nisSorted\n<p>Asserts that the subject iterable is sorted according to the natural order of its elements. Empty\niterables are considered sorted.<\/p>\nget\n<p>Maps this assertion to an assertion on the element at index  i  in the\nsubject list.<\/p>\nget\n<p>Maps this assertion to an assertion on the elements at the sub-list\nrepresented by  range  in the subject list.<\/p>\nget\n<p>Maps this assertion to an assertion on the value indexed by  key  in the\nsubject list.<\/p>\ncontainsSequence\n<p>Asserts that all  elements  are present in the subject in exactly the same order<\/p>\ncontainsSequence\n<p>Asserts that all  elements  are present in the subject in exactly the same order<\/p>\ngetValue\n<p>Asserts that  key  exists in the subject map and then maps this assertion to\nan assertion on the associated value.<\/p>\nwithValue\n<p>Runs a group of assertions on the value in the subject map tht corresponds to  key .<\/p>\ncontainsKey\n<p>Asserts that the subject map contains an entry indexed by  key . Depending on\nthe map implementation the value associated with  key  may be <code>null<\/code>. This\nassertion just tests for the existence of the key.<\/p>\ncontainsKeys\n<p>Asserts that the subject map contains entries for all  keys .<\/p>\nhasEntry\n<p>Asserts that the subject map contains an entry indexed by  key  with a value\nequal to  value .<\/p>\nisFailure\n<p>Asserts that the result of an action did throw an exception and maps to\nan assertion on the exception. The assertion fails if the subject's\n<a href=\"#\">Result.isFailure<\/a> returns <code>false<\/code>.<\/p>\nisSuccess\n<p>Asserts that the result of an action did not throw any exception and maps to\nan assertion on the result value. The assertion fails if the subject's\n<a href=\"#\">Result.isSuccess<\/a> returns <code>false<\/code>.<\/p>\nsucceeded\n<p>Asserts that the subject is a successful result and maps this assertion to\nan assertion over the result value.<\/p>\nfailed\n<p>Asserts that the subject is a failed result and maps this assertion to an\nassertion over the exception that was thrown<\/p>\nfailedWith\n<p>Asserts that the subject is a isFailure result that threw an exception\nassignable to  E  and maps this assertion to an assertion over that\nexception.<\/p>\ndoesNotThrow\n<p>Deprecated form of  isSuccess <code>()<\/code>.<\/p>\nisEqualToIgnoringCase\n<p>Asserts that the subject is equal to the expected value regardless of case.<\/p>\n"
+                    }]
+                  },
+                  "assertion": {
+                    "ownKey": "assertion",
+                    "childrenPages": {"builder": {
+                      "ownKey": "builder",
+                      "ownPages": [{
+                        "reference": {
+                          "path": "kotlindoc/core",
+                          "baseUrl": "https://strikt.io",
+                          "fileName": "strikt/api/assertion/builder",
+                          "extension": "html",
+                          "usePrettyUrl": true,
+                          "link": "https://strikt.io/kotlindoc/core/strikt/api/assertion/builder"
+                        },
+                        "description": "",
+                        "title": "Builder",
+                        "content": "<p>Used to construct assertions.<\/p>assert\n<p>Evaluates a condition that may pass or fail.<\/p><p>While this method <i>can<\/i> be used directly in a test but is typically used\ninside an extension method on <code>Assertion.Builder<T><\/code> such as those\nprovided in the  strikt.assertions  package.<\/p>\nassert\n<p>Evaluates a condition that may pass or fail.<\/p><p>While this method <i>can<\/i> be used directly in a test but is typically used\ninside an extension method on <code>Assertion.Builder<T><\/code> such as those\nprovided in the  strikt.assertions  package.<\/p>\ncompose\n<p>Allows an assertion to be composed of multiple sub-assertions such as on\nfields of an object or elements of a collection.<\/p><p>The results of assertions made inside the  assertions  block are included\nunder the overall assertion result.<\/p>\ncompose\n<p>Allows an assertion to be composed of multiple sub-assertions such as on\nfields of an object or elements of a collection.<\/p><p>The results of assertions made inside the  assertions  block are included\nunder the overall assertion result.<\/p>\npassesIf\n<p>Evaluates a boolean condition.\nThis is useful for implementing the simplest types of assertion function.<\/p>\npassesIf\n<p>Evaluates a boolean condition.\nThis is useful for implementing the simplest types of assertion function.<\/p>\nassertThat\n<p>Evaluates a boolean condition.\nThis is useful for implementing the simplest types of assertion function.<\/p>\nassertThat\n<p>Evaluates a boolean condition.\nThis is useful for implementing the simplest types of assertion function.<\/p>\nget\n<p>Maps the assertion subject to the result of  function .\nThis is useful for chaining to property values or method call results on\nthe subject.<\/p><p>If  function  is a callable reference, (for example a getter or property\nreference) the subject description will be automatically determined for\nthe returned assertion builder.<\/p><p>If  function  is a lambda, Strikt will make a best-effort attempt to\ndetermine an appropriate function / property name.<\/p>\nget\n<p>Maps the assertion subject to the result of  function .\nThis is useful for chaining to property values or method call results on\nthe subject.<\/p>\nwith\n<p>Runs a group of assertions on the subject returned by  function .<\/p>\nwith\n<p>Runs a group of assertions on the subject returned by  function .<\/p>\nchain\n<p>Deprecated form of  with <code>((T) -> R)<\/code>.<\/p>\nchain\n<p>Deprecated form of  with <code>(String, (T) -> R)<\/code>.<\/p>\nnot\n<p>Reverses any assertions chained after this method.<\/p>\nnot\n<p>Evaluates a block of assertions on the current subject by executing them in reverse.<\/p>\nand\n<p>Evaluates a block of assertions on the current subject.<\/p><p>The main use for this method is after  strikt.assertions.isNotNull  or\n strikt.assertions.isA  in order that a group of assertions can more\nconveniently be performed on the narrowed subject type.<\/p><p>This method may be used as an infix function which tends to enhance\nreadability when it directly follows a lambda.<\/p>\n"
+                      }]
+                    }},
+                    "ownPages": [{
+                      "reference": {
+                        "path": "kotlindoc/core",
+                        "baseUrl": "https://strikt.io",
+                        "fileName": "strikt/api/assertion",
+                        "extension": "html",
+                        "usePrettyUrl": true,
+                        "link": "https://strikt.io/kotlindoc/core/strikt/api/assertion"
+                      },
+                      "description": "",
+                      "title": "Assertion",
+                      "content": "<p>Allows assertion implementations to determine a result.<\/p>pass\n<p>Mark this result as passed.<\/p>\nfail\n<p>Mark this result as failed.<\/p>\n"
+                    }]
+                  },
+                  "expectationbuilder": {
+                    "ownKey": "expectationbuilder",
+                    "ownPages": [{
+                      "reference": {
+                        "path": "kotlindoc/core",
+                        "baseUrl": "https://strikt.io",
+                        "fileName": "strikt/api/expectationbuilder",
+                        "extension": "html",
+                        "usePrettyUrl": true,
+                        "link": "https://strikt.io/kotlindoc/core/strikt/api/expectationbuilder"
+                      },
+                      "description": "",
+                      "title": "ExpectationBuilder",
+                      "content": "<p>Receiver for  expect  providing functions that define assertion subjects and\ncreate assertion chains or blocks.<\/p>that\n<p>Start a chain of assertions over  subject .<\/p>\nthat\n<p>Evaluate a block of assertions over  subject .<\/p>\ncatching\n<p>Start a chain of assertions over the result of  action .<\/p>\n"
+                    }]
+                  }
+                },
+                "ownPages": [{
+                  "reference": {
+                    "path": "kotlindoc/core",
+                    "baseUrl": "https://strikt.io",
+                    "fileName": "strikt/api",
+                    "extension": "html",
+                    "usePrettyUrl": true,
+                    "link": "https://strikt.io/kotlindoc/core/strikt/api"
+                  },
+                  "description": "",
+                  "title": "strikt.api",
+                  "content": "<p>Assertion<\/p>\n<p>Allows assertion implementations to determine a result.<\/p>\nAtomicAssertion\n<p>An assertion of a single condition on a subject.<\/p>\nCompoundAssertion\n<p>An assertion composed of multiple conditions whose overall result is\ndetermined by some aggregation of those conditions' results.<\/p>\nCompoundAssertions\n<p>Returned by  Assertion.Builder.compose  allowing a bridge between evaluation\nof composed assertions and the determination of the overall result in the\n<code>block<\/code> parameter passed to  then .<\/p>\nDescribeableBuilder\n<p>Extension of  Assertion.Builder  that enables the description of the\nassertion subject.<\/p><p>Since it doesn't make sense to do this anywhere except directly after the\ninitial  expectThat  or  Assertion.Builder.with  call those methods return an\ninstance of this interface, while assertions themselves just return\n Assertion.Builder .<\/p>\nExpectationBuilder\n<p>Receiver for  expect  providing functions that define assertion subjects and\ncreate assertion chains or blocks.<\/p>\nexpect\n<p>Starts a block of assertions that will all be evaluated regardless of whether\nearlier ones fail.\nThis is the entry-point for the assertion API.<\/p>\nexpectThat\n<p>Start a chain of assertions over  subject .\nThis is the entry-point for the assertion API.<\/p>\nexpectThat\n<p>Evaluate a block of assertions over  subject .\nThis is the entry-point for the assertion API.<\/p>\nexpectThrows\n<p>Asserts that  action throws an exception of type  E  when executed.<\/p>\nexpectCatching\n<p>Start a chain of assertions over the result of  action  which may either be\nthe value  action  returns or any exception it throws.\nThis is the entry-point for the assertion API.<\/p>\n"
+                }]
+              }
+            }
+          }}
+        },
+        "protobuf": {
+          "ownKey": "protobuf",
+          "childrenPages": {"strikt": {
+            "ownKey": "strikt",
+            "childrenPages": {"protobuf": {
+              "ownKey": "protobuf",
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc/protobuf",
+                  "baseUrl": "https://strikt.io",
+                  "fileName": "strikt/protobuf",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://strikt.io/kotlindoc/protobuf/strikt/protobuf"
+                },
+                "description": "",
+                "title": "strikt.protobuf",
+                "content": "<p>isEmpty<\/p>\n<p>Asserts that a <code>com.google.protobuf.Any<\/code> is empty and does not contain an\nobject of any kind.<\/p>\nunpacksTo\n<p>Asserts that the subject is a message of type  T .<\/p>\nunpack\n<p>Maps an assertion on <code>com.google.protobuf.Any<\/code> to an assertion on an unpacked\nmessage of type  T .<\/p>\n"
+              }]
+            }}
+          }}
+        },
+        "mockk": {
+          "ownKey": "mockk",
+          "childrenPages": {"strikt": {
+            "ownKey": "strikt",
+            "childrenPages": {"mockk": {
+              "ownKey": "mockk",
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc/mockk",
+                  "baseUrl": "https://strikt.io",
+                  "fileName": "strikt/mockk",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://strikt.io/kotlindoc/mockk/strikt/mockk"
+                },
+                "description": "",
+                "title": "strikt.mockk",
+                "content": "<p>captured<\/p>\n<p>Maps this assertion to an assertion whose subject is the captured value of\nthe <a href=\"#\">CapturingSlot<\/a>.<\/p>\nisCaptured\n<p>Asserts that the subject has captured a value.<\/p>\nwithCaptured\n<p>Runs a group of assertions on the captured value.<\/p>\n"
+              }]
+            }}
+          }}
+        },
+        "jackson": {
+          "ownKey": "jackson",
+          "childrenPages": {"strikt": {
+            "ownKey": "strikt",
+            "childrenPages": {"jackson": {
+              "ownKey": "jackson",
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc/jackson",
+                  "baseUrl": "https://strikt.io",
+                  "fileName": "strikt/jackson",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://strikt.io/kotlindoc/jackson/strikt/jackson"
+                },
+                "description": "",
+                "title": "strikt.jackson",
+                "content": "<p>has<\/p>\n<p>Asserts that the subject node has a field named  fieldName .<\/p>\npath\n<p>Maps the subject node of the assertion builder to the node accessed by\n fieldName .<\/p>\nat\n<p>Maps the subject node of the assertion builder to the node accessed by  pointer .<\/p>\nat\n<p>Maps the subject node of the assertion builder to the node accessed by  pointer .<\/p>\nisObject\n<p>Asserts that the subject node is a JSON object.<\/p>\nisArray\n<p>Asserts that the subject node is a JSON array.<\/p>\nisTextual\n<p>Asserts that the subject node is a JSON text node.<\/p>\nisNumber\n<p>Asserts that the subject node is a JSON numeric node.<\/p>\nisBoolean\n<p>Asserts that the subject node is a JSON boolean node.<\/p>\nisMissing\n<p>Asserts that the subject node is a JSON missing node.<\/p>\ntextValue\n<p>Maps the assertion to an assertion on the subject node's text value.<\/p><p>Be aware that if the node is not a text node this will map to an assertion on\n<code>null<\/code>.<\/p>\nnumberValue\n<p>Maps the assertion to an assertion on the subject node's number value.<\/p><p>Be aware that if the node is not a numeric node this will map to an assertion\non <code>null<\/code>.<\/p>\nbooleanValue\n<p>Maps the assertion to an assertion on the subject node's boolean value.<\/p><p>Be aware that if the node is not a boolean node this will map to an assertion\non <code>false<\/code>.<\/p>\nfindValuesAsText\n<p>Maps the assertion to an assertion on the text values of  fieldName  in each\nchild of the current node.<\/p>\nhasNodeType\n<p>Asserts that the subject node's <a href=\"#\">JsonNode.getNodeType<\/a> method returns\n nodeType .<\/p><p>Convenient aliases for this assertion exist for common node types that also\nnarrow the subject type of the resulting assertion builder.<\/p>\nhasSize\n<p>Asserts that a JSON array's size is equal to  expected .<\/p>\nsize\n<p>Maps an assertion on a JSON array to an assertion on its size.<\/p>\ntextValues\n<p>Maps an assertion on a JSON array to an assertion on the text values of all nodes in the array.<\/p>\n"
+              }]
+            }}
+          }}
+        },
+        "arrow": {
+          "ownKey": "arrow",
+          "childrenPages": {"strikt": {
+            "ownKey": "strikt",
+            "childrenPages": {"arrow": {
+              "ownKey": "arrow",
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc/arrow",
+                  "baseUrl": "https://strikt.io",
+                  "fileName": "strikt/arrow",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://strikt.io/kotlindoc/arrow/strikt/arrow"
+                },
+                "description": "",
+                "title": "strikt.arrow",
+                "content": "<p>b<\/p>\n<p>Unwraps the containing value of the <a href=\"#\">Either.Right<\/a><\/p>\nvalue\n<p>Unwraps the containing value of the <a href=\"#\">Either.Right<\/a><\/p>\nvalue\n<p>Unwraps the containing value of the <a href=\"#\">Either.Left<\/a><\/p>\nvalue\n<p>Unwraps the containing value of the <a href=\"#\">Some<\/a><\/p>\nvalue\n<p>Unwraps the containing value of the <a href=\"#\">Validated.Valid<\/a><\/p>\nvalue\n<p>Unwraps the containing value of the <a href=\"#\">Validated.Invalid<\/a><\/p>\na\n<p>Unwraps the containing value of the <a href=\"#\">Either.Left<\/a><\/p>\na\n<p>Unwraps the containing value of the <a href=\"#\">Validated.Valid<\/a><\/p>\nt\n<p>Unwraps the containing value of the <a href=\"#\">Some<\/a><\/p>\ne\n<p>Unwraps the containing value of the <a href=\"#\">Validated.Invalid<\/a><\/p>\nisRight\n<p>Asserts that the <a href=\"#\">Either<\/a> is <a href=\"#\">Either.Right<\/a><\/p>\nisRight\n<p>Asserts that the <a href=\"#\">Either<\/a> is <a href=\"#\">Either.Right<\/a> and that it contains the exact value<\/p>\nisLeft\n<p>Asserts that the <a href=\"#\">Either<\/a> is <a href=\"#\">Either.Left<\/a><\/p>\nisLeft\n<p>Asserts that the <a href=\"#\">Either<\/a> is <a href=\"#\">Either.Left<\/a> and that it contains the exact value<\/p>\nisNone\n<p>Asserts that the <a href=\"#\">Option<\/a> is <a href=\"#\">None<\/a><\/p>\nisSome\n<p>Asserts that the <a href=\"#\">Option<\/a> is <a href=\"#\">Some<\/a><\/p>\nisSome\n<p>Asserts that the <a href=\"#\">Option<\/a> is <a href=\"#\">Some<\/a> and that it contains the exact value<\/p>\nisValid\n<p>Asserts that the <a href=\"#\">Validated<\/a> is <a href=\"#\">Validated.Valid<\/a><\/p>\nisValid\n<p>Asserts that the <a href=\"#\">Validated<\/a> is <a href=\"#\">Validated.Valid<\/a> and that it contains the exact value<\/p>\nisInvalid\n<p>Asserts that the <a href=\"#\">Validated<\/a> is <a href=\"#\">Validated.Invalid<\/a><\/p>\nisInvalid\n<p>Asserts that the <a href=\"#\">Validated<\/a> is <a href=\"#\">Validated.Invalid<\/a> and that it contains the exact value<\/p>\n"
+              }]
+            }}
+          }}
+        }
+      }
+    },
+    "modules": {
+      "ownKey": "modules",
+      "childrenPages": {
+        "gradle": {
+          "ownKey": "gradle",
+          "ownPages": [{
+            "reference": {
+              "path": "modules",
+              "baseUrl": "https://strikt.io",
+              "fileName": "gradle",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://strikt.io/modules/gradle"
+            },
+            "description": "",
+            "title": "Gradle Module",
+            "content": "<h2 id=\"gradle\"><a href=\"#gradle\" id=\"gradle\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/gradle\">Gradle<\/a><\/h2>\n<p>Extensions for assertions and traversals on <a href=\"https://github.com/gradle/gradle\">Gradle<\/a>'s test kit.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-gradle:0.31.0&quot;)\n<\/code><\/pre>\n"
+          }]
+        },
+        "jvm": {
+          "ownKey": "jvm",
+          "ownPages": [{
+            "reference": {
+              "path": "modules",
+              "baseUrl": "https://strikt.io",
+              "fileName": "jvm",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://strikt.io/modules/jvm"
+            },
+            "description": "",
+            "title": "JVM Module",
+            "content": "<h2 id=\"jvm\"><a href=\"#jvm\" id=\"jvm\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/jvm\">JVM<\/a><\/h2>\n<p>Extensions for assertions and traversals on types from the Java SDK.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-jvm:0.31.0&quot;)\n<\/code><\/pre>\n"
+          }]
+        },
+        "spring": {
+          "ownKey": "spring",
+          "ownPages": [{
+            "reference": {
+              "path": "modules",
+              "baseUrl": "https://strikt.io",
+              "fileName": "spring",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://strikt.io/modules/spring"
+            },
+            "description": "",
+            "title": "Spring Module",
+            "content": "<h2 id=\"spring\"><a href=\"#spring\" id=\"spring\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/spring\">Spring<\/a><\/h2>\n<p>Extensions for testing code that uses the Spring Framework.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-spring:0.31.0&quot;)\n<\/code><\/pre>\n"
+          }]
+        },
+        "core": {
+          "ownKey": "core",
+          "ownPages": [{
+            "reference": {
+              "path": "modules",
+              "baseUrl": "https://strikt.io",
+              "fileName": "core",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://strikt.io/modules/core"
+            },
+            "description": "",
+            "title": "Core API",
+            "content": "<h2 id=\"core\"><a href=\"#core\" id=\"core\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/core\">Core<\/a><\/h2>\n<p>The core API for Strikt.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-core:0.31.0&quot;)\n<\/code><\/pre>\n"
+          }]
+        },
+        "bom": {
+          "ownKey": "bom",
+          "ownPages": [{
+            "reference": {
+              "path": "modules",
+              "baseUrl": "https://strikt.io",
+              "fileName": "bom",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://strikt.io/modules/bom"
+            },
+            "description": "",
+            "title": "Bill of Materials",
+            "content": "<h2 id=\"using-the-bill-of-materials-bom\"><a href=\"#using-the-bill-of-materials-bom\" id=\"using-the-bill-of-materials-bom\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/bom\">Using the Bill of Materials (BOM)<\/a><\/h2>\n<p>If you're using multiple Strikt modules (and Gradle &gt;= 5.0) you can import Strikt's BOM and then omit versions for individual modules.\nFor example:<\/p>\n<pre><code class=\"language-kotlin\">dependencies {\n  testImplementation(platform(&quot;io.strikt:strikt-bom:0.31.0&quot;))\n  testImplementation(&quot;io.strikt:strikt-arrow&quot;)\n  testImplementation(&quot;io.strikt:strikt-jackson&quot;)\n  testImplementation(&quot;io.strikt:strikt-jvm&quot;)\n}\n<\/code><\/pre>\n"
+          }]
+        },
+        "protobuf": {
+          "ownKey": "protobuf",
+          "ownPages": [{
+            "reference": {
+              "path": "modules",
+              "baseUrl": "https://strikt.io",
+              "fileName": "protobuf",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://strikt.io/modules/protobuf"
+            },
+            "description": "",
+            "title": "Protobuf Module",
+            "content": "<h2 id=\"protobuf\"><a href=\"#protobuf\" id=\"protobuf\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/protobuf\">Protobuf<\/a><\/h2>\n<p>Extensions for testing code that uses Protobuf / gRPC.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-protobuf:0.31.0&quot;)\n<\/code><\/pre>\n"
+          }]
+        },
+        "mockk": {
+          "ownKey": "mockk",
+          "ownPages": [{
+            "reference": {
+              "path": "modules",
+              "baseUrl": "https://strikt.io",
+              "fileName": "mockk",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://strikt.io/modules/mockk"
+            },
+            "description": "",
+            "title": "MockK Module",
+            "content": "<h2 id=\"mockk\"><a href=\"#mockk\" id=\"mockk\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/mockk\">Mockk<\/a><\/h2>\n<p>Extensions for assertions and traversals on types from the <a href=\"https://mockk.io/\">Mockk<\/a> mocking and verification library.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-mockk:0.31.0&quot;)\n<\/code><\/pre>\n"
+          }]
+        },
+        "jackson": {
+          "ownKey": "jackson",
+          "ownPages": [{
+            "reference": {
+              "path": "modules",
+              "baseUrl": "https://strikt.io",
+              "fileName": "jackson",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://strikt.io/modules/jackson"
+            },
+            "description": "",
+            "title": "Jackson Module",
+            "content": "<h2 id=\"jackson\"><a href=\"#jackson\" id=\"jackson\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/jackson\">Jackson<\/a><\/h2>\n<p>Extensions for assertions and traversals on types <a href=\"https://github.com/FasterXML/jackson\">Jackson<\/a>'s <code>JsonNode<\/code> and sub-types.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-jackson:0.31.0&quot;)\n<\/code><\/pre>\n"
+          }]
+        },
+        "arrow": {
+          "ownKey": "arrow",
+          "ownPages": [{
+            "reference": {
+              "path": "modules",
+              "baseUrl": "https://strikt.io",
+              "fileName": "arrow",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://strikt.io/modules/arrow"
+            },
+            "description": "",
+            "title": "Arrow Module",
+            "content": "<h2 id=\"arrow\"><a href=\"#arrow\" id=\"arrow\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/arrow\">Arrow<\/a><\/h2>\n<p>Extensions for assertions and traversals on types from the <a href=\"https://arrow-kt.io/\">Arrow<\/a>'s functional programming library.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-arrow:0.31.0&quot;)\n<\/code><\/pre>\n"
+          }]
+        }
+      }
+    }
+  }
+}

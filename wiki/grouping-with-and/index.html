@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="https://strikt.io/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Grouping Assertions With and or with</title>
+
+
+<meta name="description" content="Strikt is an assertion library for Kotlin intended for use with a test runner such as JUnit or Spek.">
+
+
+
+<link rel="prev" href="https://strikt.io/wiki/traversing-subjects">
+
+
+<link rel="next" href="https://strikt.io/wiki/custom-assertions">
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/prismFixes.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://strikt.io","environment":"prod","version":"0.31.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://strikt.io">
+        <img src="https://strikt.io/assets/images/logo-white-28.png" alt="Strikt">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search Strikt docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://strikt.io">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/assertion-styles">Assertion Styles</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/collection-elements">Collection Element Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/expecting-exceptions">Expecting Exceptions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/flow-typing">Strongly Typed Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/traversing-subjects">Traversing Assertion Subjects</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/grouping-with-and">Grouping Assertions With and or with</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/custom-assertions">Custom Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/additional-modules">Additional Modules</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/core">Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/bom">Bill of Materials</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/arrow">Arrow Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/gradle">Gradle Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jvm">JVM Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jackson">Jackson Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/mockk">MockK Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/protobuf">Protobuf Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/spring">Spring Module</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/about">About Strikt</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/changelog">Changelog</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop">
+      
+        
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://strikt.io/wiki">Wiki</a></li>
+
+
+
+    <li class="is-active"><a href="https://strikt.io/wiki/grouping-with-and" aria-current="page">Grouping Assertions With and or with</a></li>
+
+
+</ul>
+</nav>
+
+
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<h1 id="grouping-assertions-with-and-or-with"><a href="#grouping-assertions-with-and-or-with" id="grouping-assertions-with-and-or-with" class="anchor"></a>Grouping Assertions with <em>and</em> or <em>with</em></h1>
+<p>Strikt provides the <code>and</code> and <code>with</code> functions, and several varieties of <code>with*</code>, that are used to add a block of assertions to a chain.
+This is useful in a couple of scenarios.</p>
+<h2 id="grouping-assertions-after-a-null-or-type-check"><a href="#grouping-assertions-after-a-null-or-type-check" id="grouping-assertions-after-a-null-or-type-check" class="anchor"></a>Grouping assertions after a null or type check</h2>
+<p>It's frequently useful to be able to perform a block of assertions after narrowing the subject type.
+For example, if the declared type of an assertion subject is nullable it can be awkward to apply a block of assertions directly with <code>expectThat</code> as every individual assertion in the block needs to deal with the nullable type.</p>
+<p>The same is true when the subject type is overly broad, and you need to narrow the type with <code>isA&lt;T&gt;</code> in order to use assertion functions that are specific to the runtime type.</p>
+<p>The <code>and</code> method is helpful in these scenarios.
+For example:</p>
+<pre><code class="language-kotlin">expectThat(subject)
+  .isNotNull()
+  .and {
+    // perform other assertions on a known non-null subject
+  }
+
+</code></pre>
+<p>The type after <code>expectThat</code> is <code>Assertion.Builder&lt;T?&gt;</code> (assuming <code>subject</code> has a nullable declared type) but the receiver of <code>and</code> is <code>Assertion.Builder&lt;T&gt;</code> as <code>isNotNull</code> has narrowed the subject type.</p>
+<h2 id="making-assertions-on-sub-trees-of-a-subject"><a href="#making-assertions-on-sub-trees-of-a-subject" id="making-assertions-on-sub-trees-of-a-subject" class="anchor"></a>Making assertions on sub-trees of a subject</h2>
+<p>Another use for <code>and</code> is to create a branch of assertions that apply to a sub-tree of the subject.
+For example, if testing a complex value type with nested properties:</p>
+<pre><code class="language-kotlin">expectThat(person)
+  .and {
+    get { name }.isEqualTo(&quot;David&quot;)
+  }
+  .and {
+    get { birthDate.year }.isEqualTo(1947)
+  }
+
+</code></pre>
+<p>The <code>with</code> function gives you another option for doing this:</p>
+<pre><code class="language-kotlin">expectThat(person)
+  .with(Person::name) {
+    isEqualTo(&quot;David&quot;)
+  }
+  .with({ birthDate.year }) {
+    isEqualTo(1947)
+  }
+
+</code></pre>
+<p>Of course, it may be better to structure the same assertion with separate assertions.
+This is a lot more readable:</p>
+<pre><code class="language-kotlin">expect {
+  that(person.name).isEqualTo(&quot;David&quot;)
+  that(person.birthDate.year).isEqualTo(1947)
+}
+
+</code></pre>
+<p>Testing properties of a collection can be done similarly:</p>
+<pre><code class="language-kotlin">expectThat(albums)
+  .hasSize(26)
+  .and { first().get { name }.isEqualTo(&quot;David Bowie&quot;) }
+  .and { last().get { name }.isEqualTo(&quot;Blackstar&quot;) }
+
+</code></pre>
+<h2 id="with-extension-functions"><a href="#with-extension-functions" id="with-extension-functions" class="anchor"></a><em>with*</em> extension functions</h2>
+<p>Strikt provides some variants of <code>with</code> that are also useful in these kinds of tests.
+These include:</p>
+<ul>
+<li>for <code>Iterable</code> subjects:
+<ul>
+<li><code>withElementAt(index, lambda)</code></li>
+<li><code>withFirst(lambda)</code></li>
+<li><code>withLast(lambda)</code></li>
+<li><code>withFirst(predicate, lambda)</code></li>
+</ul>
+</li>
+<li>for <code>Map</code> subjects:
+<ul>
+<li><code>withValue(key, lambda)</code></li>
+</ul>
+</li>
+<li>for <code>CapturingSlot</code> subjects:
+<ul>
+<li><code>withCaptured(lamda)</code></li>
+</ul>
+</li>
+</ul>
+<p>For example, the previous assertions could also be written as:</p>
+<pre><code class="language-kotlin">expectThat(albums)
+  .hasSize(26)
+  .withFirst {
+    get { name }.isEqualTo(&quot;David Bowie&quot;)
+  }
+  .withLast {
+    get { name }.isEqualTo(&quot;Blackstar&quot;)
+  }
+
+</code></pre>
+
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+<nav class="pagination is-medium" role="navigation" aria-label="pagination">
+  <a class="pagination-previous button is-large is-link is-outlined"
+   href="https://strikt.io/wiki/traversing-subjects" >
+      <span class="icon">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+  </a>
+  <a class="pagination-next button is-large is-link is-outlined"
+   href="https://strikt.io/wiki/custom-assertions" >
+      <span class="icon">
+        <i class="fas fa-arrow-right"></i>
+      </span>
+  </a>
+</nav>
+
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="https://github.com/robfletcher/strikt/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+          <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J" class="button is-danger">
+            <span class="icon"><i class="fab fa-lg fa-slack-hash"></i></span>
+            <span>Slack</span>
+          </a>
+        
+          <a href="https://twitter.com/stri_kt" class="button is-info">
+            <span class="icon"><i class="fab fa-lg fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://strikt.io/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://strikt.io/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 0.21.1"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer  src="https://strikt.io/StriktTheme/9f2a9a08/releases/v5.4.0/js/all.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-tabs.js"></script>
+<script  src="https://strikt.io/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://strikt.io/lunr/lunr.js"></script>
+<script  src="https://strikt.io/assets/js/orchidSearch.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,1670 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="https://strikt.io/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>strikt.arrow</title>
+
+
+<meta name="description" content="Strikt is an assertion library for Kotlin intended for use with a test runner such as JUnit or Spek.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/prismFixes.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSourceDoc.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://strikt.io","environment":"prod","version":"0.31.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://strikt.io">
+        <img src="https://strikt.io/assets/images/logo-white-28.png" alt="Strikt">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search Strikt docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://strikt.io">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/assertion-styles">Assertion Styles</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/collection-elements">Collection Element Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/expecting-exceptions">Expecting Exceptions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/flow-typing">Strongly Typed Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/traversing-subjects">Traversing Assertion Subjects</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/grouping-with-and">Grouping Assertions With and or with</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/custom-assertions">Custom Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/additional-modules">Additional Modules</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/core">Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/bom">Bill of Materials</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/arrow">Arrow Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/gradle">Gradle Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jvm">JVM Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jackson">Jackson Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/mockk">MockK Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/protobuf">Protobuf Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/spring">Spring Module</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/about">About Strikt</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/changelog">Changelog</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop">
+      
+        
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://strikt.io/modules/arrow">Arrow Module</a></li>
+
+
+
+    <li class="is-active"><a href="https://strikt.io/kotlindoc/arrow/strikt/arrow" aria-current="page">strikt.arrow</a></li>
+
+
+</ul>
+</nav>
+
+
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="strikt.arrow">
+
+
+  
+
+  
+    <div class="sourcedoc-section section-element" id="4c4722f2dfbfa3112c8e94e89c162602c0546e3d">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>package <a href="https://strikt.io/kotlindoc/arrow/strikt/arrow">strikt.arrow</a></code>
+      </p>
+
+      
+        
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="fields">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="1a9e799ceff507efdc6337972d326bfc62a7157e">
+        <td class="sourcedoc-section section-signature">
+          <code>val b: Assertion.Builder<R>&lt;R&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Either.Right</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="673cd161f5a45e77f84b4c1a061250f9dfbc10a4">
+        <td class="sourcedoc-section section-signature">
+          <code>val value: Assertion.Builder<R>&lt;R&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Either.Right</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="653064ea034a297dc825c845cdccce29f9df8ccc">
+        <td class="sourcedoc-section section-signature">
+          <code>val value: Assertion.Builder<L>&lt;L&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Either.Left</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="3a911cddbd231a19b773def5462204f9042a292f">
+        <td class="sourcedoc-section section-signature">
+          <code>val value: Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Some</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="012826d415e3a492922050970d2709c0ffe1488c">
+        <td class="sourcedoc-section section-signature">
+          <code>val value: Assertion.Builder<A>&lt;A&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Validated.Valid</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="92f7fe78a5cc399c86ff026870d458ee9000a09f">
+        <td class="sourcedoc-section section-signature">
+          <code>val value: Assertion.Builder<E>&lt;E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Validated.Invalid</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="f403ef580ab6d6c79960943993200dc0ded3ded6">
+        <td class="sourcedoc-section section-signature">
+          <code>val a: Assertion.Builder<L>&lt;L&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Either.Left</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="98591db2dcf7d3a499da6b488f6bf4ec0e837daf">
+        <td class="sourcedoc-section section-signature">
+          <code>val a: Assertion.Builder<A>&lt;A&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Validated.Valid</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="22d3c2c49f09501205e1557d24e58d2cf1c10aeb">
+        <td class="sourcedoc-section section-signature">
+          <code>val t: Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Some</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="522f7792f52316000a8a68c09c4e3827738f645f">
+        <td class="sourcedoc-section section-signature">
+          <code>val e: Assertion.Builder<E>&lt;E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Unwraps the containing value of the <a href="#">Validated.Invalid</a></p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="2f951ce425643cd36ea7464efe220d58b6fa0391">
+      
+      <h3 class="sourcedoc-section element-name">isRight</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;L, R&gt; Assertion.Builder<Either<L, R>>&lt;Either<L, R>&lt;L, R&gt;&gt;.isRight(): @Suppress("UNCHECKED_CAST")&lt;Either.Right<R>&lt;R&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Either</a> is <a href="#">Either.Right</a></p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4c6e8ba9ebca35de9535d0554a3734ece0d6b1ca">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="06ca93f01f8368a156b7a4aa81d40495b2a18987">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Either<L, R>>&lt;Either<L, R>&lt;L, R&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5dddaf036e9f6e4f0a85157dc3b98b52dec747fb">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4dad1059ebed77ce45bec60ff0c2003180b05f7d">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")&lt;Either.Right<R>&lt;R&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Either.Right</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="a6293140c11c00e416d9f7f666ab7afa4f99796a">
+      
+      <h3 class="sourcedoc-section element-name">isRight</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;L, R&gt; Assertion.Builder<Either<L, R>>&lt;Either<L, R>&lt;L, R&gt;&gt;.isRight(value: R): @Suppress("UNCHECKED_CAST")
+infix&lt;Either.Right<R>&lt;R&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Either</a> is <a href="#">Either.Right</a> and that it contains the exact value</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="56b92de2cef05d137f6bcc96c5d27e73de74600e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="06ca93f01f8368a156b7a4aa81d40495b2a18987">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Either<L, R>>&lt;Either<L, R>&lt;L, R&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="24fdb96402d72ca8946de51717563019a3e8e857">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="32bf47a8a59acc1218489015f60bd5b92cc28691">
+        <td class="sourcedoc-section section-signature">
+          <code>value: R</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Value to compare to the <a href="#">Either</a>'s wrapped value</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="27c1cf08c4b47cbfc9eec905e360c673830bca65">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="37df44642a7abc2741b87986f6604dc50b4e3c4f">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")
+infix&lt;Either.Right<R>&lt;R&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Either.Right</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e79a83d3f3a1d5008b5dd589168577fa23bd8e0e">
+      
+      <h3 class="sourcedoc-section element-name">isLeft</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;L, R&gt; Assertion.Builder<Either<L, R>>&lt;Either<L, R>&lt;L, R&gt;&gt;.isLeft(): @Suppress("UNCHECKED_CAST")&lt;Either.Left<L>&lt;L&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Either</a> is <a href="#">Either.Left</a></p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9ff01dc12b4a67aae9c3177b466bb697efdad835">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="06ca93f01f8368a156b7a4aa81d40495b2a18987">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Either<L, R>>&lt;Either<L, R>&lt;L, R&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d7fc89cc3ddfc9f5ce44f92ee56f0f31b0d858b6">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="63b82c761328dada1fba2afd7034a04ea0646f67">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")&lt;Either.Left<L>&lt;L&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Either.Left</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="96ce7f475d85d307f13ba63e3ea82bcb5c42fa6a">
+      
+      <h3 class="sourcedoc-section element-name">isLeft</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;L, R&gt; Assertion.Builder<Either<L, R>>&lt;Either<L, R>&lt;L, R&gt;&gt;.isLeft(value: L): @Suppress("UNCHECKED_CAST")
+infix&lt;Either.Left<L>&lt;L&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Either</a> is <a href="#">Either.Left</a> and that it contains the exact value</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="670be02f39163e0010f48e0171cf143337a820fb">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="06ca93f01f8368a156b7a4aa81d40495b2a18987">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Either<L, R>>&lt;Either<L, R>&lt;L, R&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="85701c5b8df32d49329c01547d79165c50f20595">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="6cfc7c9abd36e0d92c7c0aa982261d911b49f204">
+        <td class="sourcedoc-section section-signature">
+          <code>value: L</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Value to compare to the <a href="#">Either</a>'s wrapped value</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bdc2da5f01cd6ab94ffb3d123d395a721879ffb4">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d8538763a709cd6102e4ec228283ea3a64da42bb">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")
+infix&lt;Either.Left<L>&lt;L&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Either.Left</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="49254fcb8babefdc364a7a6e9253050c3f764253">
+      
+      <h3 class="sourcedoc-section element-name">isNone</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<Option<T>>&lt;Option<T>&lt;T&gt;&gt;.isNone(): @Suppress("UNCHECKED_CAST")&lt;None&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Option</a> is <a href="#">None</a></p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bafbef0b1c67a0f2d18df51aec64f31dd8192147">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c793b07c11241de761828cecff704eef74441c8d">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Option<T>>&lt;Option<T>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f41eeac4267ab18c15d18e70597c26a5a8ff0b47">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="98bf8e55a4af6dcac5d247345b3a249e079ebba4">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")&lt;None&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">None</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="42ce7d5aa3e30aff30cc44aedb1e09412e21959f">
+      
+      <h3 class="sourcedoc-section element-name">isSome</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<Option<T>>&lt;Option<T>&lt;T&gt;&gt;.isSome(): @Suppress("UNCHECKED_CAST")&lt;Some<T>&lt;T&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Option</a> is <a href="#">Some</a></p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4bc0fb72f83ee51f5a7d95f5a211b7cf552451d4">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c793b07c11241de761828cecff704eef74441c8d">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Option<T>>&lt;Option<T>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="73251b9376acaf70b9c8b806f1494af81648b0bd">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="a10375bb5b5dbd711b7c98a2c8bfe8f830a05218">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")&lt;Some<T>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Some</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="f60f1c2b3e9ff2c0118dc63a1f36b2f8a201426a">
+      
+      <h3 class="sourcedoc-section element-name">isSome</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T&gt; Assertion.Builder<Option<T>>&lt;Option<T>&lt;T&gt;&gt;.isSome(value: T): @Suppress("UNCHECKED_CAST")
+infix&lt;Some<T>&lt;T&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Option</a> is <a href="#">Some</a> and that it contains the exact value</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="922caed0c40d1ca640e2318f305178778e70719b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c793b07c11241de761828cecff704eef74441c8d">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Option<T>>&lt;Option<T>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6496950ced6a56a8a99bfd1aa2fa69e1a33d32b1">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="863fda91f57bc5b798f517d01b508d5d32a0a6fe">
+        <td class="sourcedoc-section section-signature">
+          <code>value: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Value to compare to the <a href="#">Option</a>'s wrapped value</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="354cad1bab17eaecff584d2a19b3c24a58f20638">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5cb577195f2898811a5c9dc52c4508ac4399e765">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")
+infix&lt;Some<T>&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Some</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="244c8f1f70a67c58ed1b1032dc12dbea64639cb7">
+      
+      <h3 class="sourcedoc-section element-name">isValid</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;E, A&gt; Assertion.Builder<Validated<E, A>>&lt;Validated<E, A>&lt;E, A&gt;&gt;.isValid(): @Suppress("UNCHECKED_CAST")&lt;Validated.Valid<A>&lt;A&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Validated</a> is <a href="#">Validated.Valid</a></p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7db41fcdbd84480665a2d04b1490cd4c4c6d80dc">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5d27bc455bb07602641363c128247e05a156bb39">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Validated<E, A>>&lt;Validated<E, A>&lt;E, A&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7ade4b1db758cbae64316e87baa625a76eb5595a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="eca3cab18790af36de308bc44f61d2b8dfe70855">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")&lt;Validated.Valid<A>&lt;A&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Validated.Valid</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="2a61593629683a39dc9a79cdfcd640719b9b6956">
+      
+      <h3 class="sourcedoc-section element-name">isValid</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;E, A&gt; Assertion.Builder<Validated<E, A>>&lt;Validated<E, A>&lt;E, A&gt;&gt;.isValid(value: A): @Suppress("UNCHECKED_CAST")
+infix&lt;Validated.Valid<A>&lt;A&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Validated</a> is <a href="#">Validated.Valid</a> and that it contains the exact value</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="537c0d3eb5d760d3a9b5f5f1ba18a068f7ec3ed1">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5d27bc455bb07602641363c128247e05a156bb39">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Validated<E, A>>&lt;Validated<E, A>&lt;E, A&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8a800534c36bd827d5dbc8058643d58916c6f07a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e1f9d15fe003d658cc84c0064a5f02d5fbece777">
+        <td class="sourcedoc-section section-signature">
+          <code>value: A</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Value to compare to the <a href="#">Validated</a>'s wrapped value</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d989650d908ccc594a45259e52ce9691e4e049f6">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3f4fce37c5a74bffaae71b16a03aa22480177016">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")
+infix&lt;Validated.Valid<A>&lt;A&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Validated.Valid</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="6923f696323a09b042137ce2aefedc114fa464ea">
+      
+      <h3 class="sourcedoc-section element-name">isInvalid</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;E, A&gt; Assertion.Builder<Validated<E, A>>&lt;Validated<E, A>&lt;E, A&gt;&gt;.isInvalid(): @Suppress("UNCHECKED_CAST")&lt;Validated.Invalid<E>&lt;E&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Validated</a> is <a href="#">Validated.Invalid</a></p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="570f79268be1dc9a29291c5ead04ad7106509941">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5d27bc455bb07602641363c128247e05a156bb39">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Validated<E, A>>&lt;Validated<E, A>&lt;E, A&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bbfc76d2b64be46b64de2f24b849cab01c0b2242">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5b0ed31a3184d91560a001de3ed2b9fcad9c1aac">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")&lt;Validated.Invalid<E>&lt;E&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Validated.Invalid</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="89a8eab22ed3959e34c725b5327d34f8459f464b">
+      
+      <h3 class="sourcedoc-section element-name">isInvalid</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;E, A&gt; Assertion.Builder<Validated<E, A>>&lt;Validated<E, A>&lt;E, A&gt;&gt;.isInvalid(value: E): @Suppress("UNCHECKED_CAST")
+infix&lt;Validated.Invalid<E>&lt;E&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the <a href="#">Validated</a> is <a href="#">Validated.Invalid</a> and that it contains the exact value</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b89b54c3929204abe45879de2d664cb19e166059">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5d27bc455bb07602641363c128247e05a156bb39">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Validated<E, A>>&lt;Validated<E, A>&lt;E, A&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2cdedbf95d99a17fb671373515ac6429770e7892">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="02c6115a6806675ae6bc11cdf876a1b23ff79376">
+        <td class="sourcedoc-section section-signature">
+          <code>value: E</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Value to compare to the <a href="#">Validated</a>'s wrapped value</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="73bb6eb14c9e09b36675e312febc62a08aab08e0">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7ff07dc278d464227e269d862a761da8eac939e0">
+        <td class="sourcedoc-section section-signature">
+          <code>@Suppress("UNCHECKED_CAST")
+infix&lt;Validated.Invalid<E>&lt;E&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Assertion builder over the same subject that is now known to be
+a <a href="#">Validated.Invalid</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="https://github.com/robfletcher/strikt/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+          <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J" class="button is-danger">
+            <span class="icon"><i class="fab fa-lg fa-slack-hash"></i></span>
+            <span>Slack</span>
+          </a>
+        
+          <a href="https://twitter.com/stri_kt" class="button is-info">
+            <span class="icon"><i class="fab fa-lg fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://strikt.io/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://strikt.io/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 0.21.1"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer  src="https://strikt.io/StriktTheme/9f2a9a08/releases/v5.4.0/js/all.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-tabs.js"></script>
+<script  src="https://strikt.io/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://strikt.io/lunr/lunr.js"></script>
+<script  src="https://strikt.io/assets/js/orchidSearch.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

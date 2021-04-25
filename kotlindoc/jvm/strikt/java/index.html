@@ -1,0 +1,3933 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.1"/>
+<link rel="icon" href="https://strikt.io/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>strikt.java</title>
+
+
+<meta name="description" content="Strikt is an assertion library for Kotlin intended for use with a test runner such as JUnit or Spek.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/StriktTheme/9f2a9a08/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/prismFixes.css"  />
+<link rel="stylesheet" type="text/css" href="https://strikt.io/assets/css/orchidSourceDoc.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.1","baseUrl":"https://strikt.io","environment":"prod","version":"0.31.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://strikt.io">
+        <img src="https://strikt.io/assets/images/logo-white-28.png" alt="Strikt">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search Strikt docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://strikt.io">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/assertion-styles">Assertion Styles</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/collection-elements">Collection Element Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/expecting-exceptions">Expecting Exceptions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/flow-typing">Strongly Typed Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/traversing-subjects">Traversing Assertion Subjects</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/grouping-with-and">Grouping Assertions With and or with</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/custom-assertions">Custom Assertions</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/wiki/additional-modules">Additional Modules</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/core">Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/bom">Bill of Materials</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/arrow">Arrow Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/gradle">Gradle Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jvm">JVM Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/jackson">Jackson Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/mockk">MockK Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/protobuf">Protobuf Module</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/modules/spring">Spring Module</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://strikt.io/about">About Strikt</a>
+            
+          
+            
+              <a class="navbar-item" href="https://strikt.io/changelog">Changelog</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop">
+      
+        
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://strikt.io/modules/jvm">JVM Module</a></li>
+
+
+
+    <li class="is-active"><a href="https://strikt.io/kotlindoc/jvm/strikt/java" aria-current="page">strikt.java</a></li>
+
+
+</ul>
+</nav>
+
+
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="strikt.java">
+
+
+  
+
+  
+    <div class="sourcedoc-section section-element" id="75ea806ef328448324e0ee7bd68d0503a63a2535">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>package <a href="https://strikt.io/kotlindoc/jvm/strikt/java">strikt.java</a></code>
+      </p>
+
+      
+        
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="subpackages">
+
+
+  <p class="sourcedoc-section section-name"><strong>Subpackages</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="8a26e352c299007954beaa6152b6ecfc1d364ffb">
+        <td class="sourcedoc-section section-signature">
+          <code>package <a href="https://strikt.io/kotlindoc/jvm/strikt/java/time">strikt.java.time</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="fields">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="2e9a1c781340510f3dd21fcb4ab474af272ddd6a">
+        <td class="sourcedoc-section section-signature">
+          <code>val name: Builder<String>&lt;String&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion on the name of the file of the subject.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="edb7b91997a3592670395b3354e653b24956bac4">
+        <td class="sourcedoc-section section-signature">
+          <code>val parent: Builder<String?>&lt;String?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion on the parent file or <code>null</code> if the subject does not have a parent.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="833e27618c659e89bd204baa40f4443d1127b86f">
+        <td class="sourcedoc-section section-signature">
+          <code>val parentFile: Builder<File?>&lt;File?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion on the parent file or <code>null</code> if the subject does not have a parent.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="3322701cd7bbe7cb2e6771fce7533fa6b2872fd1">
+        <td class="sourcedoc-section section-signature">
+          <code>val extension: Builder<String>&lt;String&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion on the file extension (not including the dot) or empty string if it not have one.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="e9dac75db57cf1312fc6be9a4e77aea44128f5d6">
+        <td class="sourcedoc-section section-signature">
+          <code>val nameWithoutExtension: Builder<String>&lt;String&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion on the file name without the extension.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="26c9c7371737361fd0b4a8a6e735e71695a46f19">
+        <td class="sourcedoc-section section-signature">
+          <code>val lastModified: Builder<Long>&lt;Long&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion on the <a href="https://docs.oracle.com/javase/6/docs/api/java/io/File.html#lastModified()">last modified</a> of the subject.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="cbf238eaec173aed90d2bbc9e143dc349b0f9582">
+        <td class="sourcedoc-section section-signature">
+          <code>val length: Builder<Long>&lt;Long&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion on the <a href="https://docs.oracle.com/javase/6/docs/api/java/io/File.html#length()">file size</a> of the subject.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="ab671b848a0c3054d118e7be4cda2b0544a62a4b">
+        <td class="sourcedoc-section section-signature">
+          <code>val childFiles: Builder<List<File>>&lt;List&lt;File&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion on the <a href="https://docs.oracle.com/javase/6/docs/api/java/io/File.html#listFiles()">child files</a> of the subject.</p><p>Note: In contrast to <a href="https://docs.oracle.com/javase/6/docs/api/java/io/File.html#listFiles()">File.listFiles</a>, an empty list is returned for non-directory files.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="f8a6e1a45d13e952a42975ce3451cd85e3e587bb">
+        <td class="sourcedoc-section section-signature">
+          <code>val fileName: Builder<Path>&lt;Path&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion on the path representing the name of the subject.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="282e927356c046bd66cd9887493512863d101f07">
+        <td class="sourcedoc-section section-signature">
+          <code>val size: Builder<Long>&lt;Long&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Maps this assertion to an assertion over the byte size of the subject path.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="b921ce9e6121fff3f0154e2f8005cde7edd77328">
+      
+      <h3 class="sourcedoc-section element-name">propertiesAreEqualTo</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T : Any&gt; Assertion.Builder<T>&lt;T&gt;.propertiesAreEqualTo(other: T): Assertion.Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that all properties of the subject match those of other according
+to either <a href="#">contentEquals</a> in the case of array properties or <a href="#">isEqualTo</a> in
+other cases.</p><p>Properties are identified using Java beans conventions.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="48b1a9cf753eb59d6ec6cb5fee86b4ac30f2a9fb">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9c7b7fadbaa3d177524344b1468fdd71cd8940bc">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="77be340db63f651248645b9adcca66b9255a441a">
+        <td class="sourcedoc-section section-signature">
+          <code>other: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5cdc213a5c1792157a407fdb32b5f5c3fdfdc75d">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="498f92d9f3017ed223ffc19d29fabde46fcb6a31">
+      
+      <h3 class="sourcedoc-section element-name">toPath</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.toPath(): Builder<Path>&lt;Path&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps this assertion to an assertion on a path object representing this subject.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="35df114bad285308ddc32455cf53859338bb87ad">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c498a500c9c33902329075ba846dbbbd06063b9c">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fa3e06b2c022b3c3f9d7f091d272ebf84c53bb94">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<Path>&lt;Path&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="49e160eec6d72ffc9fef2f08f16aee36225dcef8">
+      
+      <h3 class="sourcedoc-section element-name">lines</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.lines(charset: Charset): Builder<List<String>>&lt;List&lt;String&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps this assertion to an assertion on the lines of the subject decoded using the provided charset.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2346f982e2b39f2843c469f454f48c1ffff31459">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="0c0898e5084a27946417bd64f7a7b18034956db0">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="20685b2c35259534a1e6cf83499fa5f2508f8103">
+        <td class="sourcedoc-section section-signature">
+          <code>charset: Charset</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the charset used to decode the content</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f5b5cb245c2986fa607ade7d74538051ba3086fd">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="770c8949558ab4916c4fceab7fe1d72d2827bf14">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<List<String>>&lt;List&lt;String&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="5e5e1f6c8f4dacf5c4c88247c16b24fcaaa44a6f">
+      
+      <h3 class="sourcedoc-section element-name">text</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.text(charset: Charset): Builder<String>&lt;String&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps this assertion to an assertion on the complete text of the subject decoded using the provided charset.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bee177fbcb805f985ef18da8c15d47ff4034676b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f2a223096fb89984f2fcde436767f7fd6a96d969">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="20685b2c35259534a1e6cf83499fa5f2508f8103">
+        <td class="sourcedoc-section section-signature">
+          <code>charset: Charset</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the charset used to decode the content</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5fd405b18e2b784b45a3d2ed67adeee7e3a3ef69">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="216645d5564e1363da19b9d56511f32c76821a70">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<String>&lt;String&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="b45e1058ed6f1089c14ccac56292430807337048">
+      
+      <h3 class="sourcedoc-section element-name">childFile</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.childFile(name: String): Builder<File>&lt;File&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps this assertion to an assertion on a specific child name of the subject.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4d71bb03c97b519cee9b3900b68b615c62bf5149">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b1b1d1f4256d77d102674e7e204f91b1a40d485f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="cf7d76aa18f0e598757d79a8a9df09d9c2aad977">
+        <td class="sourcedoc-section section-signature">
+          <code>name: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="0fae5adb1aa02920b7f7c3929de0c2aa51fc7dba">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="59ea475499ba19477a839397d8938c6565f86dd4">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<File>&lt;File&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="d21462063d43510c61bc745551e95837d71ebad5">
+      
+      <h3 class="sourcedoc-section element-name">exists</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.exists(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file exists.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="00ba5c31a7105f2b836dfbf82ee29a58840d6b92">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="49bbb32820a2d32d1675b515f392b52a4e77dc81">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="efc3b8ed311f15878c99b2460be24d1731a27a82">
+      
+      <h3 class="sourcedoc-section element-name">exists</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.exists(vararg options: LinkOption): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject exists, handling symbolic links according to the provided options</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="043894aafc6cd4f28ca3aeb6068a9939faf4de73">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1b9a24e7a92a672ee8d604164aae5ac24c5144d1">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ef3f4bba20cc8d836eb159623b3a7016580b3ae2">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg options: LinkOption</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the options indicating how symbolic links are handled</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5d724c06d18ad9ae5db85ffa0aae974123ae9a82">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="2bd5a05486a989c8905a4a27bbef4fe76b313eb4">
+      
+      <h3 class="sourcedoc-section element-name">notExists</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.notExists(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file not exists.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6362fc16617ea22756196ace8eaa7619c470c17c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9a72e1a99370ca35c47e2ae62de21ce0fe86dd3b">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="818fc40d3ff203cf4533ff4915489b3a7deae218">
+      
+      <h3 class="sourcedoc-section element-name">isRegularFile</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isRegularFile(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is a regular file.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cba0b1c5ef5dfdfc14bfaa85fad122f435c919ca">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e58a50845f546084914a0650b027f4ffe5a6feca">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="87f229ca5abe22f504bf9f02ff7eaea5caceaa4e">
+      
+      <h3 class="sourcedoc-section element-name">isRegularFile</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.isRegularFile(vararg options: LinkOption): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject is a regular file, handling symbolic links according to the provided options.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7f9b879bdcc19e009afc298d4b908105637980e7">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4a42139b2fc9937dd7126f1fd32002cd630bc258">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ef3f4bba20cc8d836eb159623b3a7016580b3ae2">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg options: LinkOption</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the options indicating how symbolic links are handled</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="16a1709ad2c6ed61e1c3d52beeb959d3eb6d7a32">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="2c5bce6eb74b289e928e8ff8de6f0a4a11a8b063">
+      
+      <h3 class="sourcedoc-section element-name">isNotRegularFile</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isNotRegularFile(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is not a regular file.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="64bb4c94e11dd517fc9e7b20e990f5c24e2299d3">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4d60d9666a03dbc83610b8ee98c0dd8f92e53fbb">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e04c339b2ee78fd2ff9ced013a82d36caa695977">
+      
+      <h3 class="sourcedoc-section element-name">isDirectory</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isDirectory(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is a directory.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="523a2ba0ed73c3f857ec17ada1a624645992361e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="557e060ef90db84dc30c11968978e13408de7151">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="1f1e17de7a39603c8c7bbe4a1c5ae27e07543b1b">
+      
+      <h3 class="sourcedoc-section element-name">isDirectory</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.isDirectory(vararg options: LinkOption): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject is a directory, handling symbolic links according to the provided options.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e583314e048fe43a49802b198be1f49c9df7f430">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9e869075cb08845eeeaf3aff15ba3fc464e4811d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ef3f4bba20cc8d836eb159623b3a7016580b3ae2">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg options: LinkOption</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the options indicating how symbolic links are handled</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9097064f275c6fb738b1167f1db6b06fc9892208">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="977c06724c2311522cf794065b49b7af37cac780">
+      
+      <h3 class="sourcedoc-section element-name">isNotDirectory</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isNotDirectory(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is not a directory.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="0d0f3722d62c0523d20de996476194d20b15f196">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ff043e98c75095f01109e4af62e286e9aef18b83">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="3fd7cbe9b612d7c9d08e4fdb5ae04515c9eb7ae8">
+      
+      <h3 class="sourcedoc-section element-name">isReadable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isReadable(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is readable.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8c38c0ad67c3929b62ae4d34e49afee911c0c32e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="0c4e213f3afdee16ae1540d306f4d9d06279dd13">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0dfa4278560aaf8c258fbae3ca586725d68c15a7">
+      
+      <h3 class="sourcedoc-section element-name">isNotReadable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isNotReadable(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is not readable.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6ca428debc913ba6af1cf104632694401cce349c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f7b2c50fb11cd5f0543f7a38e388c464edd34de9">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="1a8ec2ed6f37d01d8066aeef92c93ae35c9b0776">
+      
+      <h3 class="sourcedoc-section element-name">isWritable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isWritable(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is writable.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="14265a57a1a759f9c6ad1e8782ac8ff17a5d6007">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="35a6c685310682acd412b61f4dcb3347583b7704">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0931e6f115530559d35933a54ad1340e11f57eab">
+      
+      <h3 class="sourcedoc-section element-name">isNotWritable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isNotWritable(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is not writable.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7df0f54aa2764a8b321d4db8ef971f778c73b04b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ad34d27736579eaeee2abc1fb19628f2a93491e6">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="595d08f56ed7b9508866dc6c6b4a40ed01865279">
+      
+      <h3 class="sourcedoc-section element-name">isExecutable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isExecutable(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is executable.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8bdb9b0c726fbe191f2430daeb746545576ea7fc">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cdad4bc7dbcd83ea8f64143d95b565691744af64">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="698fd4c3e31d3f463a2d8bf2fdc98277e16da56e">
+      
+      <h3 class="sourcedoc-section element-name">isNotExecutable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : File&gt; Builder<T>&lt;T&gt;.isNotExecutable(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the file is not executable.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c1c4dab40f37d8d585d4d61912120c8f973a0201">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="998ac0d70a298ae8d46844eb6111dfa8486d5726">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="2753eb4e4878983787d9b81058a149e1e2dcb6de">
+      
+      <h3 class="sourcedoc-section element-name">isPresent</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<Optional<T>>&lt;Optional&lt;T&gt;&gt;.isPresent(): Assertion.Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that an <code>Optional</code> contains a value (is not empty) and returns an
+assertion builder whose subject is the value.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b246c247dc9e1d48df6aa1e5cbeea5d7c393b434">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="269561c9df2b86db3358b7fa54e3e7215f65ec1f">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Optional<T>>&lt;Optional&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="dc237f8af7ab31f4826b7f2c2572c748d801d4de">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5827c8c68b8918e5be95dd4c71d805382e8b5284">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="7082001d0d2c2d9270ec81f899646526a2510be1">
+      
+      <h3 class="sourcedoc-section element-name">isAbsent</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<Optional<T>>&lt;Optional&lt;T&gt;&gt;.isAbsent(): Assertion.Builder<Optional<T>>&lt;Optional&lt;T&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that an <code>Optional</code> does not contain a value.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="36615364298817f198f374103525762689f34f56">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="269561c9df2b86db3358b7fa54e3e7215f65ec1f">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Optional<T>>&lt;Optional&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="0fc71788110e514d6f7c298008aaf6f2cf0e525f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="269561c9df2b86db3358b7fa54e3e7215f65ec1f">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Optional<T>>&lt;Optional&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="8fcd78263994dd89851b7bb5a7f9648c94fac11b">
+      
+      <h3 class="sourcedoc-section element-name">toNullable</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; Assertion.Builder<Optional<T>>&lt;Optional&lt;T&gt;&gt;.toNullable(): Assertion.Builder<T?>&lt;T?&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps an assertion on a Java <code>Optional</code> to a Kotlin nullable type.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5d23a50b6041c832ed5396c8d4383e3075ab6b7c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="269561c9df2b86db3358b7fa54e3e7215f65ec1f">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<Optional<T>>&lt;Optional&lt;T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1a54aae22cfd497b138633edcf4e7df4866164b5">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="6876f34ca0519225de8df4efe52aba8598fb8a72">
+        <td class="sourcedoc-section section-signature">
+          <code>Assertion.Builder<T?>&lt;T?&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="a370c61adb085f05def24abd06fbe61c717f40f4">
+      
+      <h3 class="sourcedoc-section element-name">endsWith</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.endsWith(other: Path): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject end with the provided path.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9b784c9f6c9d5e57f19f22e5242400fd679b50fd">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cbf95e8cad87557cd94171d0b30890cb25e3f196">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d2ce09ecd889b02fedccb899feb9a5b6ed2cefb5">
+        <td class="sourcedoc-section section-signature">
+          <code>other: Path</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the given path</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d901d8beead55ae39e46c0879af483d4cab26d30">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="cffdd3a9a783b1f88191d59e76ab9aa68408c8be">
+      
+      <h3 class="sourcedoc-section element-name">endsWith</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.endsWith(other: String): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject end with the provided path string.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ba5435d80ec707a213355034199dc39c04d50ea7">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b02af2e8a7193ca5766f1d22011b67fcd473077d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="9e63aebff20fa2128da5277df47c3974bc08885c">
+        <td class="sourcedoc-section section-signature">
+          <code>other: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the given path string</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1b67243c138aa798405f70838c22a31e2de52090">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="364176f9a28e52d96a98fdb26389a14fe1ce026b">
+      
+      <h3 class="sourcedoc-section element-name">isAbsolute</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.isAbsolute(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject is an absolute path.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="865368581c37b9d4dfc3db57c3d47c6766eabb67">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="439190ffaa315dbd7ff1d35a3fde96fe30a0a9c0">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="3b02b70ea7e0876e7d5c1b90cc8992a0f44dc161">
+      
+      <h3 class="sourcedoc-section element-name">resolve</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.resolve(other: Path): Builder<Path>&lt;Path&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps this assertion to an assertion of this subject resolved with the provided path.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5a4c090a18e86561ad39a7a8f83b1bff3da0dc92">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="746cbad19dd8e8652f037b155ba287fad2d8e07b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d2ce09ecd889b02fedccb899feb9a5b6ed2cefb5">
+        <td class="sourcedoc-section section-signature">
+          <code>other: Path</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the path to resolve against this subject's path</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="795ac3e456a75a4210cc59c5ce04773749a99b10">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fa3e06b2c022b3c3f9d7f091d272ebf84c53bb94">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<Path>&lt;Path&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="472e97021bec63d225f2b287e68ea380e3a4383a">
+      
+      <h3 class="sourcedoc-section element-name">resolve</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.resolve(other: String): Builder<Path>&lt;Path&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps this assertion to an assertion of this subject resolved with the provided path.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bc2bd3c887c31a49f9c9bcdf9c21289b6b0824ab">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="418a2a66fca1b4f6908d22313cdae5da497f5fa4">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="9e63aebff20fa2128da5277df47c3974bc08885c">
+        <td class="sourcedoc-section section-signature">
+          <code>other: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the path string to resolve against this subject's path</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4267794e4414af31063f29b8665db182f97e2acb">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fa3e06b2c022b3c3f9d7f091d272ebf84c53bb94">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<Path>&lt;Path&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="d665de5c370cc786459536ae12fa1faa9a8ed3a1">
+      
+      <h3 class="sourcedoc-section element-name">startsWith</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.startsWith(other: Path): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject starts with the provided path.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ab866c5e4e006c20c1380f83e348bcef3859291b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3e5672aaa7172756a760bd4f304acf2d1ff0d70a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d2ce09ecd889b02fedccb899feb9a5b6ed2cefb5">
+        <td class="sourcedoc-section section-signature">
+          <code>other: Path</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the given path</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="0a2af83cca7cfd8050395ed4fded2af007d94dc8">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="2aff19eebaeef20c6685becf3f693bc7a646e473">
+      
+      <h3 class="sourcedoc-section element-name">startsWith</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>infix fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.startsWith(other: String): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject starts with the provided path.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1b32f1f329f4bbbe2128e12b5c9952e76ed4efbb">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="84f0f3f7a8b31c91ea0ebf5014dfae9bbb13f599">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="9e63aebff20fa2128da5277df47c3974bc08885c">
+        <td class="sourcedoc-section section-signature">
+          <code>other: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the given path string</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c107326843323531bd78fcc16a486322d51c9764">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="881f5d5b12e2b8a13d148ea94cf67e58b9442709">
+      
+      <h3 class="sourcedoc-section element-name">toFile</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.toFile(): Builder<File>&lt;File&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps this assertion to an assertion on the file object representing this subject.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e0986ea1a1b7885179d17dfa8bb4a42317a4515f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="af374774a3a7122d56f1235a766ce991e3ad429a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="59ea475499ba19477a839397d8938c6565f86dd4">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<File>&lt;File&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="4edc4c655238ffb19316b0e24a3d825316a3dfb6">
+      
+      <h3 class="sourcedoc-section element-name">isSymbolicLink</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.isSymbolicLink(): Builder<T>&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Asserts that the subject is a symbolic link.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8e6ba7e04823429bc3a7a2b3b0065d900626e546">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="717d5b8e274d83bc11a34228997b9b90f27b1bfe">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c03468632dc5fb111ddbfd5bd84e73620293b218">
+      
+      <h3 class="sourcedoc-section element-name">allBytes</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.allBytes(): Builder<ByteArray>&lt;ByteArray&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps this assertion to an assertion over all bytes of this subject path .</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2b6f0b0ac1eba2a067efd93c6f6cd82331cbb368">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="168ebb0b89f6125936844eeec33c8b575f65c865">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="69ff5d7818f3860b5786b3d363b9c74ae9d62c3e">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<ByteArray>&lt;ByteArray&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="abeb30cf1769c87fa0b32b1da318ac0289669b22">
+      
+      <h3 class="sourcedoc-section element-name">allLines</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Path&gt; Builder<T>&lt;T&gt;.allLines(charset: Charset): Builder<List<String>>&lt;List&lt;String&gt;&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Maps this assertion to an assertion over all lines of this subject path decoded using the provided charset.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e7f1e98d047b206f51f0a78bbd483a34690187f7">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="805a1a7941da67aeea7621421ce9ac6dfbda9aed">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<T>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="23309eb2f3ea0e34af8f46eb56d6736e07a37bb6">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="20685b2c35259534a1e6cf83499fa5f2508f8103">
+        <td class="sourcedoc-section section-signature">
+          <code>charset: Charset</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the charset to use in decoding</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9b174ff693c0ca80a239edde203a5ce21f2aef43">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="770c8949558ab4916c4fceab7fe1d72d2827bf14">
+        <td class="sourcedoc-section section-signature">
+          <code>Builder<List<String>>&lt;List&lt;String&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="https://github.com/robfletcher/strikt/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+          <a href="https://kotlinlang.slack.com/messages/CAR7KJ96J" class="button is-danger">
+            <span class="icon"><i class="fab fa-lg fa-slack-hash"></i></span>
+            <span>Slack</span>
+          </a>
+        
+          <a href="https://twitter.com/stri_kt" class="button is-info">
+            <span class="icon"><i class="fab fa-lg fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://strikt.io/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://strikt.io/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 0.21.1"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer  src="https://strikt.io/StriktTheme/9f2a9a08/releases/v5.4.0/js/all.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://strikt.io/StriktTheme/9f2a9a08/assets/js/bulma-tabs.js"></script>
+<script  src="https://strikt.io/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://strikt.io/lunr/lunr.js"></script>
+<script  src="https://strikt.io/assets/js/orchidSearch.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://strikt.io/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

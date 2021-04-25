@@ -1,0 +1,8 @@
+User-agent: *
+
+Disallow: /meta/
+
+
+
+Sitemap: https://strikt.io/sitemap.xml
+

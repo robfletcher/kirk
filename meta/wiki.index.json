@@ -1,0 +1,293 @@
+{
+  "ownKey": "wiki",
+  "childrenPages": {"wiki": {
+    "ownKey": "wiki",
+    "childrenPages": {
+      "custom-assertions": {
+        "ownKey": "custom-assertions",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "custom-assertions",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/custom-assertions"
+          },
+          "next": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "additional-modules",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/additional-modules"
+          },
+          "previous": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "grouping-with-and",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/grouping-with-and"
+          },
+          "description": "",
+          "title": "Custom Assertions",
+          "content": "<h1 id=\"custom-assertions\"><a href=\"#custom-assertions\" id=\"custom-assertions\" class=\"anchor\"><\/a>Custom Assertions<\/h1>\n<p>One of the aims of Strikt is that implementing your own assertions is <em>really, really<\/em> easy.\nAssertion functions are <a href=\"https://kotlinlang.org/docs/reference/extensions.html\">extension functions<\/a> on the interface <code>Assertion.Builder&lt;T&gt;<\/code> where <code>T<\/code> is the type of the assertion subject.<\/p>\n<h3 id=\"tip-avoiding-clashing-method-signatures\"><a href=\"#tip-avoiding-clashing-method-signatures\" id=\"tip-avoiding-clashing-method-signatures\" class=\"anchor\"><\/a>Tip: Avoiding clashing method signatures<\/h3>\n<p>Because of Java's generic type erasure, it's possible that the name of your custom assertion function may clash with an existing one for a different subject type.<\/p>\n<p>To avoid this you can add the <code>@JvmName<\/code> annotation to your assertion function to disambiguate the methods.\nSee <a href=\"https://kotlinlang.org/docs/reference/java-to-kotlin-interop.html#handling-signature-clashes-with-jvmname\">Handling signature clashes with <em>@JvmName<\/em><\/a> in the Kotlin documentation.<\/p>\n<p>For example, if you were defining an <code>isEmpty<\/code> assertion for Gson's <code>JsonArray<\/code> type, you would need to disambiguate it from the <code>isEmpty<\/code> assertion Strikt provides for collections.<\/p>\n<pre><code class=\"language-kotlin\">@JvmName(&quot;isEmpty_JsonArray&quot;)\nfun Assertion.Builder&lt;JsonArray&gt;.isEmpty(): Assertion.Builder&lt;JsonArray&gt; =\n  // ...\n<\/code><\/pre>\n<h2 id=\"atomic-assertions\"><a href=\"#atomic-assertions\" id=\"atomic-assertions\" class=\"anchor\"><\/a>Atomic assertions<\/h2>\n<p>&quot;Atomic&quot; assertions produce a single message on failure.\nThey call <code>assert<\/code> passing a lambda with the assertion logic that calls <code>pass()<\/code> or <code>fail()<\/code>.<\/p>\n<p>The standard assertions <code>isNull<\/code>, <code>isEqualTo<\/code>, <code>isA&lt;T&gt;<\/code> and many others are simple assertions implemented just like this.<\/p>\n<p>Let's imagine we're implementing an assertion function for <code>java.time.LocalDate<\/code> that tests if the represented date is a leap day.<\/p>\n<pre><code class=\"language-kotlin\">fun Assertion.Builder&lt;LocalDate&gt;.isStTibsDay(): Assertion.Builder&lt;LocalDate&gt; =\n  assert(&quot;is St. Tib's Day&quot;) {\n    when (MonthDay.from(it)) {\n      MonthDay.of(2, 29) -&gt; pass()\n      else -&gt; fail()\n    }\n  }\n\n<\/code><\/pre>\n<p>Breaking this down:<\/p>\n<ol>\n<li>We declare the assertion function applies only to <code>Assertion.Builder&lt;LocalDate&gt;<\/code>.<\/li>\n<li>Note that the function also returns <code>Assertion.Builder&lt;LocalDate&gt;<\/code> so we can include this assertion as part of a chain.<\/li>\n<li>We call <code>assert<\/code> passing a description of the assertion and a lambda with the assertion logic.<\/li>\n<li>If <code>it<\/code> (the test subject) is the value we want we call <code>pass()<\/code> otherwise we call <code>fail()<\/code><\/li>\n<\/ol>\n<p>If this assertion fails it will produce a message like:<\/p>\n<pre><code class=\"language-text\">▼ Expect that 2018-05-01:\n  ✗ is St. Tib's Day\n\n<\/code><\/pre>\n<h3 id=\"note\"><a href=\"#note\" id=\"note\" class=\"anchor\"><\/a>Note<\/h3>\n<p>The method <code>assert<\/code> accepts a description for the assertion being made and a lambda function <code>Assertion&lt;T&gt;.(T) -&gt; Unit<\/code>.\nThe parameter passed to the lambda is the assertion subject.\nThe <code>Assertion&lt;T&gt;<\/code> receiver provides the lambda the <code>pass()<\/code> and <code>fail()<\/code> methods for reporting the assertion result.<\/p>\n<h2 id=\"describing-the-actual-value\"><a href=\"#describing-the-actual-value\" id=\"describing-the-actual-value\" class=\"anchor\"><\/a>Describing the &quot;actual&quot; value<\/h2>\n<p>For assertions that perform a comparison between actual and expected values it is usually helpful to describe the value that was incorrect.\nThat way any assertion failure message will be more helpful.<\/p>\n<p>In order to do this, Strikt provides an overridden version of <code>fail()<\/code> that accepts a message string and the actual value found.\nThe message string should contain a format placeholder for the value.<\/p>\n<pre><code class=\"language-kotlin\">fun Assertion.Builder&lt;LocalDate&gt;.isStTibsDay(): Assertion.Builder&lt;LocalDate&gt; =\n  assert(&quot;is St. Tib's Day&quot;) {\n    when (MonthDay.from(it)) {\n      MonthDay.of(2, 29) -&gt; pass()\n      else -&gt; fail(\n        description = &quot;in fact it is %s&quot;,\n        actual = it\n      )\n    }\n  }\n\n<\/code><\/pre>\n<p>Now if the assertion fails there is a little more detail.<\/p>\n<pre><code class=\"language-text\">▼ Expect that 2018-05-01:\n  ✗ is St. Tib's Day\n    in fact it is 2018-05-01\n\n<\/code><\/pre>\n<p>In this case that's not terribly helpful but when dealing with properties, method return values, or the like it can save a lot of effort in identifying the precise cause of an error.\nWhen comparing large string values it also means IDEs such as IntelliJ IDEA will present a detailed diff dialog in the event of a test failure.<\/p>\n<h2 id=\"simple-atomic-assertions-with-boolean-expressions\"><a href=\"#simple-atomic-assertions-with-boolean-expressions\" id=\"simple-atomic-assertions-with-boolean-expressions\" class=\"anchor\"><\/a>Simple atomic assertions with boolean expressions<\/h2>\n<p>For the simplest assertion functions, instead of using <code>assert<\/code> and calling <code>pass<\/code> or <code>fail<\/code>, you can use <code>assertThat<\/code> with a lambda whose parameter is the assertion subject that returns a boolean.<\/p>\n<p>We can re-implement the example above like this:<\/p>\n<pre><code class=\"language-kotlin\">fun Assertion.Builder&lt;LocalDate&gt;.isStTibsDay(): Assertion.Builder&lt;LocalDate&gt; =\n  assertThat(&quot;is St. Tib's Day&quot;) {\n    MonthDay.from(it) == MonthDay.of(2, 29)\n  }\n\n<\/code><\/pre>\n<p>You should not use this form when you want to provide a meaningful description of the actual value but for simple assertions it's slightly less verbose.<\/p>\n<h2 id=\"composed-assertions\"><a href=\"#composed-assertions\" id=\"composed-assertions\" class=\"anchor\"><\/a>Composed assertions<\/h2>\n<p>For more complex assertion implementations you can &quot;nest&quot; sub-assertions inside your overall assertion.\nComposed assertions' results are reported under the overall result which is useful for providing detailed diagnostic information in case of a failure.<\/p>\n<p>Composed assertions are useful for things like:<\/p>\n<ul>\n<li>applying assertions to multiple properties of an object, for example for a field-by-field comparison.<\/li>\n<li>applying assertions to all elements of a collection or entries in a map, reporting on individual elements.<\/li>\n<\/ul>\n<p>Imagine we're creating an assertion function that tests fails if any element of a collection is <code>null<\/code>.<\/p>\n<pre><code class=\"language-kotlin\">fun &lt;T : Iterable&lt;E?&gt;, E&gt; Assertion.Builder&lt;T&gt;.containsNoNullElements(): Assertion.Builder&lt;T&gt; =\n  compose(&quot;does not contain any null elements&quot;) { subject -&gt;\n    subject.forEach { element -&gt;\n      get(&quot;%s&quot;) { element }.isNotNull()\n    }\n  } then {\n    if (allPassed) pass() else fail()\n  }\n\n<\/code><\/pre>\n<p>Breaking this down:<\/p>\n<ol>\n<li>We declare the overall assertion function applies to an <code>Iterable<\/code> of a nullable element type <code>E<\/code>.<\/li>\n<li>We use the <code>compose<\/code> method instead of <code>assert<\/code>.<\/li>\n<li>Inside the <code>compose<\/code> block we make assertions about each element of the iterable subject.<\/li>\n<li>Inside the <code>then<\/code> block we pass or fail the overall assertion depending on whether the nested assertions all passed.<\/li>\n<\/ol>\n<p>The receiver of the block passed to <code>result<\/code> has the properties <code>allFailed<\/code>, <code>anyFailed<\/code>, <code>allPassed<\/code> and <code>anyPassed<\/code> along with <code>pass()<\/code> and <code>fail()<\/code> functions used in simple assertions.<\/p>\n<p>If the assertion failed we'll see something like this:<\/p>\n<pre><code class=\"language-text\">▼ Expect that [&quot;catflap&quot;, null, &quot;rubberplant&quot;, &quot;marzipan&quot;]:\n  ✗ does not contain any null elements\n    ▼ &quot;catflap&quot;:\n      ✓ is not null\n    ▼ null:\n      ✗ is not null\n    ▼ &quot;rubberplant&quot;:\n      ✓ is not null\n    ▼ &quot;marzipan&quot;:\n      ✓ is not null\n\n<\/code><\/pre>\n<p>As well as the overall assertion failure message we get a detailed breakdown allowing us to easily find exactly where the problem is.<\/p>\n<p>Several assertion functions in Strikt's standard assertions library use nested assertions.\nFor example, <code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;.all<\/code> applies assertions to each element of an <code>Iterable<\/code> then passes the overall assertion if (and only if) all those nested assertions passed (<code>allPassed<\/code>).\nOn the other hand <code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;.any<\/code> applies assertions to the elements of an <code>Iterable<\/code> but will pass the overall assertion if at least one of those nested assertions passed (<code>anyPassed<\/code>).\nThe <code>Assertion.Builder&lt;Iterable&lt;E&gt;&gt;.none<\/code> assertion passes only if <code>allFailed<\/code> is true for its nested assertions!<\/p>\n"
+        }]
+      },
+      "getting-started": {
+        "ownKey": "getting-started",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "getting-started",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/getting-started"
+          },
+          "next": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "assertion-styles",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/assertion-styles"
+          },
+          "description": "",
+          "title": "Getting Started",
+          "content": "<h1 id=\"getting-started\"><a href=\"#getting-started\" id=\"getting-started\" class=\"anchor\"><\/a>Getting Started<\/h1>\n<p>Strikt does not depend on any particular test runner.\nIt can be used with JUnit, Spek or any other runner that supports tests written in Kotlin.<\/p>\n<h2 id=\"installation\"><a href=\"#installation\" id=\"installation\" class=\"anchor\"><\/a>Installation<\/h2>\n<p>Strikt is available from Maven Central.\nAdd the following to your <code>build.gradle<\/code> or <code>build.gradle.kts<\/code>.<\/p>\n<pre><code class=\"language-kotlin\">repositories {\n  mavenCentral()\n}\n\ndependencies {\n  testImplementation(&quot;io.strikt:strikt-core:0.31.0&quot;)\n}\n<\/code><\/pre>\n<h2 id=\"importing-the-strikt-api\"><a href=\"#importing-the-strikt-api\" id=\"importing-the-strikt-api\" class=\"anchor\"><\/a>Importing the Strikt API<\/h2>\n<p>Add the following imports to your test:<\/p>\n<pre><code class=\"language-kotlin\">import strikt.api.*\nimport strikt.assertions.*\n<\/code><\/pre>\n<p>The <code>strikt.api<\/code> package contains top level functions such as <code>expect<\/code>, <code>expectThat<\/code>, and <code>expectThrows<\/code> that you will use to create assertions as well as the API classes you will interact with if you decide to implement your own assertion functions.\nThe <code>strikt.assertions<\/code> package contains the standard library of assertion functions.<\/p>\n"
+        }]
+      },
+      "additional-modules": {
+        "ownKey": "additional-modules",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "additional-modules",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/additional-modules"
+          },
+          "previous": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "custom-assertions",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/custom-assertions"
+          },
+          "description": "",
+          "title": "Additional Modules",
+          "content": "<h1 id=\"additional-modules\"><a href=\"#additional-modules\" id=\"additional-modules\" class=\"anchor\"><\/a>Additional Modules<\/h1>\n<p>In addition to the core functionality provided by the <a href=\"https://strikt.io/modules/core\">strikt-core<\/a>\nmodule, Strikt has the following optional modules:<\/p>\n<h2 id=\"arrow\"><a href=\"#arrow\" id=\"arrow\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/arrow\">Arrow<\/a><\/h2>\n<p>Extensions for assertions and traversals on types from the <a href=\"https://arrow-kt.io/\">Arrow<\/a>'s functional programming library.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-arrow:0.31.0&quot;)\n<\/code><\/pre>\n<h2 id=\"gradle\"><a href=\"#gradle\" id=\"gradle\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/gradle\">Gradle<\/a><\/h2>\n<p>Extensions for assertions and traversals on <a href=\"https://github.com/gradle/gradle\">Gradle<\/a>'s test kit.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-gradle:0.31.0&quot;)\n<\/code><\/pre>\n<h2 id=\"jackson\"><a href=\"#jackson\" id=\"jackson\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/jackson\">Jackson<\/a><\/h2>\n<p>Extensions for assertions and traversals on types <a href=\"https://github.com/FasterXML/jackson\">Jackson<\/a>'s <code>JsonNode<\/code> and sub-types.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-jackson:0.31.0&quot;)\n<\/code><\/pre>\n<h2 id=\"jvm\"><a href=\"#jvm\" id=\"jvm\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/jvm\">JVM<\/a><\/h2>\n<p>Extensions for assertions and traversals on types from the Java SDK.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-jvm:0.31.0&quot;)\n<\/code><\/pre>\n<h2 id=\"mockk\"><a href=\"#mockk\" id=\"mockk\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/mockk\">Mockk<\/a><\/h2>\n<p>Extensions for assertions and traversals on types from the <a href=\"https://mockk.io/\">Mockk<\/a> mocking and verification library.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-mockk:0.31.0&quot;)\n<\/code><\/pre>\n<h2 id=\"protobuf\"><a href=\"#protobuf\" id=\"protobuf\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/protobuf\">Protobuf<\/a><\/h2>\n<p>Extensions for testing code that uses Protobuf / gRPC.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-protobuf:0.31.0&quot;)\n<\/code><\/pre>\n<h2 id=\"spring\"><a href=\"#spring\" id=\"spring\" class=\"anchor\"><\/a><a href=\"https://strikt.io/modules/spring\">Spring<\/a><\/h2>\n<p>Extensions for testing code that uses the Spring Framework.<\/p>\n<p>Add the following to your dependencies:<\/p>\n<pre><code class=\"language-kotlin\">testImplementation(&quot;io.strikt:strikt-spring:0.31.0&quot;)\n<\/code><\/pre>\n"
+        }]
+      },
+      "expecting-exceptions": {
+        "ownKey": "expecting-exceptions",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "expecting-exceptions",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/expecting-exceptions"
+          },
+          "next": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "flow-typing",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/flow-typing"
+          },
+          "previous": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "collection-elements",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/collection-elements"
+          },
+          "description": "",
+          "title": "Expecting Exceptions",
+          "content": "<h1 id=\"expecting-exceptions\"><a href=\"#expecting-exceptions\" id=\"expecting-exceptions\" class=\"anchor\"><\/a>Expecting exceptions<\/h1>\n<p>To assert that some code does or does not throw an exception use the <code>expectCatching<\/code> function that accepts a lambda <code>() -&gt; Any?<\/code> that performs the operation that may throw an exception, along with the <code>isSuccess()<\/code> or <code>isFailure()<\/code> assertion functions.\nFor example:<\/p>\n<pre><code class=\"language-kotlin\">expectCatching { identifyHotdog(&quot;hamburger&quot;) }\n  .isFailure()\n  .isA&lt;NotHotdogException&gt;()\n\n<\/code><\/pre>\n<p>The <code>expectCatching<\/code> function returns <code>Assertion.Builder&lt;Try&lt;T&gt;&gt;<\/code> with the assertion's subject being a wrapper for either the value the lambda returns, or the exception it throws.<\/p>\n<h2 id=\"asserting-failure\"><a href=\"#asserting-failure\" id=\"asserting-failure\" class=\"anchor\"><\/a>Asserting failure<\/h2>\n<p>The <code>failed()<\/code> assertion function returns an <code>Assertion.Builder&lt;Throwable&gt;<\/code> so you can chain assertions about the exception itself after it.\nFor example, combining it with the <code>isA&lt;T&gt;()<\/code> assertion allows testing for specific exception types.<\/p>\n<p>The <code>failed()<\/code> assertion will fail if the lambda does not throw an exception.<\/p>\n<p>If you just need to test that <em>any<\/em> exception was thrown you can just use the <code>failed()<\/code> assertion by itself.\nFor example:<\/p>\n<pre><code class=\"language-kotlin\">expectCatching { identifyHotdog(&quot;hamburger&quot;) }\n  .isFailure()\n\n<\/code><\/pre>\n<h2 id=\"with-block-assertions\"><a href=\"#with-block-assertions\" id=\"with-block-assertions\" class=\"anchor\"><\/a>With block assertions<\/h2>\n<p><code>catching<\/code> is also supported inside of block assertions.\nThe <code>catching<\/code> function returns a <code>Assertion.Builder&lt;Try&lt;T&gt;&gt;<\/code> mentioned above.<\/p>\n<pre><code class=\"language-kotlin\">expect {\n  catching { identifyHotdog(&quot;hamburger&quot;) }\n    .isFailure()\n    .isA&lt;NotHotdogException&gt;()\n\n  catching { identifyHotdog(&quot;hotdog&quot;) }\n    .isSuccess()\n}\nexpectCatching { identifyHotdog(&quot;hotdog&quot;) }\n  .isSuccess()\n\n<\/code><\/pre>\n<h3 id=\"shorthand-form\"><a href=\"#shorthand-form\" id=\"shorthand-form\" class=\"anchor\"><\/a>Shorthand form<\/h3>\n<p>You can also use the <code>expectThrows&lt;E&gt;(A)<\/code> function which is simply a shorthand for the <code>expectCatching<\/code> / <code>failed<\/code> / <code>isA&lt;E&gt;<\/code> combination.\nFor example:<\/p>\n<pre><code class=\"language-kotlin\">expectThrows&lt;NotHotdogException&gt; {\n  identifyHotdog(&quot;hamburger&quot;)\n}\n\n<\/code><\/pre>\n<h2 id=\"asserting-success\"><a href=\"#asserting-success\" id=\"asserting-success\" class=\"anchor\"><\/a>Asserting success<\/h2>\n<p>You can also assert that an exception is <em>not<\/em> thrown by the <code>expectCatching<\/code> lambda using the <code>isSuccess()<\/code> assertion function.<\/p>\n<p>The <code>isSuccess()<\/code> function returns an <code>Assertion.Builder&lt;T&gt;<\/code> where the type of the chained assertion subject is inferred from the value the lambda returns.\nThis allows you to chain further assertions about the returned value.<\/p>\n"
+        }]
+      },
+      "grouping-with-and": {
+        "ownKey": "grouping-with-and",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "grouping-with-and",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/grouping-with-and"
+          },
+          "next": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "custom-assertions",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/custom-assertions"
+          },
+          "previous": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "traversing-subjects",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/traversing-subjects"
+          },
+          "description": "",
+          "title": "Grouping Assertions With and or with",
+          "content": "<h1 id=\"grouping-assertions-with-and-or-with\"><a href=\"#grouping-assertions-with-and-or-with\" id=\"grouping-assertions-with-and-or-with\" class=\"anchor\"><\/a>Grouping Assertions with <em>and<\/em> or <em>with<\/em><\/h1>\n<p>Strikt provides the <code>and<\/code> and <code>with<\/code> functions, and several varieties of <code>with*<\/code>, that are used to add a block of assertions to a chain.\nThis is useful in a couple of scenarios.<\/p>\n<h2 id=\"grouping-assertions-after-a-null-or-type-check\"><a href=\"#grouping-assertions-after-a-null-or-type-check\" id=\"grouping-assertions-after-a-null-or-type-check\" class=\"anchor\"><\/a>Grouping assertions after a null or type check<\/h2>\n<p>It's frequently useful to be able to perform a block of assertions after narrowing the subject type.\nFor example, if the declared type of an assertion subject is nullable it can be awkward to apply a block of assertions directly with <code>expectThat<\/code> as every individual assertion in the block needs to deal with the nullable type.<\/p>\n<p>The same is true when the subject type is overly broad, and you need to narrow the type with <code>isA&lt;T&gt;<\/code> in order to use assertion functions that are specific to the runtime type.<\/p>\n<p>The <code>and<\/code> method is helpful in these scenarios.\nFor example:<\/p>\n<pre><code class=\"language-kotlin\">expectThat(subject)\n  .isNotNull()\n  .and {\n    // perform other assertions on a known non-null subject\n  }\n\n<\/code><\/pre>\n<p>The type after <code>expectThat<\/code> is <code>Assertion.Builder&lt;T?&gt;<\/code> (assuming <code>subject<\/code> has a nullable declared type) but the receiver of <code>and<\/code> is <code>Assertion.Builder&lt;T&gt;<\/code> as <code>isNotNull<\/code> has narrowed the subject type.<\/p>\n<h2 id=\"making-assertions-on-sub-trees-of-a-subject\"><a href=\"#making-assertions-on-sub-trees-of-a-subject\" id=\"making-assertions-on-sub-trees-of-a-subject\" class=\"anchor\"><\/a>Making assertions on sub-trees of a subject<\/h2>\n<p>Another use for <code>and<\/code> is to create a branch of assertions that apply to a sub-tree of the subject.\nFor example, if testing a complex value type with nested properties:<\/p>\n<pre><code class=\"language-kotlin\">expectThat(person)\n  .and {\n    get { name }.isEqualTo(&quot;David&quot;)\n  }\n  .and {\n    get { birthDate.year }.isEqualTo(1947)\n  }\n\n<\/code><\/pre>\n<p>The <code>with<\/code> function gives you another option for doing this:<\/p>\n<pre><code class=\"language-kotlin\">expectThat(person)\n  .with(Person::name) {\n    isEqualTo(&quot;David&quot;)\n  }\n  .with({ birthDate.year }) {\n    isEqualTo(1947)\n  }\n\n<\/code><\/pre>\n<p>Of course, it may be better to structure the same assertion with separate assertions.\nThis is a lot more readable:<\/p>\n<pre><code class=\"language-kotlin\">expect {\n  that(person.name).isEqualTo(&quot;David&quot;)\n  that(person.birthDate.year).isEqualTo(1947)\n}\n\n<\/code><\/pre>\n<p>Testing properties of a collection can be done similarly:<\/p>\n<pre><code class=\"language-kotlin\">expectThat(albums)\n  .hasSize(26)\n  .and { first().get { name }.isEqualTo(&quot;David Bowie&quot;) }\n  .and { last().get { name }.isEqualTo(&quot;Blackstar&quot;) }\n\n<\/code><\/pre>\n<h2 id=\"with-extension-functions\"><a href=\"#with-extension-functions\" id=\"with-extension-functions\" class=\"anchor\"><\/a><em>with*<\/em> extension functions<\/h2>\n<p>Strikt provides some variants of <code>with<\/code> that are also useful in these kinds of tests.\nThese include:<\/p>\n<ul>\n<li>for <code>Iterable<\/code> subjects:\n<ul>\n<li><code>withElementAt(index, lambda)<\/code><\/li>\n<li><code>withFirst(lambda)<\/code><\/li>\n<li><code>withLast(lambda)<\/code><\/li>\n<li><code>withFirst(predicate, lambda)<\/code><\/li>\n<\/ul>\n<\/li>\n<li>for <code>Map<\/code> subjects:\n<ul>\n<li><code>withValue(key, lambda)<\/code><\/li>\n<\/ul>\n<\/li>\n<li>for <code>CapturingSlot<\/code> subjects:\n<ul>\n<li><code>withCaptured(lamda)<\/code><\/li>\n<\/ul>\n<\/li>\n<\/ul>\n<p>For example, the previous assertions could also be written as:<\/p>\n<pre><code class=\"language-kotlin\">expectThat(albums)\n  .hasSize(26)\n  .withFirst {\n    get { name }.isEqualTo(&quot;David Bowie&quot;)\n  }\n  .withLast {\n    get { name }.isEqualTo(&quot;Blackstar&quot;)\n  }\n\n<\/code><\/pre>\n"
+        }]
+      },
+      "collection-elements": {
+        "ownKey": "collection-elements",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "collection-elements",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/collection-elements"
+          },
+          "next": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "expecting-exceptions",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/expecting-exceptions"
+          },
+          "previous": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "assertion-styles",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/assertion-styles"
+          },
+          "description": "",
+          "title": "Collection Element Assertions",
+          "content": "<h1 id=\"assertions-on-elements-of-a-collection\"><a href=\"#assertions-on-elements-of-a-collection\" id=\"assertions-on-elements-of-a-collection\" class=\"anchor\"><\/a>Assertions on elements of a collection<\/h1>\n<p>Some assertions on collections include sub-assertions applied to the elements of the collection.\nFor example, we can assert that <em>all<\/em> elements conform to a repeated assertion.<\/p>\n<pre><code class=\"language-kotlin\">val subject = setOf(&quot;catflap&quot;, &quot;rubberplant&quot;, &quot;marzipan&quot;)\nexpectThat(subject).all {\n  isLowerCase()\n  startsWith('c')\n}\n\n<\/code><\/pre>\n<p>This produces the output:<\/p>\n<pre><code class=\"language-text\">▼ Expect that [&quot;catflap&quot;, &quot;rubberplant&quot;, &quot;marzipan&quot;]:\n  ✗ all elements match:\n    ▼ &quot;catflap&quot;:\n      ✓ is lower case\n      ✓ starts with 'c'\n    ▼ &quot;rubberplant&quot;:\n      ✓ is lower case\n      ✗ starts with 'c'\n              found 'r'\n    ▼ &quot;marzipan&quot;:\n      ✓ is lower case\n      ✗ starts with 'c'\n              found 'm'\n\n<\/code><\/pre>\n<p>The results are broken down by individual elements in the collection, so it's easy to see which failed.<\/p>\n<p>Similarly, <code>any<\/code> asserts that at least one element passes the nested assertions, <code>one<\/code> succeeds if exactly one element passes the nested assertions, and <code>none<\/code> succeeds if all elements of the collection <em>fail<\/em> the nested assertions.<\/p>\n"
+        }]
+      },
+      "flow-typing": {
+        "ownKey": "flow-typing",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "flow-typing",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/flow-typing"
+          },
+          "next": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "traversing-subjects",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/traversing-subjects"
+          },
+          "previous": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "expecting-exceptions",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/expecting-exceptions"
+          },
+          "description": "",
+          "title": "Strongly Typed Assertions",
+          "content": "<h1 id=\"strongly-typed-assertions\"><a href=\"#strongly-typed-assertions\" id=\"strongly-typed-assertions\" class=\"anchor\"><\/a>Strongly Typed Assertions<\/h1>\n<p>Strikt's API is designed to work with Kotlin's strong type system.<\/p>\n<p>Strikt's assertion API uses the interface <code>Assertion.Builder&lt;T&gt;<\/code>, with the generic type <code>T<\/code> representing the (declared) type of the assertion subject.\nAssertion functions such as <code>isEqualTo<\/code> are implemented as extension functions on <code>Assertion.Builder<\/code> with an appropriate generic type.<\/p>\n<p>For example <code>isEqualTo<\/code> is an extension function on <code>Assertion.Builder&lt;Any?&gt;<\/code> as it's useful for many types of subject whereas <code>isEqualToIgnoringCase<\/code> is an extension function on <code>Assertion.Builder&lt;CharSequence&gt;<\/code> since it only makes sense to use it on string-like things.<\/p>\n<p>Some assertion functions will return an <code>Assertion.Builder<\/code> with a <em>different<\/em>, more specific, generic type to the one they were called on.<\/p>\n<h2 id=\"nullable-subjects\"><a href=\"#nullable-subjects\" id=\"nullable-subjects\" class=\"anchor\"><\/a>Nullable subjects<\/h2>\n<p>For example, if the subject of an assertion is a nullable type (in other words it's an <code>Assertion.Builder&lt;T?&gt;<\/code>) the assertion methods <code>isNull()<\/code> and <code>isNotNull()<\/code> are available.\nThe return type of <code>isNotNull()<\/code> is <code>Assertion.Builder&lt;T&gt;<\/code> because we now <em>know<\/em> the subject is not null.\nYou will find IDE code-completion will no longer offer the <code>isNull()<\/code> and <code>isNotNull()<\/code> assertion methods.<\/p>\n<h2 id=\"narrowing-assertions\"><a href=\"#narrowing-assertions\" id=\"narrowing-assertions\" class=\"anchor\"><\/a>Narrowing assertions<\/h2>\n<p>Another example is making assertions about a subject's specific runtime type, or &quot;narrowing&quot;.<\/p>\n<p>For example:<\/p>\n<pre><code class=\"language-kotlin\">val subject: Map&lt;String, Any&gt; = mapOf(&quot;count&quot; to 1, &quot;name&quot; to &quot;Rob&quot;)\nexpectThat(subject[&quot;count&quot;])\n  .isA&lt;Int&gt;()\n  .isGreaterThan(0)\n\nexpectThat(subject[&quot;name&quot;])\n  .isA&lt;String&gt;()\n  .hasLength(3)\n\n<\/code><\/pre>\n<p>The return type of the subject map's <code>get()<\/code> method is <code>Any<\/code> but using the narrowing assertion <code>isA&lt;T&gt;()<\/code> we can both assert the type of the value and, because the compiler now knows it is dealing with an <code>Assertion.Builder&lt;String&gt;<\/code> or an <code>Assertion.Builder&lt;Number&gt;<\/code>, we can use more specialized assertion methods that are only available for those subject types.<\/p>\n<p>Without the <code>isA&lt;T&gt;()<\/code> assertion the code would not compile:<\/p>\n<pre><code class=\"language-kotlin\">val subject: Map&lt;String, Any&gt; = mapOf(&quot;count&quot; to 1, &quot;name&quot; to &quot;Rob&quot;)\nexpectThat(subject.get(&quot;count&quot;))\n  .isGreaterThan(0)\n  // isGreaterThan does not exist on Assertion.Builder&lt;Any&gt;\n\nexpectThat(subject.get(&quot;name&quot;))\n  .hasLength(3)\n  // hasLength does not exist on Assertion.Builder&lt;Any&gt;\n<\/code><\/pre>\n<p>This mechanism means that IDE code-completion is optimally helpful as only assertion methods that are appropriate to the subject type will be suggested.<\/p>\n"
+        }]
+      },
+      "assertion-styles": {
+        "ownKey": "assertion-styles",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "assertion-styles",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/assertion-styles"
+          },
+          "next": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "collection-elements",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/collection-elements"
+          },
+          "previous": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "getting-started",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/getting-started"
+          },
+          "description": "",
+          "title": "Assertion Styles",
+          "content": "<h1 id=\"assertion-styles\"><a href=\"#assertion-styles\" id=\"assertion-styles\" class=\"anchor\"><\/a>Assertion styles<\/h1>\n<p>Two different styles of assertion -- chained and block -- are supported for different use-cases.\nYou can mix and match both in the same test and even nest chained assertions inside block assertions.<\/p>\n<h2 id=\"chained-assertions\"><a href=\"#chained-assertions\" id=\"chained-assertions\" class=\"anchor\"><\/a>Chained assertions<\/h2>\n<p>Chained assertions use a fluent API similar to AssertJ.\nThey fail fast.\nThat is, the first assertion that fails breaks the chain and further assertions are not evaluated.<\/p>\n<p>Each assertion in the chain returns an <code>Assertion.Builder<\/code> object that supports further assertions.<\/p>\n<pre><code class=\"language-kotlin\">val subject = &quot;fnord&quot;\nexpectThat(subject)\n  .isA&lt;String&gt;()\n  .hasLength(1)\n  .isUpperCase()\n\n<\/code><\/pre>\n<p>Produces the output:<\/p>\n<pre><code class=\"language-text\">▼ Expect that &quot;fnord&quot;:\n  ✓ is an instance of java.lang.String\n  ✗ has length 1\n         found 5\n\n<\/code><\/pre>\n<p>Notice that the <code>isUpperCase()<\/code> assertion is not applied as the earlier <code>hasLength(1)<\/code> assertion failed.<\/p>\n<h2 id=\"block-assertions\"><a href=\"#block-assertions\" id=\"block-assertions\" class=\"anchor\"><\/a>Block assertions<\/h2>\n<p>Block assertions are declared in a lambda whose receiver is an <code>Assertion.Builder&lt;T&gt;<\/code> object.\nThey allow multiple assertions (or assertion chains) to be evaluated against the subject.<\/p>\n<p>Block assertions do <em>not<\/em> fail fast.\nThat is, all assertions in the block are evaluated, and the result of the &quot;compound&quot; assertion will include results for all the assertions made in the block.<\/p>\n<pre><code class=\"language-kotlin\">val subject = &quot;fnord&quot;\nexpectThat(subject) {\n  isA&lt;String&gt;()\n  hasLength(1)\n  isUpperCase()\n}\n\n<\/code><\/pre>\n<p>Produces the output:<\/p>\n<pre><code class=\"language-text\">▼ Expect that &quot;fnord&quot;:\n  ✓ is an instance of java.lang.String\n  ✗ has length 1\n         found 5\n  ✗ is upper case\n\n<\/code><\/pre>\n<p>All assertions are applied and since two fail there are two errors logged.<\/p>\n<h3 id=\"chained-assertions-inside-block-assertions\"><a href=\"#chained-assertions-inside-block-assertions\" id=\"chained-assertions-inside-block-assertions\" class=\"anchor\"><\/a>Chained assertions inside block assertions<\/h3>\n<p>Chained assertions inside a block <em>will<\/em> still fail fast but will not prevent other assertions in the block from being evaluated.<\/p>\n<pre><code class=\"language-kotlin\">val subject = 1L\nexpectThat(subject) {\n  isLessThan(1L).isA&lt;Int&gt;()\n  isGreaterThan(1L)\n}\n\n<\/code><\/pre>\n<p>Produces the output:<\/p>\n<pre><code class=\"language-text\">▼ Expect that 1:\n  ✗ is less than 1\n  ✗ is greater than 1\n\n<\/code><\/pre>\n<p>Note the <code>isA&lt;Int&gt;<\/code> assertion (that would have failed) was not evaluated since it was chained after <code>lessThan(1)<\/code> which failed.\nThe <code>greaterThan(1)<\/code> assertion <em>was<\/em> evaluated since it was not part of the same chain.<\/p>\n<h2 id=\"assertions-with-multiple-subjects\"><a href=\"#assertions-with-multiple-subjects\" id=\"assertions-with-multiple-subjects\" class=\"anchor\"><\/a>Assertions with multiple subjects<\/h2>\n<p>As well as <code>expectThat<\/code> Strikt provides a top-level <code>expect<\/code> method that just takes a lambda parameter.\nInside the <code>expect<\/code> block you use <code>that<\/code> to define a subject and start a chain or nested block of assertions.<\/p>\n<p>All assertions inside the <code>expect<\/code> lambda are evaluated.<\/p>\n<p>The previous examples can be combined into a single <code>expect<\/code> block.<\/p>\n<pre><code class=\"language-kotlin\">expect {\n  that(&quot;fnord&quot;)\n    .isA&lt;String&gt;()\n    .hasLength(1)\n    .isUpperCase()\n  that(1L) {\n    isLessThan(1L).isA&lt;Int&gt;()\n    isGreaterThan(1L)\n  }\n}\n\n<\/code><\/pre>\n"
+        }]
+      },
+      "traversing-subjects": {
+        "ownKey": "traversing-subjects",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "traversing-subjects",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/traversing-subjects"
+          },
+          "next": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "grouping-with-and",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/grouping-with-and"
+          },
+          "previous": {
+            "path": "wiki",
+            "baseUrl": "https://strikt.io",
+            "fileName": "flow-typing",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://strikt.io/wiki/flow-typing"
+          },
+          "description": "",
+          "title": "Traversing Assertion Subjects",
+          "content": "<h1 id=\"traversing-assertion-subjects\"><a href=\"#traversing-assertion-subjects\" id=\"traversing-assertion-subjects\" class=\"anchor\"><\/a>Traversing Assertion Subjects<\/h1>\n<p>Although you can obviously write assertions for the properties of an object with code like this:<\/p>\n<pre><code class=\"language-kotlin\">expectThat(map.size).isEqualTo(1)\nexpectThat(list.first()).isEqualTo(&quot;fnord&quot;)\nexpectThat(person.name).isEqualTo(&quot;Ziggy&quot;)\n\n<\/code><\/pre>\n<p>Sometimes it's useful to be able to transform an assertion on a subject to an assertion on a property of that subject, or the result of a method call.\nParticularly when using soft assertion blocks.<\/p>\n<p>Strikt allows for this using the <code>Assertion.Builder&lt;T&gt;.get<\/code> method.<\/p>\n<h2 id=\"using-get-with-property-or-method-references\"><a href=\"#using-get-with-property-or-method-references\" id=\"using-get-with-property-or-method-references\" class=\"anchor\"><\/a>Using <em>get<\/em> with property or method references<\/h2>\n<p>The first override of <code>get<\/code> takes a property or (zero argument) method reference as a parameter.\nThe <code>get<\/code> method returns an <code>Assertion.Builder&lt;R&gt;<\/code> where the new subject (whose type is <code>R<\/code>) is the value returned by invoking that property or method on the current subject.<\/p>\n<p>This is useful for making assertions about the properties of an object, or the values returned by methods, particularly if you want to use a block-style assertion to validate multiple object properties.<\/p>\n<pre><code class=\"language-kotlin\">val subject = Person(name = &quot;David&quot;, birthDate = LocalDate.of(1947, 1, 8))\nexpectThat(subject) {\n  get(Person::name).isEqualTo(&quot;David&quot;)\n  get(Person::birthDate).get(LocalDate::getYear).isEqualTo(1947)\n}\n\n<\/code><\/pre>\n<h2 id=\"using-get-with-lambdas\"><a href=\"#using-get-with-lambdas\" id=\"using-get-with-lambdas\" class=\"anchor\"><\/a>Using <em>get<\/em> with lambdas<\/h2>\n<p>An alternate version of the <code>get<\/code> method takes a lambda whose receiver is the current subject.<\/p>\n<pre><code class=\"language-kotlin\">val subject = Person(name = &quot;David&quot;, birthDate = LocalDate.of(1947, 1, 8))\nexpectThat(subject) {\n  get { name }.isEqualTo(&quot;Ziggy&quot;)\n  get { birthDate.year }.isEqualTo(1971)\n}\n\n<\/code><\/pre>\n<p>Strikt will attempt to read the test source to find out the name of the variables.\nThis example produces output that looks like this:<\/p>\n<pre><code class=\"language-kotlin\">▼ Expect that Person(name=David, birthDate=1947-01-08):\n  ▼ name:\n    ✗ is equal to &quot;Ziggy&quot;\n            found &quot;David&quot;\n  ▼ birthDate.year:\n    ✗ is equal to 1971\n            found 1947\n\n<\/code><\/pre>\n<h3 id=\"performance-considerations\"><a href=\"#performance-considerations\" id=\"performance-considerations\" class=\"anchor\"><\/a>Performance considerations<\/h3>\n<p>Reading the test source can be costly performance-wise.\nIf you are running large-scale parallel tests, property-based testing, or something similar, it probably makes sense to avoid this penalty.\nYou can do so by:<\/p>\n<ul>\n<li>providing an explicit description parameter to <code>get<\/code> in addition to the lambda.<\/li>\n<li>using <code>get<\/code> with a property/method reference rather than a lambda.<\/li>\n<\/ul>\n<p>In either of those cases Strikt will <em>not<\/em> derive a description by attempting to read the source.<\/p>\n<h2 id=\"mapping-elements-of-collections\"><a href=\"#mapping-elements-of-collections\" id=\"mapping-elements-of-collections\" class=\"anchor\"><\/a>Mapping elements of collections<\/h2>\n<p>If the assertion subject is an <code>Iterable<\/code> Strikt provides a <code>map<\/code> function much like the one in the Kotlin standard library.\nIt is effectively like using <code>get<\/code> on each element of the <code>Iterable<\/code> subject.<\/p>\n<pre><code class=\"language-kotlin\">val subject: List&lt;Person&gt; = getPersonList()\nexpectThat(subject)\n  .map(Person::name)\n  .containsExactly(&quot;David&quot;, &quot;Ziggy&quot;, &quot;Aladdin&quot;, &quot;Jareth&quot;)\n\n<\/code><\/pre>\n<p>In this case the <code>map<\/code> function is transforming the <code>Assertion.Buidler&lt;List&lt;Person&gt;&gt;<\/code> into an <code>Assertion.Builder&lt;List&lt;String&gt;&gt;<\/code> by applying the <code>name<\/code> property to each element.<\/p>\n<h2 id=\"re-usable-mapping-extensions\"><a href=\"#re-usable-mapping-extensions\" id=\"re-usable-mapping-extensions\" class=\"anchor\"><\/a>Re-usable mapping extensions<\/h2>\n<p>If you find yourself frequently using <code>get<\/code> for the same properties or methods, consider defining extension property or method to make things even easier.<\/p>\n<p>For example:<\/p>\n<pre><code class=\"language-kotlin\">val Assertion.Builder&lt;Person&gt;.name: Assertion.Builder&lt;String&gt;\n  get() = get(Person::name)\n\nval Assertion.Builder&lt;Person&gt;.yearOfBirth: Assertion.Builder&lt;Int&gt;\n  get() = get(&quot;year of birth&quot;) { birthDate.year }\n\n<\/code><\/pre>\n<p>You can then write the earlier example as:<\/p>\n<pre><code class=\"language-kotlin\">val subject = Person(name = &quot;David&quot;, birthDate = LocalDate.of(1947, 1, 8))\nexpectThat(subject) {\n  name.isEqualTo(&quot;David&quot;)\n  yearOfBirth.isEqualTo(1947)\n}\n\n<\/code><\/pre>\n<h2 id=\"built-in-traversals\"><a href=\"#built-in-traversals\" id=\"built-in-traversals\" class=\"anchor\"><\/a>Built-in traversals<\/h2>\n<p>Strikt has a number of built in traversal properties and functions such as <code>Assertion.Builder&lt;List&lt;E&gt;&gt;.first()<\/code> which returns an <code>Assertion.Builder&lt;E&gt;<\/code> whose subject is the first element of the list.\nSee the <a href=\"https://strikt.io/kotlindoc/core/strikt/assertions\">API docs<\/a> for details.<\/p>\n"
+        }]
+      }
+    },
+    "ownPages": [{
+      "reference": {
+        "path": "",
+        "baseUrl": "https://strikt.io",
+        "fileName": "wiki",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://strikt.io/wiki"
+      },
+      "description": "",
+      "title": "Wiki",
+      "content": "<html>\n <head><\/head>\n <body>\n  <ul> \n   <li><a href=\"https://strikt.io/wiki/getting-started\">Getting Started<\/a><\/li> \n   <li><a href=\"https://strikt.io/wiki/assertion-styles\">Assertion Styles<\/a><\/li> \n   <li><a href=\"https://strikt.io/wiki/collection-elements\">Collection Element Assertions<\/a><\/li> \n   <li><a href=\"https://strikt.io/wiki/expecting-exceptions\">Expecting Exceptions<\/a><\/li> \n   <li><a href=\"https://strikt.io/wiki/flow-typing\">Strongly Typed Assertions<\/a><\/li> \n   <li><a href=\"https://strikt.io/wiki/traversing-subjects\">Traversing Assertion Subjects<\/a><\/li> \n   <li><a href=\"https://strikt.io/wiki/grouping-with-and\">Grouping Assertions With and or with<\/a><\/li> \n   <li><a href=\"https://strikt.io/wiki/custom-assertions\">Custom Assertions<\/a><\/li> \n   <li><a href=\"https://strikt.io/wiki/additional-modules\">Additional Modules<\/a><\/li> \n  <\/ul> \n <\/body>\n<\/html>\n"
+    }]
+  }}
+}
