@@ -181,6 +181,12 @@ internal class Mapping {
     }
 
     @Test
+    fun `can return result of mapping`() {
+      val result: String = expectThat(subject).get { name }.isEqualTo("David").get()
+      expectThat(result).isEqualTo("David")
+    }
+
+    @Test
     fun `can map with property and method references`() {
       expectThat(subject) {
         get(Person::name).isEqualTo("David")

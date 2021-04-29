@@ -316,6 +316,11 @@ interface Assertion {
     infix fun and(
       assertions: Builder<T>.() -> Unit
     ): Builder<T>
+
+    /**
+     * Return the subject. This can be useful to split up big expectThat blocks into smaller assertions
+     */
+    fun get(): T
   }
 }
 

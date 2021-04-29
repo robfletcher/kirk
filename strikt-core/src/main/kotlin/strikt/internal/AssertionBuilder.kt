@@ -142,4 +142,8 @@ internal class AssertionBuilder<T>(
     context,
     Negating(strategy)
   )
+
+  override fun get(): T {
+    return context.subject
+  }
 }
